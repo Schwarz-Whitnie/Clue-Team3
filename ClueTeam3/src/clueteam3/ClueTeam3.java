@@ -5,6 +5,7 @@
  */
 package clueteam3;
 
+import byui.cit260.clueTeam3.model.Game;
 import byui.cit260.clueTeam3.model.Player;
 import byui.cit260.clueTeam3.model.Scene;
 
@@ -27,6 +28,38 @@ public class ClueTeam3 {
         String playerInfo = playerOne.toString();
         System.out.println(playerInfo);
         
+        Game gameOne = new Game();
+        
+        gameOne.setTotalTime(12.0);
+        gameOne.setNoPeople(0);
+        
+        String gameInfo = gameOne.toString();
+        System.out.println(gameInfo); 
+        
+        
+        Character characterOne = new Character();
+        
+        characterOne.setName("name");
+        characterOne.setDescription("description");
+        characterOne.setCoordinates(0);
+        characterOne.setType("type");
+        
+        String characterInfo = characterOne.toString();
+        System.out.println(characterInfo);
+        
+        
+        Time timer = new Time();
+        
+        timer.setRun("countdown");
+        timer.setCountdownTime(0);
+        timer.setDisplayTime(0);
+        
+        String timeInfo = timer.toString();
+        System.out.println(timeInfo);
+                
+                
+     
+}
         Scene sceneOne = new Scene();
         
         sceneOne.setDescription("Room 1: Hallway");
