@@ -128,6 +128,10 @@ public class Scene implements Serializable{
     public void setBlockLocation() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public void setlockedLocation(String blocked) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
     
