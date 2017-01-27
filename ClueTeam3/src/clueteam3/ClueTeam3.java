@@ -10,6 +10,8 @@ import byui.cit260.clueTeam3.model.Player;
 import byui.cit260.clueTeam3.model.Scene;
 import byui.cit260.clueTeam3.model.Time;
 import byui.cit260.clueTeam3.model.Character;
+import byui.cit260.clueTeam3.model.ResourceTypeScene;
+import byui.cit260.clueTeam3.model.TransitionTypeScene;
 
 /**
  *
@@ -71,6 +73,24 @@ public class ClueTeam3 {
         
         String sceneInfo = sceneOne.toString();
         System.out.println(sceneInfo);
+        
+        TransitionTypeScene transitionTypeSceneOne = new TransitionTypeScene();
+        
+        transitionTypeSceneOne.setNoOfSpaces("4");
+        
+        String transitionTypeSceneInfo = transitionTypeSceneOne.toString();
+        System.out.println(transitionTypeSceneInfo);
+        
+        
+        ResourceTypeScene resourceTypeSceneOne = new ResourceTypeScene();
+        
+        resourceTypeSceneOne.setAmountAvailable(3.0);
+        resourceTypeSceneOne.setResourceType("Clue");
+        
+        String resourceTypeSceneInfo = resourceTypeSceneOne.toString();
+        System.out.println(resourceTypeSceneInfo);
+        
+        
     }
     
 }
