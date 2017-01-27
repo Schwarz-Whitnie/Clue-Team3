@@ -114,10 +114,7 @@ public class Scene implements Serializable{
         if (!Objects.equals(this.displaySymbol, other.displaySymbol)) {
             return false;
         }
-        if (!Objects.equals(this.resourceType, other.resourceType)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.resourceType, other.resourceType);
     }
 
     @Override
