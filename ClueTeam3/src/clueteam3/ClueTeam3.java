@@ -8,6 +8,8 @@ package clueteam3;
 import byui.cit260.clueTeam3.model.Game;
 import byui.cit260.clueTeam3.model.Player;
 import byui.cit260.clueTeam3.model.Scene;
+import byui.cit260.clueTeam3.model.Time;
+import byui.cit260.clueTeam3.model.Character;
 
 /**
  *
@@ -58,8 +60,6 @@ public class ClueTeam3 {
         System.out.println(timeInfo);
                 
                 
-     
-}
         Scene sceneOne = new Scene();
         
         sceneOne.setDescription("Room 1: Hallway");
