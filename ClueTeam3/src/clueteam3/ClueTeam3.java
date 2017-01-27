@@ -6,6 +6,7 @@
 package clueteam3;
 
 import byui.cit260.clueTeam3.model.Player;
+import byui.cit260.clueTeam3.model.Scene;
 
 /**
  *
@@ -25,6 +26,18 @@ public class ClueTeam3 {
         
         String playerInfo = playerOne.toString();
         System.out.println(playerInfo);
+        
+        Scene sceneOne = new Scene();
+        
+        sceneOne.setDescription("Room 1: Hallway");
+        sceneOne.setTravelTime(8.00);
+        sceneOne.setBlockedLocation("Blocked");
+        sceneOne.setDisplaySymbol("Scene1");
+        sceneOne.setAmountAvailable(5);
+        sceneOne.setResourceType("Weapon Clue");
+        
+        String sceneInfo = sceneOne.toString();
+        System.out.println(sceneInfo);
     }
     
 }
