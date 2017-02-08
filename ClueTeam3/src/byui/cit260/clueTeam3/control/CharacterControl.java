@@ -11,4 +11,18 @@ package byui.cit260.clueTeam3.control;
  */
 public class CharacterControl {
     
+    public double calcTimePoison(double amtPoison) {
+        
+        if (amtPoison != 69) {
+            return -1;
+        }
+        
+        double poisonPerMinute = 0.05;
+        double timePoison = amtPoison / (poisonPerMinute*60);
+        timePoison = Math.round (timePoison *10) / 10;
+        
+        return timePoison;
+        
+    }
+    
 }
