@@ -18,7 +18,7 @@ import byui.cit260.clueTeam3.model.TransitionTypeScene;
 
 /**
  *
- * @author Cameron
+ * @author Treya
  */
 public class ClueTeam3 {
 
