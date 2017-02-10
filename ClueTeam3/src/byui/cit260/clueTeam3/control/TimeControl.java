@@ -11,4 +11,24 @@ package byui.cit260.clueTeam3.control;
  */
 public class TimeControl {
     
+    public double calcTotalTime(double noOfRooms, double noOfLocations, double passageway) {
+        
+        if (noOfRooms < 1) {
+            return -1;
+        }
+        
+        if (noOfLocations < 1) {
+            return -1;
+        }
+        
+        if (passageway < 0 || passageway > 3) {
+            return -1;
+        }
+        
+        double travelTime = 60 - ((noOfRooms * 3) + (noOfLocations * 2));
+        double totalTime = travelTime + (travelTime * (passageway * .25)); 
+        
+        return totalTime;
+    }
+    
 }
