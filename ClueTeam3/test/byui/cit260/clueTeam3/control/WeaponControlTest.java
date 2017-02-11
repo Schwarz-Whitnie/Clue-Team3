@@ -64,6 +64,20 @@ public class WeaponControlTest {
         result = instance.calcAmountPoison(poisonPerlb, weightGrams);
         
         assertEquals(expResult, result, 0.0);
+        
+        /***********************
+         * Test case #4
+         ************************/
+        System.out.println("\tTest case #4");
+        
+        poisonPerlb = 0;
+        weightGrams = 0;
+        
+        expResult = -1;
+        
+        result = instance.calcAmountPoison(poisonPerlb, weightGrams);
+        
+        assertEquals(expResult, result, 0.0);
     }
     
 }
