@@ -64,6 +64,7 @@ public class StartProgramView {
     }
 
     private String getPlayersName() {
+        
         Scanner keyboard = new Scanner(System.in); //get infile for keyboard
         String value = ""; //value to be returned
         boolean valid = false; //initialize to not valid
