@@ -5,10 +5,27 @@
  */
 package byui.cit260.clueTeam3.control;
 
+import byui.cit260.clueTeam3.model.Player;
+import clueteam3.ClueTeam3;
+
 /**
  *
  * @author whitnieschwarz
  */
 public class GameControl {
+
+    public static Player createPlayer(String name) {
+         
+        if (name == null) {
+            return null;
+        }
+        
+        Player player = new Player();
+        player.setName(name);
+        
+        ClueTeam3.setPlayer(player); //save the player
+        
+        return player;
+    }
     
 }
