@@ -28,7 +28,8 @@ public class HelpMenuView {
             + "\nP - How to pick things up"
             + "\nT - How to interview a suspect"
             + "\nR - List of rooms"
-            + "\nN - View the detective notebook"    
+            + "\nN - View the detective notebook"  
+            + "\nS - List of Suspects"    
             + "\nQ - Quit"
             + "\n----------------------------------------"
             + "\nPlease enter a command: ";
@@ -95,6 +96,9 @@ public class HelpMenuView {
             case "N": //how to access detective notebook
                 this.notebook();
                 break;
+            case "S": //how to view list of suspects
+                this.displayListSuspects();
+                break;                
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;    
@@ -103,7 +107,7 @@ public class HelpMenuView {
          return false;
     }
     
-    private void objectGame() {
+    public void objectGame() {
         System.out.println("*** object of game is... ***");
     }
 
@@ -126,4 +130,10 @@ public class HelpMenuView {
     private void notebook() {
         System.out.println("*** how to get to your notebook... ***");
     }
+
+    public void displayListSuspects() {
+        // display the list of suspects
+        ListSuspectsView listSuspects = new ListSuspectsView();
+        listSuspects.displayListSuspects();
+}
 }
