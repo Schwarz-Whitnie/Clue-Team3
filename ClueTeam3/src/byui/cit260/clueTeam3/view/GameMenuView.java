@@ -123,8 +123,8 @@ public class GameMenuView {
 
     private void roomList() {
         //display the list of rooms
-        //ListRoomsView listRooms = new ListRoomsView();
-        //listRooms.displayListRooms();
+        ListRoomsView listRooms = new ListRoomsView();
+        listRooms.displayListRooms();
         System.out.println("*** Show List of Rooms ***");
     }
 
