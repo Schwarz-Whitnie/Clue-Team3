@@ -11,16 +11,23 @@ package byui.cit260.clueTeam3.control;
  */
 public class RoomControl {
     
-    public double calcRoute(double lengthIn, double lengthCm) {
+    public double calcShortestRoute(double lengthIn, double lengthYd) {
     
-        if (lengthIn != 816 && lengthCm != 2499.36) { 
+        if (lengthIn < 1750 || lengthIn > 1850) { 
             return -1; 
         } 
         
-        double distanceInFeet = (lengthIn / 12) + (lengthCm * 0.0328084);
-        distanceInFeet = Math.round (distanceInFeet * 10) / 10;
+        if (lengthYd < 55 || lengthYd > 65) {
+            return -1;
+        }
         
-        return distanceInFeet;
+        double routeOne = lengthIn / 12;
+        double routeTwo = lengthYd * 3;
+        
+        double shortestRouteFt = Math.min (routeOne, routeTwo);
+        shortestRouteFt = Math.round (shortestRouteFt * 100.00) / 100.00;
+        
+        return shortestRouteFt;
                 
     }
     
