@@ -116,8 +116,8 @@ public class GameMenuView {
 
     private void weaponList() {
         //display the list of weapons
-        //ListWeaponsView listWeapons = new ListWeaponsView();
-        //listWeapons.displayListWeapons();
+        ListWeaponsView listWeapons = new ListWeaponsView();
+        listWeapons.displayListWeapons();
         System.out.println("*** Show List of Weapons ***");
     }
 
