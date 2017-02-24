@@ -118,14 +118,12 @@ public class GameMenuView {
         //display the list of weapons
         ListWeaponsView listWeapons = new ListWeaponsView();
         listWeapons.displayListWeapons();
-        System.out.println("*** Show List of Weapons ***");
     }
 
     private void roomList() {
         //display the list of rooms
         ListRoomsView listRooms = new ListRoomsView();
         listRooms.displayListRooms();
-        System.out.println("*** Show List of Rooms ***");
     }
 
     private void moveRooms() {
