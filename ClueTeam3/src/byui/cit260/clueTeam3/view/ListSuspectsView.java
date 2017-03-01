@@ -105,27 +105,38 @@ public class ListSuspectsView {
     }
 
     private void mustard() {
-          System.out.println("*** Mustard.. ***");
+          System.out.println("Colonel Mustard is a dignified, dapper and "
+                  + "\n dangerous military man. ");
     }
 
     private void white() {
-        System.out.println("*** White... ***");
+        System.out.println("Mrs. White is a frazzled servant of the mansion, "
+                + "\n with a possible grudge against her employer.");
     }
 
     private void plum() {
-        System.out.println("*** plum... ***");
+        System.out.println("Professor Plum is a quick witted professor, who"
+                + "\n is widely seen as an intellectual, although his "
+                + "\n intelligence is tempered with homicidal tendencies.");
     }
 
     private void peacock() {
-        System.out.println("*** peacock... ***");
+        System.out.println("Mrs. Peacock is an elderly yet still attractive"
+                + "\n woman who maintains her dignity at all times. She has "
+                + "\n had three marriages ending disasterously in the death"
+                + "\n of her husband.");
     }
 
     private void scarlet() {
-        System.out.println("*** scarlet... ***");
+        System.out.println("Miss Scarlet is an aspiring acress with more "
+                + "\n aspiration than talent. She has now become a cunning"
+                + "\n young gold digger.");
     }
 
     private void green() {
-        System.out.println("*** green... ***");
+        System.out.println("Mr. Green is a con man, who has settled with the "
+                + "\n identity of Reverand Green. He has taken money from "
+                + "\n everyone from mobsters to businessmen.");
     }
 
 

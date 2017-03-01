@@ -13,15 +13,12 @@ import java.util.Scanner;
  *
  * @author Treya
  */
-public class MainMenuView {
+public class MainMenuView extends View {
 
-    private String menu;
     
     
     public MainMenuView() {
-        
-        this.menu = 
-              "----------------------------------------"
+       super("----------------------------------------"
             + "\n| Main Menu                            |"
             + "\n----------------------------------------"
             + "\nN - Start new game"
@@ -30,53 +27,16 @@ public class MainMenuView {
             + "\nS - Save game"  
             + "\nQ - Quit"
             + "\n----------------------------------------"
-            + "\nPlease enter a command: ";
-        
+            + "\nPlease enter a command: ");
+       
             
     }
-    
-    public void displayMainMenuView() {
+    @Override
+    public boolean doAction(String value) {
         
-        boolean done = false; //set flag to not done
-        do {
-            //prompt for and get players name
-            String menuOption = this.getMenuOption();
-            if (menuOption.toUpperCase().equals("Q")) //user wants to quit
-                return; //exit the game
-            
-            //do the requested action and display the next view
-            done = this.doAction(menuOption);
-                     
-        } while (!done);
-    }
-
-    private String getMenuOption() {
+        value = value.toUpperCase(); //convert choice to upper case
         
-        Scanner keyboard = new Scanner(System.in); //get infile for keyboard
-        String value = ""; //value to be returned
-        boolean valid = false; //initialize to not valid
-        
-        while (!valid) { //loop while an invalid value is enter
-            System.out.println("\n" + this.menu);
-            
-            value = keyboard.nextLine(); //get next line typed one keyboard
-            value = value.trim(); //trim off leading and trailing blanks
-            
-            if (value.length() < 1) { //value is blank
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-            
-            break; //end the loop
-        }
-        return value; // return the value entered
-    }
-
-    public boolean doAction(String menuOption) {
-        
-        menuOption = menuOption.toUpperCase(); //convert choice to upper case
-        
-        switch (menuOption) {
+        switch (value) {
             case "N": //create and start new game
                 this.startNewGame();
                 break;
