@@ -14,7 +14,7 @@ public class TimeControl {
     public double calcTotalTime(double noOfRooms, double noOfLocations, double passageway) {
         
         if (noOfRooms < 1) {
-            return -1;
+            return -1;  
         }
         
         if (noOfLocations < 1) {
