@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author Treya
  */
-public class GameMenuView {
+public class GameMenuView extends View{
 
     private String gameMenu;
     
