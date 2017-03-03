@@ -111,7 +111,7 @@ public class GameMenuView extends View{
     private void suspectList() {
         //display the list of suspects
         ListSuspectsView listSuspects = new ListSuspectsView();
-        listSuspects.displayListSuspects();        
+        listSuspects.display();        
     }
 
     private void weaponList() {
