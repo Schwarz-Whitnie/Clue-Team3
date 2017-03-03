@@ -5,13 +5,22 @@
  */
 package byui.cit260.clueTeam3.control;
 
+import byui.cit260.clueTeam3.model.Time;
+
 /**
  *
  * @author whitnieschwarz
  */
 public class TimeControl {
     
-    public double calcTotalTime(double noOfRooms, double noOfLocations, double passageway) {
+    /**
+     *
+     * @param noOfRooms
+     * @param noOfLocations
+     * @param passageway
+     * @return
+     */
+    public static double calcTotalTime(double noOfRooms, double noOfLocations, double passageway) {
         
         if (noOfRooms < 1) {
             return -1;  
@@ -29,6 +38,10 @@ public class TimeControl {
         double totalTime = travelTime + (travelTime * (passageway * .25)); 
         
         return totalTime;
+    }
+
+    public static Time calcTotalTime(double value) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
