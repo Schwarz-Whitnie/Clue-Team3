@@ -18,8 +18,7 @@ public class GameMenuView extends View{
     
     public GameMenuView() {
         
-        this.gameMenu = 
-              "----------------------------------------"
+        super ("----------------------------------------"
             + "\n| Game Menu                            |"
             + "\n----------------------------------------"
             + "\nMM - Map of Mansion"
@@ -31,50 +30,16 @@ public class GameMenuView extends View{
             + "\nA - Make an Accusation"
             + "\nQ - Quit"
             + "\n----------------------------------------"
-            + "\nPlease enter a command: ";
+            + "\nPlease enter a command: ");
     }
     
-    public void displayGameMenuView() {
-        boolean done = false; //set flag to not done
-        do {
-            //prompt for and get players name
-            String gameMenuOption = this.getGameMenuOption();
-            if (gameMenuOption.toUpperCase().equals("Q")) //user wants to quit
-                return; //exit the game
-            
-            //do the requested action and display the next view
-            done = this.doAction(gameMenuOption);
-                     
-        } while (!done);
-    }
-    
-    private String getGameMenuOption() {
-        
-        Scanner keyboard = new Scanner(System.in); //get infile for keyboard
-        String value = ""; //value to be returned
-        boolean valid = false; //initialize to not valid
-        
-        while (!valid) { //loop while an invalid value is enter
-            System.out.println("\n" + this.gameMenu);
-            
-            value = keyboard.nextLine(); //get next line typed one keyboard
-            value = value.trim(); //trim off leading and trailing blanks
-            
-            if (value.length() < 1) { //value is blank
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-            
-            break; //end the loop
-        }
-        return value; // return the value entered
-    }
 
-    public boolean doAction(String gameMenuOption) {
+    @Override
+    public boolean doAction (String value) {
         
-        gameMenuOption = gameMenuOption.toUpperCase(); //convert choice to upper case
+        value = value.toUpperCase(); //convert choice to upper case
         
-        switch (gameMenuOption) {
+        switch (value) {
             case "M": //view list
                 this.MansionMap();
                 break;
@@ -123,7 +88,7 @@ public class GameMenuView extends View{
     private void roomList() {
         //display the list of rooms
         ListRoomsView listRooms = new ListRoomsView();
-        listRooms.displayListRooms();
+        listRooms.display();
     }
 
     private void moveRooms() {
