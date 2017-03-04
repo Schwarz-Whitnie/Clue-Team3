@@ -82,7 +82,7 @@ public class GameMenuView extends View{
     private void weaponList() {
         //display the list of weapons
         ListWeaponsView listWeapons = new ListWeaponsView();
-        listWeapons.displayListWeapons();
+        listWeapons.display();
     }
 
     private void roomList() {
