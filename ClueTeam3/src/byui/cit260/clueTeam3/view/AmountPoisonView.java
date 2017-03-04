@@ -33,11 +33,11 @@ public class AmountPoisonView {
               "\n************************************************************************"
             + "\n*                                                                      *"        
             + "\n* Congratulations, you discovered which weapon was used for the murder *"
-            + "\n* of Mr. Boddy. Mr. Boddy was poisoned. examine the information below  *"
+            + "\n* of Mr. Boddy. Mr. Boddy was poisoned. Examine the information below  *"
             + "\n* and when prompted, enter the needed numbers.                         *"
             + "\n*                                                                      *"
             + "\n* Mr. Boddy weights - 104326grams                                      *"
-            + "\n* It takes .3mg of poison per pound to kill                            *"
+            + "\n* It takes .3mg of poison per pound to kill someone                    *"
             + "\n*                                                                      *"
             + "\n* Its up to you to find out how much poison was administered to Mr.    *"
             + "\n* Boddy on the day he was murdered.                                    *"
@@ -55,13 +55,15 @@ public class AmountPoisonView {
             String weight = this.getWeight();
             if (weight.toUpperCase().equals("Q")) //user wants to quit
                 return; //exit the game
+            double weight2 = Double.parseDouble(weight);
             
             String poison = this.getPoison();
             if (poison.toUpperCase().equals("Q")) //user wants to quit
                 return; //exit the game
+            double poison2 = Double.parseDouble(poison);
             
             //do the requested action and display the next view
-            done = this.doAction(weight, poison);
+            done = this.doAction(poison2, weight2);
                      
         } while (!done);
     }
@@ -84,32 +86,11 @@ public class AmountPoisonView {
             
             break; //end the loop
         }
+        double weight2 = Double.parseDouble(value);
         return value; // return the value entered
     }
 
     private String getPoison() {
-        
-        Scanner keyboard = new Scanner(System.in); //get infile for keyboard
-        String value = null; //value to be returned
-        boolean valid = false; //initialize to not valid
-        
-        while (!valid) { //loop while an invalid value is enter
-            System.out.println("\n" + this.weight);
-            
-            value = keyboard.nextLine(); //get next line typed one keyboard
-            value = value.trim(); //trim off leading and trailing blanks
-            
-            if (value.length() < 1) { //value is blank
-                System.out.println("\nInvalid value: You must enter a value");
-                continue;
-            }
-            
-            break; //end the loop
-        }
-        return value; // return the value entered
-    }
-    
-    public String getInput() {
         
         Scanner keyboard = new Scanner(System.in); //get infile for keyboard
         String value = null; //value to be returned
@@ -131,12 +112,12 @@ public class AmountPoisonView {
         return value; // return the value entered
     }
     
-    private boolean doAction(double weight, double poison) {
+    private boolean doAction(double getPoison, double getWeight) {
        
        //call createPlayer() control function
        WeaponControl weaponControl = new WeaponControl();
-       double weapon = weaponControl.calcAmountPoison(weight, poison);
-      
+       weaponControl.calcAmountPoison(getPoison, getWeight);
+       
        //display next view
        this.displayNextView(weaponControl);
        
@@ -155,11 +136,4 @@ public class AmountPoisonView {
         
     }
 
-    private boolean doAction(String weight, String poison) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-
-
-   
 }
