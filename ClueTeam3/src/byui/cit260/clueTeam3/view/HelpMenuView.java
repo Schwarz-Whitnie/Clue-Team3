@@ -11,16 +11,12 @@ import java.util.Scanner;
  *
  * @author Treya
  */
-public class HelpMenuView {
+public class HelpMenuView extends View {
     
-    private String help;
     
     public HelpMenuView() {
         
-        
-        
-        this.help = 
-              "----------------------------------------"
+        super("----------------------------------------"
             + "\n| Getting Help                         |"
             + "\n----------------------------------------"
             + "\nO - What is the object of the game"
@@ -32,52 +28,16 @@ public class HelpMenuView {
             + "\nS - List of Suspects"    
             + "\nQ - Quit"
             + "\n----------------------------------------"
-            + "\nPlease enter a command: ";
+            + "\nPlease enter a command: ");
             
     }
     
-    void displayHelpMenu() {
+    @Override
+    public boolean doAction(String value) {
         
-        boolean done = false; //set flag to not done
-        do {
-            //prompt for and get players name
-            String helpOption = this.getHelpOption();
-            if (helpOption.toUpperCase().equals("Q")) //user wants to quit
-                return; //exit the game
-            
-            //do the requested action and display the next view
-            done = this.doAction(helpOption);
-                     
-        } while (!done);
-    }
-     
-    private String getHelpOption() {
+        value = value.toUpperCase(); //convert choice to upper case
         
-        Scanner keyboard = new Scanner(System.in); //get infile for keyboard
-        String value = ""; //value to be returned
-        boolean valid = false; //initialize to not valid
-        
-        while (!valid) { //loop while an invalid value is enter
-            System.out.println("\n" + this.help);
-            
-            value = keyboard.nextLine(); //get next line typed one keyboard
-            value = value.trim(); //trim off leading and trailing blanks
-            
-            if (value.length() < 1) { //value is blank
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-            
-            break; //end the loop
-        }
-        return value; // return the value entered
-    }
-
-    public boolean doAction(String helpOption) {
-        
-        helpOption = helpOption.toUpperCase(); //convert choice to upper case
-        
-        switch (helpOption) {
+        switch (value) {
             case "O": //what is the boject of the game
                 this.objectGame();
                 break;
@@ -134,6 +94,6 @@ public class HelpMenuView {
     public void displayListSuspects() {
         // display the list of suspects
         ListSuspectsView listSuspects = new ListSuspectsView();
-        listSuspects.displayListSuspects();
+        listSuspects.display();
 }
 }

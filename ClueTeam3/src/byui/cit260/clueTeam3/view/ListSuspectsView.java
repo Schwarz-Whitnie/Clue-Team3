@@ -11,16 +11,11 @@ import java.util.Scanner;
  *
  * @author catrinalonghurst1
  */
-public class ListSuspectsView {
-    
-    private String suspects;
-    private final String listSuspects;
-
+public class ListSuspectsView extends View {
     
     public ListSuspectsView() {
         
-        this.listSuspects = 
-              "------------------------------------------"
+        super ("------------------------------------------"
             + "\n| List of Suspects                      |"
             + "\n----------------------------------------"
             + "\nC  - Colonel Mustard"
@@ -31,53 +26,16 @@ public class ListSuspectsView {
             + "\nG  - Mr. Green"    
             + "\nQ - Quit"
             + "\n----------------------------------------"
-            + "\nPlease enter a command: ";
+            + "\nPlease enter a command: ");
             
-    }
-    
-    void displayListSuspects() {
-        
-        boolean done = false; //set flag to not done
-        do {
-            //prompt for and get players name
-            String suspectsOption = this.getSuspectsOption();
-            if (suspectsOption.toUpperCase().equals("Q")) //user wants to quit
-                return; //exit the game
-          
-            
-            //do the requested action and display the next view
-            done = this.doAction(suspectsOption);
-                     
-        } while (!done);
     }
      
-    private String getSuspectsOption() {
+    @Override
+    public boolean doAction(String value) {
         
-        Scanner keyboard = new Scanner(System.in); //get infile for keyboard
-        String value = ""; //value to be returned
-        boolean valid = false; //initialize to not valid
+        value = value.toUpperCase(); //convert choice to upper case
         
-        while (!valid) { //loop while an invalid value is enter
-            System.out.println("\n" + this.listSuspects);
-            
-            value = keyboard.nextLine(); //get next line typed one keyboard
-            value = value.trim(); //trim off leading and trailing blanks
-            
-            if (value.length() < 1) { //value is blank
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-            
-            break; //end the loop
-        }
-        return value; // return the value entered
-    }
-
-    public boolean doAction(String suspectsOption) {
-        
-        suspectsOption = suspectsOption.toUpperCase(); //convert choice to upper case
-        
-        switch (suspectsOption) {
+        switch (value) {
             case "C": //Colonel Mustard
                 this.mustard();
                 break;

@@ -63,7 +63,7 @@ public class MainMenuView extends View {
         
         //display the game menu
         GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayGameMenuView();
+        gameMenu.display();
     }
     
     private void startExistingGame() {
@@ -78,7 +78,7 @@ public class MainMenuView extends View {
         
         //display the help menu
         HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayHelpMenu();
+        helpMenu.display();
     }
     
     

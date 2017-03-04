@@ -11,13 +11,11 @@ import java.util.Scanner;
  *
  * @author whitnieschwarz
  */
-public class ListRoomsView {
+public class ListRoomsView extends View{
     
-    private final String listRooms;
     
     public ListRoomsView() {
-        this.listRooms = 
-              "---------------------------------------"
+        super("\n---------------------------------------"
             + "\n| List of Rooms                     |"
             + "\n-------------------------------------"
             + "\nR - Billard Room"
@@ -31,50 +29,16 @@ public class ListRoomsView {
             + "\nC - Conservatory" 
             + "\nQ - Quit"
             + "\n--------------------------------------"
-            + "\nPlease enter a command.";
+            + "\nPlease enter a command.");
                 
     }
     
-    void displayListRooms() {
-        boolean done = false; // user flag to not done
-        do { 
-            // prompt for and get players name 
-            String roomsOption = this.getRoomsOption();
-            if (roomsOption.toUpperCase().equals("Q")) // user wants to quit
-                return; // exit the game 
-            
-            // do the request action and display the next view 
-            done = this.doAction(roomsOption); 
-           
-        }while (!done);
-    }
-private String getRoomsOption() {
+    @Override
+    public boolean doAction(String value) {
         
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
-        String value = ""; // value to be returned
-        boolean valid = false; //i nitialize to not valid
+        value = value.toUpperCase(); // convert choice to upper case
         
-        while (!valid) { // loop while an invalid value is enter
-            System.out.println("\n" + this.listRooms);
-            
-            value = keyboard.nextLine(); // get next line typed one keyboard
-            value = value.trim(); // trim off leading and trailing blanks
-            
-            if (value.length() < 1) { // value is blank
-                System.out.println("\nInvalid value: value can not be blank");
-                continue;
-            }
-            
-            break; // end the loop
-        }
-        return value; // return the value entered
-    }
-
-    public boolean doAction(String roomsOption) {
-        
-        roomsOption = roomsOption.toUpperCase(); // convert choice to upper case
-        
-        switch (roomsOption) {
+        switch (value) {
             case "R": // Billard Room 
                 this.billard();
                 break;

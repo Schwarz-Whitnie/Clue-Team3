@@ -11,16 +11,14 @@ import java.util.Scanner;
  *
  * @author Lauren
  */
-public class ListWeaponsView {
+public class ListWeaponsView extends View{
     
-    private String weapon;
     
     public ListWeaponsView() {
         
         
         
-        this.weapon = 
-              "----------------------------------------"
+        super ("----------------------------------------"
             + "\n|   Weapons                        |"
             + "\n----------------------------------------"
             + "\nC - Candlestick"
@@ -33,52 +31,17 @@ public class ListWeaponsView {
             + "\nW - Wrench"
             + "\nQ - Quit"
             + "\n----------------------------------------"
-            + "\nPlease choose a weapon: ";
+            + "\nPlease choose a weapon: ");
             
     }
     
- void displayListWeapons() {
-        
-        boolean done = false; //set flag to not done
-        do {
-            //prompt for and get players name
-            String helpOption = this.getWeaponsView();
-            if (helpOption.toUpperCase().equals("Q")) //user wants to quit
-                return; //exit the game
-            
-            //do the requested action and display the next view
-            done = this.doAction(helpOption);
-                     
-        } while (!done);
-    }
-     
-    private String getWeaponsView() {
-        
-        Scanner keyboard = new Scanner(System.in); //get infile for keyboard
-        String value = ""; //value to be returned
-        boolean valid = false; //initialize to not valid
-        
-        while (!valid) { //loop while an invalid value is enter
-            System.out.println("\n" + this.weapon);
-            
-            value = keyboard.nextLine(); //get next line typed one keyboard
-            value = value.trim(); //trim off leading and trailing blanks
-            
-            if (value.length() < 1) { //value is blank
-                System.out.println("\nPlease make a valid selection.");
-                continue;
-            }
-            
-            break; //end the loop
-        }
-        return value; // return the value entered
-    }
 
-    public boolean doAction(String weaponList) {
+    @Override
+    public boolean doAction(String value) {
         
-        weaponList = weaponList.toUpperCase(); //convert choice to upper case
+        value = value.toUpperCase(); //convert choice to upper case
         
-        switch (weaponList) {
+        switch (value) {
             case "C": //candlestick
                 this.candlestick();
                 break;
