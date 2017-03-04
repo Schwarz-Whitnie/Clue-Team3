@@ -5,6 +5,7 @@
  */
 package byui.cit260.clueTeam3.view;
 
+
 import java.util.Scanner;
 
 /**
@@ -81,6 +82,8 @@ public class HelpMenuView extends View {
 
     private void interview() {
         System.out.println("*** interview people by... ***");
+        AmountPoisonView amountPoisonView = new AmountPoisonView();
+        amountPoisonView.display();
     }
 
     private void roomList() {
