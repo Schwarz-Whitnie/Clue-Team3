@@ -40,8 +40,5 @@ public class TimeControl {
         return totalTime;
     }
 
-    public static Time calcTotalTime(double value) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }

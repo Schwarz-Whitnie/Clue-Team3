@@ -137,6 +137,11 @@ public class GameMenuView {
     private void makeAccusation() {
         System.out.println("*** Make an Accusation ***");
     }
+    
+    private void timeRemaining() {
+        TimeRemainingView roomPrompt = new TimeRemainingView();
+        roomPrompt.displayRoomPrompt();
+    }
 
     
 }

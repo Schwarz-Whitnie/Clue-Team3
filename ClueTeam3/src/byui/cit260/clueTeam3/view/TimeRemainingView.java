@@ -6,74 +6,159 @@
 package byui.cit260.clueTeam3.view;
 
 import byui.cit260.clueTeam3.control.TimeControl;
-import byui.cit260.clueTeam3.model.Time;
+import java.util.Scanner;
 
 /**
  *
  * @author whitnieschwarz
  */
-public class TimeRemainingView extends View {
+public class TimeRemainingView {
+    
+    private final String roomPrompt;
+    private final String locationPrompt;
+    private final String passagewayPrompt;
     
     public TimeRemainingView() {
-        super ("\nPlease enter number of rooms passed through:");
-        //display the banner when view is created
-        this.displayBanner();
+        this.roomPrompt = "\nPlease enter number of rooms passed through:";
+        //display the locations prompt
+        this.locationPrompt = "\nPlease enter number of locations passed through:";
+        this.passagewayPrompt = "\nPlease enter number of passageways used:";
         
     }
-
-    public void displayBanner() {
+    
+    void displayRoomPrompt() {
+        boolean done = false; // user flag to not done
+        do { 
+            // prompt for and get number of rooms 
+            String roomsTraveled = this.getRoomsTraveled();
+            if (roomsTraveled.toUpperCase().equals("Q")) // user wants to quit
+                return; // exit the game 
+            
+            String locationsTraveled = this.getLocationsTraveled();
+            if (locationsTraveled.toUpperCase().equals("Q")) // user wants to quit
+                return; // exit the game 
+            
+            String passagewaysUsed = this.getPassagewaysUsed();
+            if (passagewaysUsed.toUpperCase().equals("Q")) // user wants to quit
+                return; // exit the game 
+            
+            
+            // do the request action and display the next view 
+            done = this.doAction(roomsTraveled, locationsTraveled, passagewaysUsed); 
+           
+        }while (!done);
         
-        System.out.println(
-              "\n************************************************************************"
-            + "\n*                                                                      *"        
-            + "\n* This is a text-based role play game that is based off of and follows *"
-            + "\n* the same storyline line as board game ‘Clue’. The user assumes       *"
-            + "\n* the role of a detective in the case of a murder-mystery.             *"
-            + "\n*                                                                      *"
-            + "\n* The game begins right after the murder of Mr. Boddy, at his large    *"
-            + "\n* mansion. The victim was a wealthy and powerful business man, who     *"
-            + "\n* knows the weaknesses and secrets of his “friends” and enemies.       *"
-            + "\n* Mr. Boddy threatens to exploit these weaknesses and secrets through  *"
-            + "\n* blackmail and is murdered shortly after.                             *"
-            + "\n*                                                                      *"
-            + "\n* To solve the case and win the game, the detective must determine     *"
-            + "\n* the answers to the questions: Who murdered Mr. Boddy? Where was he   *"
-            + "\n* murdered? What weapon was used? And why did they murder him?         *"
-            + "\n*                                                                      *"  
-            + "\n************************************************************************"  
-
-        );
+    }
+private String getRoomsTraveled() {
+        
+        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
+        String value = ""; // value to be returned
+        boolean valid = false; //initialize to not valid
+        
+        while (!valid) { // loop while an invalid value is enter
+            System.out.println("\n" + this.roomPrompt);
+            
+            value = keyboard.nextLine(); // get next line typed one keyboard
+            value = value.trim(); // trim off leading and trailing blanks
+            
+            if (value.length() < 1) { // value is blank
+                System.out.println("\nInvalid value: value can not be blank");
+                continue;
+            }
+            
+            break; // end the loop
+        }
+        return value; // return the value entered
+    }
+    
+private String getLocationsTraveled() {
+        
+        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
+        String value = ""; // value to be returned
+        boolean valid = false; //initialize to not valid
+        
+        while (!valid) { // loop while an invalid value is enter
+            System.out.println("\n" + this.locationPrompt);
+            
+            value = keyboard.nextLine(); // get next line typed one keyboard
+            value = value.trim(); // trim off leading and trailing blanks
+            
+            if (value.length() < 1) { // value is blank
+                System.out.println("\nInvalid value: value can not be blank");
+                continue;
+            }
+            
+            break; // end the loop
+        }
+        return value; // return the value entered
     }
 
-    @Override
-    public boolean doAction(double value) {
-       
-       //call calcTotalTime() control function
-       Time time = TimeControl.calcTotalTime(value);
-       
-       if (time == null) { //if unsuccessful
-           System.out.println("\nError creating the time.");
+private String getPassagewaysUsed() {
+        
+        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
+        String value = ""; // value to be returned
+        boolean valid = false; //initialize to not valid
+        
+        while (!valid) { // loop while an invalid value is enter
+            System.out.println("\n" + this.passagewayPrompt);
+            
+            value = keyboard.nextLine(); // get next line typed one keyboard
+            value = value.trim(); // trim off leading and trailing blanks
+            
+            if (value.length() < 1) { // value is blank
+                System.out.println("\nInvalid value: value can not be blank");
+                continue;
+            }
+            
+            break; // end the loop
+        }
+        return value; // return the value entered
+    }
+
+    public boolean doAction(double roomsTraveled, double locationsTraveled, double passagewaysUsed) {
+        
+       if (roomsTraveled == -1) {
+           System.out.println("\nInvalid number of rooms: "
+                   + "The number of rooms must be greater than 0");
            return false;
        }
        
+       if (locationsTraveled == -1) {
+           System.out.println("\nInvalid number of locations: "
+                   + "The number of locations must be greater than 0");
+           return false;
+       }
+       
+       if (passagewaysUsed == -1) {
+           System.out.println("\nInvalid number of passageway used: "
+                   + "The number of passageways must be between 0-3");
+           return false;
+       }
+       //call calcTotalTime() control function
+       TimeControl timeControl = new TimeControl();
+       double timeRemaining = TimeControl.calcTotalTime(roomsTraveled, locationsTraveled, passagewaysUsed);
+       
        //display next view
-       this.displayNextView(player);
+       this.displayNextView(timeControl);
        
        return true; //success
     }
 
-    private void displayNextView(Player player) {
+    private void displayNextView(TimeControl timeControl) {
         System.out.println(
                 "\n=============================================="
-                + "\n Welcome to the game " + player.getName()
+                + "\n Welcome to the game " + timeControl
                 + "\n We hope you have a lot of fun!"
                 + "\n============================================"
                 );
-        
-        //create the MainMenuView object
-        MainMenuView mainMenuView = new MainMenuView();
-                
-        //Display the main menu view
-        mainMenuView.display();
-    
+    }
+
+    private boolean doAction(String roomsTraveled, String locationsTraveled, String passagewaysUsed) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
+        
+
+    
+
