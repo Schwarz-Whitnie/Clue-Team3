@@ -58,7 +58,10 @@ public class HelpMenuView extends View {
                 break;
             case "S": //how to view list of suspects
                 this.displayListSuspects();
-                break;                
+                break; 
+            case "K": //how to view list of suspects
+                this.displayTimeRemaining();
+                break;    
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;    
@@ -96,4 +99,8 @@ public class HelpMenuView extends View {
         ListSuspectsView listSuspects = new ListSuspectsView();
         listSuspects.display();
 }
+    private void displayTimeRemaining() {
+        TimeRemainingView roomPrompt = new TimeRemainingView();
+        roomPrompt.display();
+    }
 }
