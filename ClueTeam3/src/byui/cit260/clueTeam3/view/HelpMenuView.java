@@ -103,6 +103,6 @@ public class HelpMenuView extends View {
 }
     private void displayTimeRemaining() {
         TimeRemainingView roomPrompt = new TimeRemainingView();
-        roomPrompt.display();
+        roomPrompt.displayRoomPrompt();
     }
 }
