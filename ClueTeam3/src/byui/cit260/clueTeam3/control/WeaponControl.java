@@ -11,7 +11,7 @@ package byui.cit260.clueTeam3.control;
  */
 public class WeaponControl {
     
-    public double calcAmountPoison(double poisonPerlb, double weightGrams) {
+    public static double calcAmountPoison(double poisonPerlb, double weightGrams) {
     
         if (poisonPerlb != 0.3 && weightGrams != 104326) { 
             return -1; 

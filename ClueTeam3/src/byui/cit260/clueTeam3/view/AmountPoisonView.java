@@ -14,16 +14,16 @@ import java.util.Scanner;
  */
 public class AmountPoisonView {
     
-    protected String weight;
-    protected String poison;
+    private final String weight;
+    private final String poison;
+    private double poisonAmount;
+    
     
     public AmountPoisonView() {
         
         this.weight = "\nEnter Mr. Boddy's weight: ";
         this.poison = "\nEnter the amount of poison per pound: ";
         this.displayBanner();
-        
-        //display the banner when view is created
         
     }
 
@@ -43,8 +43,7 @@ public class AmountPoisonView {
             + "\n* Boddy on the day he was murdered.                                    *"
             + "\n*                                                                      *"  
             + "\n************************************************************************"  
-
-        );
+             );
     }
     
     public void display() {
@@ -55,22 +54,20 @@ public class AmountPoisonView {
             String weight = this.getWeight();
             if (weight.toUpperCase().equals("Q")) //user wants to quit
                 return; //exit the game
-            double weight2 = Double.parseDouble(weight);
             
             String poison = this.getPoison();
             if (poison.toUpperCase().equals("Q")) //user wants to quit
                 return; //exit the game
-            double poison2 = Double.parseDouble(poison);
             
             //do the requested action and display the next view
-            done = this.doAction(poison2, weight2);
+            done = this.doAction(poison, weight);
                      
         } while (!done);
     }
     
     private String getWeight() {
         Scanner keyboard = new Scanner(System.in); //get infile for keyboard
-        String value = null; //value to be returned
+        String value = ""; //value to be returned
         boolean valid = false; //initialize to not valid
         
         while (!valid) { //loop while an invalid value is enter
@@ -79,21 +76,20 @@ public class AmountPoisonView {
             value = keyboard.nextLine(); //get next line typed one keyboard
             value = value.trim(); //trim off leading and trailing blanks
             
-            if (value.length() < 1) { //value is blank
+            if (value.length() < 0) { //value is blank
                 System.out.println("\nInvalid value: You must enter a value");
                 continue;
             }
             
             break; //end the loop
         }
-        double weight2 = Double.parseDouble(value);
         return value; // return the value entered
     }
 
     private String getPoison() {
         
         Scanner keyboard = new Scanner(System.in); //get infile for keyboard
-        String value = null; //value to be returned
+        String value = ""; //value to be returned
         boolean valid = false; //initialize to not valid
         
         while (!valid) { //loop while an invalid value is enter
@@ -102,7 +98,7 @@ public class AmountPoisonView {
             value = keyboard.nextLine(); //get next line typed one keyboard
             value = value.trim(); //trim off leading and trailing blanks
             
-            if (value.length() < 1) { //value is blank
+            if (value.length() < 0) { //value is blank
                 System.out.println("\nInvalid value: You must enter a value");
                 continue;
             }
@@ -112,11 +108,26 @@ public class AmountPoisonView {
         return value; // return the value entered
     }
     
-    private boolean doAction(double getPoison, double getWeight) {
+    public boolean doAction(String poison, String weight) {
+       if (weight.equals("-1")) {
+           System.out.println("\nInvalid weight: "
+                   + "The weight must be greater than 0");
+           return false;
+       }
        
+       if (poison.equals("-0")) {
+           System.out.println("\nInvalid poison amount: "
+                   + "The poison amount must be greater than 0");
+           return false;
+       }
+       
+        double w = Double.parseDouble(weight);
+        
+        double p = Double.parseDouble(poison);
+        
        //call createPlayer() control function
        WeaponControl weaponControl = new WeaponControl();
-       weaponControl.calcAmountPoison(getPoison, getWeight);
+       poisonAmount = WeaponControl.calcAmountPoison(p, w);
        
        //display next view
        this.displayNextView(weaponControl);
@@ -129,7 +140,7 @@ public class AmountPoisonView {
         System.out.println(
                 "\n=============================================="
                 + "\n The amount of poison administered was:"
-                + "\n" + weaponControl
+                + "\n " + poisonAmount
                 + "\n Good work!"
                 + "\n============================================"
                 );
