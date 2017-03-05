@@ -40,7 +40,7 @@ public class ClueTeam3 {
         
         StartProgramView startProgramView = new StartProgramView();
         startProgramView.display();
-        
+       
     }
     
     
