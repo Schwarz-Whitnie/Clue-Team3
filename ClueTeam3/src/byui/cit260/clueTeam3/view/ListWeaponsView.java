@@ -92,6 +92,8 @@ public class ListWeaponsView extends View{
 
     private void poison() {
         System.out.println("*** Posion ***");
+        AmountPoisonView amountPoisonView = new AmountPoisonView();
+        amountPoisonView.display();
     }
 
     private void leadpipe() {
