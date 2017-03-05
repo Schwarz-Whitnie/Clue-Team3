@@ -27,7 +27,7 @@ public class TimeRemainingView {
         
     }
     
-    void displayRoomPrompt() {
+    void displayPrompt() {
         boolean done = false; // user flag to not done
         do { 
             // prompt for and get number of rooms 
