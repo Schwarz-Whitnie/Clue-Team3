@@ -17,11 +17,19 @@ public class Time implements Serializable{
     private String run;
     private double countdownTime;
     private double displayTime;
+    
+    private Game[] game;
+
+    public Game[] getGame() {
+        return game;
+    }
+
+    public void setGame(Game[] game) {
+        this.game = game;
+    }
 
     public Time() {
     }
-    
-    
 
     public String getRun() {
         return run;

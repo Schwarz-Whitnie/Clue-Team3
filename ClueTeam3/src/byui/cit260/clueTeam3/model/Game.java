@@ -19,10 +19,46 @@ public class Game implements Serializable {
     private double totalTime;
     private double noPeople;
 
+    private Player player;
+    private MansionMap mansionMap;
+    private Time time;
+    private Character[] character;
+
+    
+    public Character[] getCharacter() {
+        return character;
+    }
+
+    public void setCharacter(Character[] character) {
+        this.character = character;
+    }
+    
     public Game() {
     }
 
-    
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public MansionMap getMansionMap() {
+        return mansionMap;
+    }
+
+    public void setMansionMap(MansionMap mansionMap) {
+        this.mansionMap = mansionMap;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
+    }
     
     public double getTotalTime() {
         return totalTime;
@@ -69,6 +105,10 @@ public class Game implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public void setDetectiveNotebook(DetectiveNotebook[] detectiveNotebook) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

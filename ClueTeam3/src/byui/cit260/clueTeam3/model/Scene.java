@@ -21,11 +21,19 @@ public class Scene implements Serializable{
     private String displaySymbol;
     private double amountAvailable;
     private String resourceType; 
+    
+    private Room[] room;
 
     public Scene() {
     }
-    
-    
+
+    public Room[] getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room[] room) {
+        this.room = room;
+    }
 
     public String getDescription() {
         return description;
