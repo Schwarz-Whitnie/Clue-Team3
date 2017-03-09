@@ -23,9 +23,10 @@ public enum Weapon implements Serializable {
     Revolver,
     Wrench;
     
-    private final String description;
-    private final String location;
-    private final String weaponType;
+    private String description;
+    private String location;
+    private String weaponType;
+    private Point coordinates;
 
     private Room[] room;
     private Clue[] clue;
@@ -46,10 +47,8 @@ public enum Weapon implements Serializable {
         this.clue = clue;
     }
     
-    Weapon(String description) {
-        
-        this.description = description;
-        coordinates = new Point(1,1);
+    Weapon() {
+        coordinates = new Point(1,1);  // TODO: do we need coordinates for weapon? 
     }
 
     public String getDescription() {

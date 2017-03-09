@@ -22,17 +22,7 @@ public class Game implements Serializable {
     private Player player;
     private MansionMap mansionMap;
     private Time time;
-    private Character[] character;
 
-    
-    public Character[] getCharacter() {
-        return character;
-    }
-
-    public void setCharacter(Character[] character) {
-        this.character = character;
-    }
-    
     public Game() {
     }
 
