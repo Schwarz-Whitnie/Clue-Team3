@@ -12,58 +12,50 @@ import java.util.Objects;
  *
  * @author catrinalonghurst1
  */
-public class Character implements Serializable {
+public enum Character implements Serializable {
     
-   private String name;
-   private String description;
-   private double coordinates;
-   private String type;
-
-    public Character() {
-    }
+    colonelMustard,
+    mrsWhite,
+    professorPlum,
+    mrsPeacock,
+    missScarlet,
+    mrGreen;
+    
+   private final String description;
+   private final double coordinates;
    
+   private Game game;
    
+   private Room[] room;
 
-    public String getName() {
-        return name;
+    public Room[] getRoom() {
+        return room;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRoom(Room[] room) {
+        this.room = room;
     }
 
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    Character(String description) {
+
+        this.description = description;
+        coordinates = new Point(1,1);
+    }
+ 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public double getCoordinates() {
         return coordinates;
-    }
-
-    public void setCoordinates(double coordinates) {
-        this.coordinates = coordinates;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 23 * hash + Objects.hashCode(this.name);
-        hash = 23 * hash + Objects.hashCode(this.description);
-        hash = 23 * hash + (int) (Double.doubleToLongBits(this.coordinates) ^ (Double.doubleToLongBits(this.coordinates) >>> 32));
-        hash = 23 * hash + Objects.hashCode(this.type);
-        return hash;
     }
 
     @Override
@@ -71,31 +63,6 @@ public class Character implements Serializable {
         return "Character{" + "name=" + name + ", description=" + description + ", coordinates=" + coordinates + ", type=" + type + '}';
     }
     
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Character other = (Character) obj;
-        if (Double.doubleToLongBits(this.coordinates) != Double.doubleToLongBits(other.coordinates)) {
-            return false;
-        }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        return Objects.equals(this.type, other.type);
-    }
-   
    
    
 }

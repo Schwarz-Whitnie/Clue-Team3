@@ -12,23 +12,21 @@ import java.util.Objects;
  *
  * @author Cameron
  */
-public enum Weapon implements Serializable {
+public enum Clue implements Serializable {
     
-    Candlestick,
-    Knife,
-    Rope,
-    Dumbbell,
-    Poison,
-    LeadPipe,
-    Revolver,
-    Wrench;
-    
+    ClueOne,
+    ClueTwo,
+    ClueThree,
+    ClueFour,
+    ClueFive,
+    ClueSix;
+           
     private final String description;
-    private final String location;
-    private final String weaponType;
-
+    private final double clueType;
+    
+    private Weapon weapon;
+    
     private Room[] room;
-    private Clue[] clue;
 
     public Room[] getRoom() {
         return room;
@@ -38,16 +36,7 @@ public enum Weapon implements Serializable {
         this.room = room;
     }
 
-    public Clue[] getClue() {
-        return clue;
-    }
-
-    public void setClue(Clue[] clue) {
-        this.clue = clue;
-    }
-    
-    Weapon(String description) {
-        
+    Clue(String description) {
         this.description = description;
         coordinates = new Point(1,1);
     }
@@ -56,16 +45,20 @@ public enum Weapon implements Serializable {
         return description;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public String getWeaponType() {
-        return weaponType;
+    public double getClueType() {
+        return clueType;
     }
 
     @Override
     public String toString() {
-        return "Weapon{" + "description=" + description + ", location=" + location + ", weaponType=" + weaponType + '}';
+        return "Clue{" + "name=" + name + ", description=" + description + ", attribute=" + attribute + '}';
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
     }
 }

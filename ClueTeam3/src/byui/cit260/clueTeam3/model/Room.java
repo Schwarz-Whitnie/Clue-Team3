@@ -12,70 +12,70 @@ import java.util.Objects;
  *
  * @author Cameron
  */
-public class Room implements Serializable {
+public enum Room implements Serializable {
     
-    private String name;
-    private String description;
-    private double attribute;
+    BillardRoom,
+    Ballroom,
+    Library,
+    Study,
+    Hall,
+    Lounge,
+    DiningRoom,
+    Kitchen,
+    Conservatory;
+                  
+    
+    private final String description;
+    private final double attribute;
+    
+    private Character character;
+    private Weapon weapon;
+    private Clue clue;
+    private Scene scene;
 
-    public Room() {
+    public Character getCharacter() {
+        return character;
     }
 
-    public String getName() {
-        return name;
+    public void setCharacter(Character character) {
+        this.character = character;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
+    public Clue getClue() {
+        return clue;
+    }
+
+    public void setClue(Clue clue) {
+        this.clue = clue;
+    }
+
+    public Scene getScene() {
+        return scene;
+    }
+
+    public void setScene(Scene scene) {
+        this.scene = scene;
+    }
+
+    Room(String description) {
+        this.description = description;
+        coordinates = new Point(1,1);
     }
 
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public double getAttribute() {
         return attribute;
-    }
-
-    public void setAttribute(double attribute) {
-        this.attribute = attribute;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.name);
-        hash = 29 * hash + Objects.hashCode(this.description);
-        hash = 29 * hash + (int) (Double.doubleToLongBits(this.attribute) ^ (Double.doubleToLongBits(this.attribute) >>> 32));
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Room other = (Room) obj;
-        if (Double.doubleToLongBits(this.attribute) != Double.doubleToLongBits(other.attribute)) {
-            return false;
-        }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        if (!Objects.equals(this.description, other.description)) {
-            return false;
-        }
-        return true;
     }
 
     @Override

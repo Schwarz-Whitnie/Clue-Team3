@@ -15,8 +15,6 @@ import java.util.Scanner;
  */
 public class MainMenuView extends View {
 
-    
-    
     public MainMenuView() {
        super("----------------------------------------"
             + "\n| Main Menu                            |"
