@@ -23,7 +23,7 @@ public class MapControl {
         
         return mansionMap;
     }
- public static void moverCharactersToStartingLocation(MansionMap mansionMap) 
+ public static void moveCharactersToStartingLocation(MansionMap mansionMap) 
  {
  }
 

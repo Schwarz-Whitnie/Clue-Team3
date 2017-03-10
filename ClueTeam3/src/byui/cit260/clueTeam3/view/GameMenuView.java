@@ -11,9 +11,8 @@ import java.util.Scanner;
  *
  * @author Treya
  */
-public class GameMenuView extends View{
+public class GameMenuView extends View {
 
-    private String gameMenu;
     
     
     public GameMenuView() {
@@ -21,7 +20,7 @@ public class GameMenuView extends View{
         super ("----------------------------------------"
             + "\n| Game Menu                            |"
             + "\n----------------------------------------"
-            + "\nMM - Map of Mansion"
+            + "\nM - Map of Mansion"
             + "\nS - List of Suspects"
             + "\nW - List of Weapons"
             + "\nR - List of Rooms" 
@@ -71,6 +70,8 @@ public class GameMenuView extends View{
 
     private void MansionMap() {
         System.out.println("*** Map of Mansion ***");
+        MansionMapView mansionMap = new MansionMapView();
+        mansionMap.display();
     }
     
     private void suspectList() {

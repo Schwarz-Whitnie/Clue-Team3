@@ -6,7 +6,6 @@
 package byui.cit260.clueTeam3.model;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  *
