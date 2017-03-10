@@ -6,7 +6,6 @@
 package byui.cit260.clueTeam3.model;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  *
@@ -14,20 +13,23 @@ import java.util.Objects;
  */
 public enum Clue implements Serializable {
     
-    ClueOne,
-    ClueTwo,
-    ClueThree,
-    ClueFour,
-    ClueFive,
-    ClueSix;
+    clueOne,
+    clueTwo,
+    clueThree,
+    clueFour,
+    clueFive,
+    clueSix;
            
-    private final String description;
-    private final double clueType;
-    
+    private String description;
+    private double clueType;
+    private final Point coordinates;
     private Weapon weapon;
-    
     private Room[] room;
 
+    Clue() {
+        coordinates = new Point(1,1);
+    }
+    
     public Room[] getRoom() {
         return room;
     }
@@ -35,12 +37,7 @@ public enum Clue implements Serializable {
     public void setRoom(Room[] room) {
         this.room = room;
     }
-
-    Clue(String description) {
-        this.description = description;
-        coordinates = new Point(1,1);
-    }
-
+    
     public String getDescription() {
         return description;
     }
@@ -49,10 +46,10 @@ public enum Clue implements Serializable {
         return clueType;
     }
 
-    @Override
-    public String toString() {
-        return "Clue{" + "name=" + name + ", description=" + description + ", attribute=" + attribute + '}';
+    public Point getCoordinates() {
+        return coordinates;
     }
+
 
     public Weapon getWeapon() {
         return weapon;

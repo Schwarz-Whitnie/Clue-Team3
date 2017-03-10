@@ -6,6 +6,7 @@
 package byui.cit260.clueTeam3.control;
 
 import byui.cit260.clueTeam3.model.MansionMap;
+import byui.cit260.clueTeam3.model.Scene;
 
 /**
  *
@@ -14,11 +15,19 @@ import byui.cit260.clueTeam3.model.MansionMap;
 public class MapControl {
     public static MansionMap createMansionMap() {
     
-        MansionMap mansionMap = null;
+        MansionMap mansionMap = new MansionMap(7,6);
         
-        System.out.println("\n*** createMansionMap() called ***");
+        Scene[] scenes = createScenes();
+        
+        GameControl.assignScenesToLocations(mansionMap, scenes);
         
         return mansionMap;
     }
-    
+ public static void moverCharactersToStartingLocation(MansionMap mansionMap) 
+ {
+ }
+
+    private static Scene[] createScenes() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

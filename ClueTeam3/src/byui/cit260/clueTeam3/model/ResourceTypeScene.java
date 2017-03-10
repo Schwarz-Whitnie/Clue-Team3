@@ -12,14 +12,75 @@ import java.util.Objects;
  *
  * @author whitnieschwarz
  */
-public class ResourceTypeScene implements Serializable{
+public enum ResourceTypeScene implements Serializable{
+    
+    start,
+    clue,
+    weapon,
+    character,
+    room,
+    hall,
+    finish;
     
     // class instance variables
     private double amountAvailable;
     private String resourceType; 
 
-    public ResourceTypeScene() {
+    ResourceTypeScene() {
     }
+    
+    private static void assignScenesToLocation (MansionMap mansionMap, Scene[] scenes) {
+    
+        Room[][] rooms = mansionMap.getRooms();
+        
+        rooms[0][0].setScene(scenes[ResourceTypeScene.room.ordinal()]);
+        rooms[0][1].setScene(scenes[ResourceTypeScene.clue.ordinal()]);
+        rooms[0][2].setScene(scenes[ResourceTypeScene.room.ordinal()]);
+        rooms[0][3].setScene(scenes[ResourceTypeScene.clue.ordinal()]);
+        rooms[0][4].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
+        rooms[0][5].setScene(scenes[ResourceTypeScene.room.ordinal()]);
+        rooms[0][6].setScene(scenes[ResourceTypeScene.clue.ordinal()]);
+        
+        rooms[1][0].setScene(scenes[ResourceTypeScene.character.ordinal()]);
+        rooms[1][1].setScene(scenes[ResourceTypeScene.weapon.ordinal()]);
+        rooms[1][2].setScene(scenes[ResourceTypeScene.character.ordinal()]);
+        rooms[1][3].setScene(scenes[ResourceTypeScene.weapon.ordinal()]);
+        rooms[1][4].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
+        rooms[1][5].setScene(scenes[ResourceTypeScene.character.ordinal()]);
+        rooms[1][6].setScene(scenes[ResourceTypeScene.weapon.ordinal()]);
+        
+        rooms[2][0].setScene(scenes[ResourceTypeScene.room.ordinal()]);
+        rooms[2][1].setScene(scenes[ResourceTypeScene.clue.ordinal()]);
+        rooms[2][2].setScene(scenes[ResourceTypeScene.room.ordinal()]);
+        rooms[2][3].setScene(scenes[ResourceTypeScene.clue.ordinal()]);
+        rooms[2][4].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
+        rooms[2][5].setScene(scenes[ResourceTypeScene.room.ordinal()]);
+        rooms[2][6].setScene(scenes[ResourceTypeScene.clue.ordinal()]);
+        
+        rooms[3][0].setScene(scenes[ResourceTypeScene.character.ordinal()]);
+        rooms[3][1].setScene(scenes[ResourceTypeScene.weapon.ordinal()]);
+        rooms[3][2].setScene(scenes[ResourceTypeScene.character.ordinal()]);
+        rooms[3][3].setScene(scenes[ResourceTypeScene.weapon.ordinal()]);
+        rooms[3][4].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
+        rooms[3][5].setScene(scenes[ResourceTypeScene.character.ordinal()]);
+        rooms[3][6].setScene(scenes[ResourceTypeScene.weapon.ordinal()]);
+        
+        rooms[4][0].setScene(scenes[ResourceTypeScene.room.ordinal()]);
+        rooms[4][1].setScene(scenes[ResourceTypeScene.clue.ordinal()]);
+        rooms[4][2].setScene(scenes[ResourceTypeScene.room.ordinal()]);
+        rooms[4][3].setScene(scenes[ResourceTypeScene.clue.ordinal()]);
+        rooms[4][4].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
+        rooms[4][5].setScene(scenes[ResourceTypeScene.room.ordinal()]);
+        rooms[4][6].setScene(scenes[ResourceTypeScene.clue.ordinal()]);
+        
+        rooms[5][0].setScene(scenes[ResourceTypeScene.character.ordinal()]);
+        rooms[5][1].setScene(scenes[ResourceTypeScene.weapon.ordinal()]);
+        rooms[5][2].setScene(scenes[ResourceTypeScene.character.ordinal()]);
+        rooms[5][3].setScene(scenes[ResourceTypeScene.weapon.ordinal()]);
+        rooms[5][4].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
+        rooms[5][5].setScene(scenes[ResourceTypeScene.character.ordinal()]);
+        rooms[5][6].setScene(scenes[ResourceTypeScene.weapon.ordinal()]);
+}
     
 
     public double getAmountAvailable() {
@@ -39,36 +100,9 @@ public class ResourceTypeScene implements Serializable{
     }
 
     @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 23 * hash + (int) (Double.doubleToLongBits(this.amountAvailable) ^ (Double.doubleToLongBits(this.amountAvailable) >>> 32));
-        hash = 23 * hash + Objects.hashCode(this.resourceType);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final ResourceTypeScene other = (ResourceTypeScene) obj;
-        if (Double.doubleToLongBits(this.amountAvailable) != Double.doubleToLongBits(other.amountAvailable)) {
-            return false;
-        }
-        return Objects.equals(this.resourceType, other.resourceType);
-    }
-
-    @Override
     public String toString() {
         return "ResourceTypeScene{" + "amountAvailable=" + amountAvailable + ", resourceType=" + resourceType + '}';
     }
-    
     
     
 }

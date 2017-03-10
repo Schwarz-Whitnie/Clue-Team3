@@ -6,32 +6,50 @@
 package byui.cit260.clueTeam3.model;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  *
  * @author Cameron
  */
-public enum Room implements Serializable {
+public class Room implements Serializable {
     
-    BillardRoom,
-    Ballroom,
-    Library,
-    Study,
-    Hall,
-    Lounge,
-    DiningRoom,
-    Kitchen,
-    Conservatory;
-                  
     
-    private final String description;
-    private final double attribute;
+    private String description;
+    private double attribute;
+    private Point coordinates;
+    private int row;
+    private int column;
+    private boolean visited;
+
+  
     
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
+    }
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
+    private Scene scene;
     private Character character;
     private Weapon weapon;
     private Clue clue;
-    private Scene scene;
 
     public Character getCharacter() {
         return character;
@@ -65,9 +83,7 @@ public enum Room implements Serializable {
         this.scene = scene;
     }
 
-    Room(String description) {
-        this.description = description;
-        coordinates = new Point(1,1);
+    Room() {
     }
 
     public String getDescription() {
@@ -77,9 +93,14 @@ public enum Room implements Serializable {
     public double getAttribute() {
         return attribute;
     }
+    
+    public Point getCoordinates() {
+        return coordinates;
+    }
 
     @Override
     public String toString() {
-        return "Room{" + "name=" + name + ", description=" + description + ", attribute=" + attribute + '}';
+       // return "Room{" + "name=" + name + ", description=" + description + ", attribute=" + attribute + '}';
+        return null;
     }
 }

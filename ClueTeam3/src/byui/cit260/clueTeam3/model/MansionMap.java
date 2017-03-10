@@ -16,8 +16,33 @@ public class MansionMap implements Serializable {
     
     private double rowCount;
     private double columnCount;
+    private Room[][] rooms;
     
     private Game[] game;
+
+    public MansionMap(int rowCount, int columnCount) {
+        if (rowCount <1 || columnCount <1) {
+            System.out.println("The number of rows and columns must be > zero");
+            return;
+        }
+        
+        this.rowCount = rowCount;
+        this.columnCount = columnCount;
+        
+        this.rooms = new Room[rowCount][columnCount];
+        
+        for (int row = 0; row < rowCount; row++) {
+            Room room = new Room();
+            room.setColumn(columnCount);
+            room.setRow(rowCount);
+            room.setVisited(false);
+            rooms[rowCount][columnCount] = room;
+        }
+    }
+
+    public Room[][] getRooms() {
+        return rooms;
+    }
 
     public Game[] getGame() {
         return game;
