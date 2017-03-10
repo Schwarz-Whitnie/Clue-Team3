@@ -5,7 +5,9 @@
  */
 package byui.cit260.clueTeam3.control;
 
+import static byui.cit260.clueTeam3.control.SceneControl.createScenes;
 import byui.cit260.clueTeam3.model.MansionMap;
+import byui.cit260.clueTeam3.model.ResourceTypeScene;
 import byui.cit260.clueTeam3.model.Scene;
 
 /**
@@ -19,7 +21,7 @@ public class MapControl {
         
         Scene[] scenes = createScenes();
         
-        GameControl.assignScenesToLocations(mansionMap, scenes);
+        ResourceTypeScene.assignScenesToLocations(mansionMap, scenes);
         
         return mansionMap;
     }
@@ -27,7 +29,4 @@ public class MapControl {
  {
  }
 
-    private static Scene[] createScenes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

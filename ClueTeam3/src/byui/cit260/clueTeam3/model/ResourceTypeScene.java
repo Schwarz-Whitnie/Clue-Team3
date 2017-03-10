@@ -28,10 +28,11 @@ public enum ResourceTypeScene implements Serializable{
     ResourceTypeScene() {
     }
     
-    private static void assignScenesToLocation (MansionMap mansionMap, Scene[] scenes) {
+    public static void assignScenesToLocations(MansionMap mansionMap, Scene[] scenes) {
     
         Room[][] rooms = mansionMap.getRooms();
         
+        // starting point
         rooms[0][0].setScene(scenes[ResourceTypeScene.room.ordinal()]);
         rooms[0][1].setScene(scenes[ResourceTypeScene.clue.ordinal()]);
         rooms[0][2].setScene(scenes[ResourceTypeScene.room.ordinal()]);

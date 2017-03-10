@@ -69,7 +69,6 @@ public class GameMenuView extends View {
     }
 
     private void MansionMap() {
-        System.out.println("*** Map of Mansion ***");
         MansionMapView mansionMap = new MansionMapView();
         mansionMap.display();
     }

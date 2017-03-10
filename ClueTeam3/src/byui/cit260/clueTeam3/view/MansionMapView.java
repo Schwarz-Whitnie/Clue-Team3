@@ -116,12 +116,14 @@ public class MansionMapView {
            return false;
        }
        
-        double r = Double.parseDouble(row);
+        //double r = Double.parseDouble(row);
         
-        double c = Double.parseDouble(column);
-        
+        //double c = Double.parseDouble(column);
+        int r = Integer.parseInt(row);
+        int c = Integer.parseInt(column);
+       
        //call createPlayer() control function
-       ResourceTypeScene scene = new ResourceTypeScene; 
+       ResourceTypeScene scenes = new ResourceTypeScene; 
        Room[r][c].setVisited(true);
              
              
