@@ -12,6 +12,7 @@ import byui.cit260.clueTeam3.model.Player;
 import clueteam3.ClueTeam3;
 import byui.cit260.clueTeam3.model.MansionMap;
 import byui.cit260.clueTeam3.model.Scene;
+import byui.cit260.clueTeam3.view.GameMenuView;
 
 /**
  *
@@ -26,17 +27,16 @@ public class GameControl {
         
         game.setPlayer(player);
         
+        GameMenuView gameMenuView = new GameMenuView();
+        gameMenuView.display();
+        
         DetectiveNotebook[] detectiveNotebook = GameControl.createDetectiveNotebook();
         game.setDetectiveNotebook(detectiveNotebook);
-        
-       // Player player = new Player();
-        game.setPlayer(player);
         
         MansionMap mansionMap = MapControl.createMansionMap();
         game.setMansionMap(mansionMap);
         
-        
-        MapControl.moverCharactersToStartingLocation(mansionMap);
+        MapControl.moveCharactersToStartingLocation(mansionMap);
     }
 
     public static Player createPlayer(String name) {
