@@ -90,9 +90,6 @@ public class GameControl {
         
         return null;
     }
+    
 
-    static void assignScenesToLocations(MansionMap mansionMap, Scene[] scenes) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-}
+}    

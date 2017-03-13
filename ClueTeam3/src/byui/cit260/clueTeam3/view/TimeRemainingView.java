@@ -15,8 +15,8 @@ import java.util.Scanner;
 public class TimeRemainingView {
     
     private String roomPrompt;
-    private final String locationPrompt;
-    private final String passagewayPrompt;
+    private String locationPrompt;
+    private String passagewayPrompt;
     private double timeRemaining;
     
     public TimeRemainingView() {
@@ -27,7 +27,7 @@ public class TimeRemainingView {
         
     }
     
-    void displayRoomPrompt() {
+    void displayPrompt() {
         boolean done = false; // user flag to not done
         do { 
             // prompt for and get number of rooms 
@@ -165,9 +165,9 @@ private String getPassagewaysUsed() {
     }
 
 
-}
+}        
 
-        
+
 
     
 
