@@ -13,8 +13,6 @@ import java.util.Scanner;
  */
 public class GameMenuView extends View {
 
-    
-    
     public GameMenuView() {
         
         super ("----------------------------------------"
