@@ -18,7 +18,11 @@ public enum Clue implements Serializable {
     clueThree,
     clueFour,
     clueFive,
-    clueSix;
+    clueSix,
+    clueSeven,
+    clueEight,
+    clueNine;
+    
            
     private String description;
     private double clueType;
@@ -58,4 +62,6 @@ public enum Clue implements Serializable {
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }
+
+
 }

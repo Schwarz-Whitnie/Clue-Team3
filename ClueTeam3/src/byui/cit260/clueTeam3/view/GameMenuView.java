@@ -177,7 +177,12 @@ public class GameMenuView extends View {
     }
 
     private void viewDetectiveNotebook() {
+        //display detective notebook
+        
+        //this.viewDetectiveNotebook(ClueTeam3.getOutFile());
+        
         System.out.println("*** View Detective Notebook ***");
+         
     }
 
     private void makeAccusation() {

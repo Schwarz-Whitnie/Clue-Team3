@@ -6,42 +6,82 @@
 package byui.cit260.clueTeam3.model;
 
 import java.io.Serializable;
-
-/**
- *
- * @author camer
- */
-public enum DetectiveNotebook implements Serializable {
+import java.util.Objects;
+public class DetectiveNotebook implements Serializable {
     
-    /*Clue1(""),
-    Clue2(""),
-    Clue3(""),
-    Clue4(""),
-    Clue5(""),
-    Suspect1(""),
-    Suspect2(""),
-    Suspect3(""),
-    Suspect4(""),
+    private String description;
+    private double rowCount;
+    private double columnCount;
+    private DetectiveNotebook[][] notebook;
     
+    private Game[] game;
 
-    
-    private final String description;
-    private final Point coordinates;
+    public DetectiveNotebook() {
 
-    public DetectiveNotebook(String description){
+}
+
+    /* public DetectiveNotebook(int rowCount, int columnCount) {
         
-        this.description = description;
-        coordinates = new Point (1,1);
+        if(rowCount<1 || columnCount <1) {
+            System.out.println("The number of rows and columns must be bigger than 1");
+            return;
+        }
+
         
-    }
+        this.rowCount = rowCount;
+        this.columnCount = columnCount;
+        
+        this.notebook = new DetectiveNotebook[rowCount][columnCount];
+        for (int row=0; row < rowCount; row++) {
+            for (int column = 0; column < columnCount; column++) {
+                //create and initialize new clue object instance
+                Clue clues = new Clue();
+            }
+        }
+
+} */
 
     public String getDescription() {
-
     return description;
 }
 
-    public Point getCoordinates() {
-    return coordinates;
-}*/
+    public void setDescription(String description) {
+    this.description = description;
+}
+
+    @Override
+    public String toString() {
+    return "DetectiveNotebook" + "description=" + description; 
+}
+
+    @Override 
+    public int hashCode() {
+    int hash = 7;
+    hash = 53 * hash + Objects.hashCode(this.description);
+       
+        return hash;
+}
+
+   @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DetectiveNotebook other = (DetectiveNotebook) obj;
+        if (!Objects.equals(this.description, other.description)) {
+            return false;
+        }
+        return true;
+    }
+            
+
+    public void setCoordinates(int i, int i0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     
 }
+ 
