@@ -14,18 +14,18 @@ import java.io.Serializable;
  */
 public class MansionMap implements Serializable {
     
-    private double rowCount;
-    private double columnCount;
+    private int rowCount;
+    private int columnCount;
     private Room[][] rooms;
     
-    private Game[] game;
+    // private Game[] game;
 
     public MansionMap() {
     }
     
     public MansionMap(int rowCount, int columnCount) {
         
-        if (rowCount <1 || columnCount <1) {
+        if (rowCount < 1 || columnCount < 1) {
             System.out.println("The number of rows and columns must be > zero");
             return;
         }
@@ -49,6 +49,22 @@ public class MansionMap implements Serializable {
     }
     }
 
+     public double getRowCount() {
+        return rowCount;
+    }
+
+    public void setRowCount(int rowCount) {
+        this.rowCount = rowCount;
+    }
+
+    public double getColumnCount() {
+        return columnCount;
+    }
+
+    public void setColumnCount(int columnCount) {
+        this.columnCount = columnCount;
+    }
+    
     public Room[][] getRooms() {
         return rooms;
     }
@@ -57,43 +73,30 @@ public class MansionMap implements Serializable {
         this.rooms = rooms;
     }
 
-    public Game[] getGame() {
-        return game;
-    }
+    //public Game[] getGame() {
+    //    return game;
+    //}
 
-    public void setGame(Game[] game) {
-        this.game = game;
-    }    
-
-    public double getRowCount() {
-        return rowCount;
-    }
-
-    public void setRowCount(double rowCount) {
-        this.rowCount = rowCount;
-    }
-
-    public double getColumnCount() {
-        return columnCount;
-    }
-
-    public void setColumnCount(double columnCount) {
-        this.columnCount = columnCount;
+   // public void setGame(Game[] game) {
+    //    this.game = game;
+    // }    
+    
+    @Override
+    public String toString() {
+        return "MansionMap{" + "rowCount=" + rowCount + ", columnCount=" + columnCount + '}';
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 67 * hash + (int) (Double.doubleToLongBits(this.rowCount) ^ (Double.doubleToLongBits(this.rowCount) >>> 32));
-        hash = 67 * hash + (int) (Double.doubleToLongBits(this.columnCount) ^ (Double.doubleToLongBits(this.columnCount) >>> 32));
+        int hash = 7;
+        hash = 37 * hash + (int) (this.rowCount ^ (this.rowCount >>> 31));
+        hash = 37 * hash + (int) (this.columnCount ^ (this.columnCount >>> 31));
         return hash;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
+       
         if (obj == null) {
             return false;
         }
@@ -101,17 +104,12 @@ public class MansionMap implements Serializable {
             return false;
         }
         final MansionMap other = (MansionMap) obj;
-        if (Double.doubleToLongBits(this.rowCount) != Double.doubleToLongBits(other.rowCount)) {
+        if (this.rowCount != other.rowCount) {
             return false;
         }
-        if (Double.doubleToLongBits(this.columnCount) != Double.doubleToLongBits(other.columnCount)) {
+        if (this.columnCount != other.columnCount) {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "MansionMap{" + "rowCount=" + rowCount + ", columnCount=" + columnCount + '}';
     }
 }

@@ -9,7 +9,10 @@ import byui.cit260.clueTeam3.control.GameControl;
 import byui.cit260.clueTeam3.model.Room;
 import byui.cit260.clueTeam3.model.Scene;
 import clueteam3.ClueTeam3;
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 /**
@@ -43,7 +46,7 @@ public class GameMenuView extends View {
         
         switch (value) {
             case "M": //view list
-                this.MansionMap();
+                this.mansionMap();
                 break;
             case "S": //view list
                 this.suspectList();
@@ -71,7 +74,7 @@ public class GameMenuView extends View {
          return false;
     }
 
-    private void MansionMap() {
+    private void mansionMap() {
         
        this.viewMansionMap(ClueTeam3.getOutFile()); 
         //MansionMapView mansionMap = new MansionMapView();
@@ -120,8 +123,8 @@ public class GameMenuView extends View {
         this.printRowDivider(out, noColumns);
     }
     
-    private void printColumnHeaders(PrintWriter out, int noOfColumns) {
-        for (int i = 1; i < noOfColumns+1; i++) {
+    private void printColumnHeaders(PrintWriter out, int columnCount) {
+        for (int i = 1; i < columnCount+1; i++) {
             if (i < 10) {
                 out.print("   " + i + " ");
             }
@@ -140,10 +143,10 @@ public class GameMenuView extends View {
         out.print("-");
     }
 
-    private void printTitle(PrintWriter out, int noOfColumns, String title) {
+    private void printTitle(PrintWriter out, int columnCount, String title) {
         
         int titleLength = title.length();
-        int lineLength = noOfColumns * 5 + 3;
+        int lineLength = columnCount * 5 + 3;
         int startPosition = (lineLength / 2) - (titleLength / 2);
         out.println("\n");
         for (int i = 0; i < startPosition; i++) {
@@ -187,6 +190,34 @@ public class GameMenuView extends View {
 
     private void makeAccusation() {
         System.out.println("*** Make an Accusation ***");
+    }
+    
+    public void printReport() throws FileNotFoundException {
+        // get the filepath and name of the 
+        
+        String filePath = this.getInput();
+        if (filePath == null) {
+            return;
+        }
+        
+        // Create a new printwriter
+        try (PrintWriter reportFile = new PrintWriter(filePath)) {
+            
+            
+            LocalDateTime currentTime = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            String dateTime = formatter.format(currentTime);
+            
+            reportFile.println("Report printed: " + dateTime);
+            
+            this.viewMansionMap(reportFile);
+            
+            
+            ClueTeam3.getOutFile().println(
+                    "\n*** Report printed to file: " + filePath + " ***");
+            
+        }
+
     }
 
     
