@@ -28,5 +28,31 @@ public class MapControl {
  public static void moveCharactersToStartingLocation(MansionMap mansionMap) 
  {
  }
+ 
+ ArrayList<Point> roomCoordinates = new ArrayList<Point>();
+        roomCoordinates.add(new Point(0,0));
+        roomCoordinates.add(new Point(0,2));
+        roomCoordinates.add(new Point(0,5));
+        roomCoordinates.add(new Point(2,0));
+        roomCoordinates.add(new Point(2,2));
+        roomCoordinates.add(new Point(2,5));
+        roomCoordinates.add(new Point(4,0));
+        roomCoordinates.add(new Point(4,2));
+        roomCoordinates.add(new Point(4,5));
+        sceneLocations.put("ROOM, roomCoordinates");
+        
+ ArrayList<Point> characterCoordinates = new ArrayList<Point>();
+        characterCoordinates.add(new Point(1,0));
+        characterCoordinates.add(new Point(1,2));
+        characterCoordinates.add(new Point(1,6));
+        characterCoordinates.add(new Point(3,0));
+        characterCoordinates.add(new Point(3,2));
+        characterCoordinates.add(new Point(3,6));
+        characterCoordinates.add(new Point(5,0));
+        characterCoordinates.add(new Point(5,2));
+        characterCoordinates.add(new Point(5,6));
+        sceneLocations.put("CHARACTER, characterCoordinates");
+        
+        
 
 }
