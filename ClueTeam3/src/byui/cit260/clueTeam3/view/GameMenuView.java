@@ -67,8 +67,10 @@ public class GameMenuView extends View {
     }
 
     private void MansionMap() {
-        MansionMapView mansionMap = new MansionMapView();
-        mansionMap.display();
+        
+       this.viewMap(Clue.getOutFile()); 
+        //MansionMapView mansionMap = new MansionMapView();
+        //mansionMap.display();
     }
     
     private void suspectList() {
