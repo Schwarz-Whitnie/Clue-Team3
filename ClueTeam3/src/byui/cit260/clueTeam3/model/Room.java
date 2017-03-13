@@ -83,7 +83,12 @@ public class Room implements Serializable {
         this.scene = scene;
     }
 
-    Room() {
+    public Room() {
+        
+    }
+    public Room(int row, int column) {
+        this.row = row;
+        this.column = column;
     }
 
     public String getDescription() {

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package byui.cit260.clueTeam3.view;
+/*package byui.cit260.clueTeam3.view;
 
 import byui.cit260.clueTeam3.model.ResourceTypeScene;
 import byui.cit260.clueTeam3.model.Room;
@@ -13,7 +13,7 @@ import java.util.Scanner;
  *
  * @author camer
  */
-public class MansionMapView {
+/*public class MansionMapView {
     
     private final String row;
     private final String column;
@@ -129,6 +129,6 @@ public class MansionMapView {
              
        return true; //success
     }
-    }
+    }*/
 
   

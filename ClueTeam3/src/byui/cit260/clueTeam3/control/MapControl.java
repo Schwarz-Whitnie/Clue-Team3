@@ -5,11 +5,11 @@
  */
 package byui.cit260.clueTeam3.control;
 
-import static byui.cit260.clueTeam3.control.SceneControl.createScenes;
 import byui.cit260.clueTeam3.model.MansionMap;
 import byui.cit260.clueTeam3.model.ResourceTypeScene;
 import byui.cit260.clueTeam3.model.Room;
 import byui.cit260.clueTeam3.model.Scene;
+import clueteam3.ClueTeam3;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ public class MapControl {
         
         Scene[] scenes = createScenes();
         
-        ResourceTypeScene.assignScenesToLocations(mansionMap, scenes);
+        assignScenesToLocations(mansionMap, scenes);
         
         return mansionMap;
     }
@@ -86,7 +86,7 @@ public class MapControl {
         return scenes;
     }
     
-        public static void assignScenesToLocations(MansionMap mansionMap, Scene[] scenes) {
+        private static void assignScenesToLocations(MansionMap mansionMap, Scene[] scenes) {
     
         Room[][] rooms = mansionMap.getRooms();
         
@@ -174,10 +174,40 @@ public class MapControl {
         hallCoordinates.add(new Point(4,4));
         hallCoordinates.add(new Point(5,4));
         sceneLocations.put("HALL", hallCoordinates);
+        
+         ArrayList<Point> roomCoordinates = new ArrayList<Point>();
+        roomCoordinates.add(new Point(0,0));
+        roomCoordinates.add(new Point(0,2));
+        roomCoordinates.add(new Point(0,5));
+        roomCoordinates.add(new Point(2,0));
+        roomCoordinates.add(new Point(2,2));
+        roomCoordinates.add(new Point(2,5));
+        roomCoordinates.add(new Point(4,0));
+        roomCoordinates.add(new Point(4,2));
+        roomCoordinates.add(new Point(4,5));
+        sceneLocations.put("ROOM", roomCoordinates);
+        
+ ArrayList<Point> characterCoordinates = new ArrayList<Point>();
+        characterCoordinates.add(new Point(1,0));
+        characterCoordinates.add(new Point(1,2));
+        characterCoordinates.add(new Point(1,6));
+        characterCoordinates.add(new Point(3,0));
+        characterCoordinates.add(new Point(3,2));
+        characterCoordinates.add(new Point(3,6));
+        characterCoordinates.add(new Point(5,0));
+        characterCoordinates.add(new Point(5,2));
+        characterCoordinates.add(new Point(5,6));
+        sceneLocations.put("CHARACTER", characterCoordinates);
 }
- public static void moveCharactersToStartingLocation(MansionMap mansionMap) 
- {
+ public static void moveCharactersToStartingLocation(MansionMap mansionMap) {
+     
  }
  
+ public static Room getRoom(Point coordinates) {
+        return ClueTeam3.getCurrentGame().getMansionMap().getRooms()[coordinates.x-1][coordinates.y-1];
+    }
+
+        
+        
 
 }

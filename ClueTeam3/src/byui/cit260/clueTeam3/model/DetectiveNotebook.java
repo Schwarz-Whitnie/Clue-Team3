@@ -11,30 +11,37 @@ import java.io.Serializable;
  *
  * @author camer
  */
-public class DetectiveNotebook implements Serializable {
+public enum DetectiveNotebook implements Serializable {
     
-    private String description;
-    private String coordinates;
+    /*Clue1(""),
+    Clue2(""),
+    Clue3(""),
+    Clue4(""),
+    Clue5(""),
+    Suspect1(""),
+    Suspect2(""),
+    Suspect3(""),
+    Suspect4(""),
+    
 
-    public String getDescription() {
-        return description;
-    }
+    
+    private final String description;
+    private final Point coordinates;
 
-    public void setDescription(String description) {
+    public DetectiveNotebook(String description){
+        
         this.description = description;
-    }
-
-    public String getCoordinates() {
-        return coordinates;
-    }
-
-    public void setCoordinates(String coordinates) {
-        this.coordinates = coordinates;
-    }
-    
-    
-    public DetectiveNotebook(){
+        coordinates = new Point (1,1);
         
     }
+
+    public String getDescription() {
+
+    return description;
+}
+
+    public Point getCoordinates() {
+    return coordinates;
+}*/
     
 }

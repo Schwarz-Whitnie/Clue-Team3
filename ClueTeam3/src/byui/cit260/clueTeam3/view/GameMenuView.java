@@ -5,6 +5,11 @@
  */
 package byui.cit260.clueTeam3.view;
 
+import byui.cit260.clueTeam3.control.GameControl;
+import byui.cit260.clueTeam3.model.Room;
+import byui.cit260.clueTeam3.model.Scene;
+import clueteam3.ClueTeam3;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
@@ -68,9 +73,85 @@ public class GameMenuView extends View {
 
     private void MansionMap() {
         
-       this.viewMap(Clue.getOutFile()); 
+       this.viewMansionMap(ClueTeam3.getOutFile()); 
         //MansionMapView mansionMap = new MansionMapView();
         //mansionMap.display();
+    }
+    
+    public void viewMansionMap(PrintWriter out) {
+        int lineLength = 0;
+        
+        // get the map for the game
+        Room[][] rooms = GameControl.getMapLocations();
+        int noColumns = rooms[0].length; // get number columns in row
+        
+        this.printTitle(out, noColumns, "Map of the Mansion");
+        this.printColumnHeaders(out, noColumns);
+        
+        for (int i = 0; i < rooms.length; i++) {    
+            Room[] rowLocations = rooms[i];
+            this.printRowDivider(out, noColumns);
+            out.println(); // move down one i
+            if (i < 9)
+                out.print(" " + (i+1));
+            else 
+                out.print(i+1);
+            
+            // for every column in the row
+            for (int column = 0; column < noColumns; column++) {
+                out.print("|"); // print column divider
+                Room room = rowLocations[column];
+                if (room != null && room.isVisited()) { // if location is visited 
+                    
+                    Scene scene = room.getScene();
+                    if (scene != null)
+                        out.print(scene.getMapSymbol());
+                    else
+                        out.print("    ");
+                }
+                else {
+                    out.print(" ?? ");
+                }      
+            }
+            
+            out.print("|"); // print column divider
+        }
+        
+        this.printRowDivider(out, noColumns);
+    }
+    
+    private void printColumnHeaders(PrintWriter out, int noOfColumns) {
+        for (int i = 1; i < noOfColumns+1; i++) {
+            if (i < 10) {
+                out.print("   " + i + " ");
+            }
+            else {
+                out.print("  " + i + " ");
+            }
+        }
+    }
+
+    private void printRowDivider(PrintWriter out, int noColumns) {
+        out.println();
+        out.print("  ");
+        for (int i = 0; i < noColumns; i++) { // print row divider
+                out.print("-----");
+        }
+        out.print("-");
+    }
+
+    private void printTitle(PrintWriter out, int noOfColumns, String title) {
+        
+        int titleLength = title.length();
+        int lineLength = noOfColumns * 5 + 3;
+        int startPosition = (lineLength / 2) - (titleLength / 2);
+        out.println("\n");
+        for (int i = 0; i < startPosition; i++) {
+            out.print(" ");  
+        }
+        out.print(title);
+        out.println("\n");
+        
     }
     
     private void suspectList() {

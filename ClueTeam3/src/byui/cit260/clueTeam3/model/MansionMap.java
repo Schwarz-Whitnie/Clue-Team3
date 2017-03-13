@@ -47,9 +47,14 @@ public class MansionMap implements Serializable {
                 rooms[row][column] = room;
         }
     }
+    }
 
     public Room[][] getRooms() {
         return rooms;
+    }
+    
+    public void setRooms(Room[][] rooms) {
+        this.rooms = rooms;
     }
 
     public Game[] getGame() {

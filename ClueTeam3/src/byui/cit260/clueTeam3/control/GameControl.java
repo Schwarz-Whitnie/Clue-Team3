@@ -11,6 +11,7 @@ import byui.cit260.clueTeam3.model.Game;
 import byui.cit260.clueTeam3.model.Player;
 import clueteam3.ClueTeam3;
 import byui.cit260.clueTeam3.model.MansionMap;
+import byui.cit260.clueTeam3.model.Room;
 import byui.cit260.clueTeam3.model.Scene;
 import byui.cit260.clueTeam3.view.GameMenuView;
 
@@ -30,8 +31,8 @@ public class GameControl {
         GameMenuView gameMenuView = new GameMenuView();
         gameMenuView.display();
         
-        DetectiveNotebook[] detectiveNotebook = GameControl.createDetectiveNotebook();
-        game.setDetectiveNotebook(detectiveNotebook);
+        //DetectiveNotebook[] detectiveNotebook = GameControl.createDetectiveNotebook();
+        //game.setDetectiveNotebook(detectiveNotebook);
         
         MansionMap mansionMap = MapControl.createMansionMap();
         game.setMansionMap(mansionMap);
@@ -54,7 +55,7 @@ public class GameControl {
     }
 
 
-    private static DetectiveNotebook[] createDetectiveNotebook() {
+    /*private static DetectiveNotebook[] createDetectiveNotebook() {
         
         DetectiveNotebook[] notebook = new DetectiveNotebook[6];
         
@@ -89,6 +90,10 @@ public class GameControl {
         notebook[Clue.clueSix.ordinal()] = clueSix;
         
         return null;
+    }*/
+    
+    public static Room[][] getMapLocations() {
+        return ClueTeam3.getCurrentGame().getMansionMap().getRooms();
     }
     
 
