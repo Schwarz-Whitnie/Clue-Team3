@@ -19,10 +19,21 @@ public class Room implements Serializable {
     private Point coordinates;
     private int row;
     private int column;
+    private Scene scene;
     private boolean visited;
+    private Character character;
+    private Weapon weapon;
+    private Clue clue;
 
   
-    
+    public Room(int row, int column) {
+        this.row = row;
+        this.column = column;
+    }
+
+    Room() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     public int getRow() {
         return row;
     }
@@ -46,10 +57,6 @@ public class Room implements Serializable {
     public void setVisited(boolean visited) {
         this.visited = visited;
     }
-    private Scene scene;
-    private Character character;
-    private Weapon weapon;
-    private Clue clue;
 
     public Character getCharacter() {
         return character;
@@ -83,14 +90,6 @@ public class Room implements Serializable {
         this.scene = scene;
     }
 
-    public Room() {
-        
-    }
-    public Room(int row, int column) {
-        this.row = row;
-        this.column = column;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -105,7 +104,32 @@ public class Room implements Serializable {
 
     @Override
     public String toString() {
-       // return "Room{" + "name=" + name + ", description=" + description + ", attribute=" + attribute + '}';
-        return null;
+       return "Room{" + "row=" + row + ", column=" + column + '}';
+    }
+    
+     @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + this.row;
+        hash = 67 * hash + this.column;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Room other = (Room) obj;
+        if (this.row != other.row) {
+            return false;
+        }
+        if (this.column != other.column) {
+            return false;
+        }
+        return true;
     }
 }

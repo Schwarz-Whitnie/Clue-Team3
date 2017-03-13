@@ -19,6 +19,7 @@ import java.util.HashMap;
  * @author whitnieschwarz
  */
 public class MapControl {
+    
     public static MansionMap createMansionMap() {
     
         MansionMap mansionMap = new MansionMap(7,6);

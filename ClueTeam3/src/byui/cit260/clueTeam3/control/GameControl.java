@@ -21,6 +21,10 @@ import byui.cit260.clueTeam3.view.GameMenuView;
  */
 public class GameControl {
     
+    public GameControl() {
+        
+    }
+    
     public static void createNewGame(Player player) {
     
         Game game = new Game();
