@@ -21,6 +21,7 @@ import java.util.HashMap;
  */
 public class MapControl {
     
+    
     public static MansionMap createMansionMap() {
     
         MansionMap mansionMap = new MansionMap(7,6);
@@ -201,6 +202,7 @@ public class MapControl {
         characterCoordinates.add(new Point(5,6));
         sceneLocations.put("CHARACTER", characterCoordinates);
 }
+        
 // public static void moveCharactersToStartingLocation(MansionMap mansionMap) 
 //                        throws MapControlException {
      // for every character 

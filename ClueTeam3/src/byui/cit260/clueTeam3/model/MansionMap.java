@@ -16,7 +16,7 @@ public class MansionMap implements Serializable {
     
     private int rowCount;
     private int columnCount;
-    private Room[][] rooms;
+    private Room[][] rooms = new Room[5][5];
     
     // private Game[] game;
 
