@@ -41,7 +41,7 @@ public class GameControl {
         MansionMap mansionMap = MapControl.createMansionMap();
         game.setMansionMap(mansionMap);
         
-        MapControl.moveCharactersToStartingLocation(mansionMap);
+//        MapControl.moveCharactersToStartingLocation(mansionMap);
     }
 
     public static Player createPlayer(String name) {
