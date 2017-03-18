@@ -34,6 +34,7 @@ public class Game implements Serializable {
     }
 
     public Game() {
+        this.totalTime = 0;
     }
 
     public Player getPlayer() {

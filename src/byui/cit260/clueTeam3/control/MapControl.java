@@ -6,7 +6,10 @@
 package byui.cit260.clueTeam3.control;
 
 import byui.cit260.clueTeam3.exeptions.MapControlException;
+import byui.cit260.clueTeam3.model.Detective;
+import byui.cit260.clueTeam3.model.Game;
 import byui.cit260.clueTeam3.model.MansionMap;
+import byui.cit260.clueTeam3.model.Player;
 import byui.cit260.clueTeam3.model.ResourceTypeScene;
 import byui.cit260.clueTeam3.model.Room;
 import byui.cit260.clueTeam3.model.Scene;
@@ -203,41 +206,42 @@ public class MapControl {
         sceneLocations.put("CHARACTER", characterCoordinates);
 }
         
- public static void moveCharactersToStartingLocation(MansionMap mansionMap) {
-    //                    throws MapControlException {
-   //   for every character 
-  //   Character[] characters = Character.values();
-     
-    // for (Character character : characters) {
-      //   Point coordinates = character.getCoordinates();
-        // MapControl.moveCharactersToLocation(character, coordinates);
+public static void moveDetectiveToStartingLocation(MansionMap mansionMap) 
+                   throws MapControlException {     
+      
+   //Detective[] detective = Detective.values();
+   Game game = ClueTeam3.getCurrentGame();
+   
+     for (Detective detective : detectives) {
+         Point coordinates = new Point(0,2);
+         MapControl.moveDetectiveToLocation(detective, coordinates);
          
-    // }
-     
+     }
  }
  
  
- //public static void moveCharactersToLocation (Character character, Point coordinates) 
-   //                 throws MapControlException {
+public static int moveDetectiveToLocation (Detective detective, Point coordinates) 
+                 throws MapControlException {
      
-    // MansionMap mansionMap = ClueTeam3.getCurrentGame().getMansionMap();
-    // int newRow = coordinates.x-1;
-    // int newColumn = coordinates.y-1;
+       MansionMap mansionMap = ClueTeam3.getCurrentGame().getMansionMap();
+       int newRow = coordinates.x-1;
+       int newColumn = coordinates.y-1;
      
-    // if (newRow < 0 || newRow >= mansionMap.getRowCount() || 
-    //     newColumn < 0 || newColumn >= mansionMap.getColumnCount()) {
-     //    throw new MapControlException("Can not move actor to location " 
-     //                                 + coordinates.x + ", " + coordinates.y 
-     //                                 + " because that location is outside "
-       //                               + " the bounds of the map."); 
-        // }
- //}
+       if (newRow < 0 || newRow >= mansionMap.getRowCount() || 
+             newColumn < 0 || newColumn >= mansionMap.getColumnCount()) {
+            throw new MapControlException("Can not move actor to location " 
+                                      + coordinates.x + ", " + coordinates.y 
+                                      + " because that location is outside "
+                                      + " the bounds of the map."); 
+         }
+       
+ 
  
  public static Room getRoom(Point coordinates) {
         return ClueTeam3.getCurrentGame().getMansionMap().getRooms()[coordinates.x-1][coordinates.y-1];
-    }
-
-        
-        
-
+ }
+ 
 }
+
+        
+       

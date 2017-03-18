@@ -102,6 +102,12 @@ public class Room implements Serializable {
         return coordinates;
     }
 
+    public void setCoordinates(Point coordinates) {
+        this.coordinates = coordinates;
+    }
+    
+    
+
     @Override
     public String toString() {
        return "Room{" + "row=" + row + ", column=" + column + '}';

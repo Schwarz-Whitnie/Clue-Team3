@@ -5,6 +5,8 @@
  */
 package byui.cit260.clueTeam3.control;
 
+import byui.cit260.clueTeam3.exeptions.GameControlException;
+import byui.cit260.clueTeam3.exeptions.MapControlException;
 import byui.cit260.clueTeam3.model.Clue;
 import byui.cit260.clueTeam3.model.DetectiveNotebook;
 import byui.cit260.clueTeam3.model.Game;
@@ -25,7 +27,7 @@ public class GameControl {
         
     }
     
-    public static void createNewGame(Player player) {
+    public static void createNewGame(Player player) throws MapControlException {
     
         Game game = new Game();
         ClueTeam3.setCurrentGame(game);
@@ -40,7 +42,7 @@ public class GameControl {
         
         MansionMap mansionMap = MapControl.createMansionMap(); // creating an storing in the game LB
         game.setMansionMap(mansionMap);
-        MapControl.moveCharactersToStartingLocation(mansionMap); // added this back  LB 
+        MapControl.moveDetectiveToStartingLocation(mansionMap); // added this back  LB 
         gameMenuView.display(); // moved this from line 36 to here LB 
         
         DetectiveNotebook[] notebookList = GameControl.createDetectiveNotebook();  
@@ -48,10 +50,12 @@ public class GameControl {
 
     }
 
-    public static Player createPlayer(String name) {
+    public static Player createPlayer(String name) throws GameControlException {
          
         if (name == null) {
-            return null;
+            throw new GameControlException("Can not move player to location"
+                                            + " because that location is outside "
+                                            + "the bounds of the map.");
         }
         
         Player player = new Player();
