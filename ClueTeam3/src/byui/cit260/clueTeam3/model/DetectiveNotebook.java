@@ -7,60 +7,19 @@ package byui.cit260.clueTeam3.model;
 
 import java.io.Serializable;
 import java.util.Objects;
-
 public class DetectiveNotebook implements Serializable {
     
     private String description;
-    private double rowCount;
-    private double columnCount;
-    private DetectiveNotebook[] notebook;
-    private String roomsNotebook;
     private boolean accused;
-
-    private Game[] game;
-
-    public DetectiveNotebook() {
-
+  
+  public DetectiveNotebook() {
+      
+  }  
+    
+    public DetectiveNotebook(String discription, boolean accused) {
+        this.description = discription;
+        this.accused = accused;
 }
-    private static DetectiveNotebook[] createDetectiveNotebook() {
-        // create and array(list of detective notebook items
-        
-        DetectiveNotebook[] notebook = new DetectiveNotebook[8];
-        
-        DetectiveNotebook candlestick = new DetectiveNotebook();
-        candlestick.setAccused(false);
-        notebook[Weapon.candlestick.ordinal()] = candlestick;
-        
-        DetectiveNotebook knife = new DetectiveNotebook();
-        knife.setAccused(false);
-        notebook[Weapon.knife.ordinal()] = knife;
-        
-        DetectiveNotebook rope = new DetectiveNotebook();
-        rope.setAccused(false);
-        notebook[Weapon.rope.ordinal()] = rope;
-        
-        DetectiveNotebook dumbbell = new DetectiveNotebook();
-        dumbbell.setAccused(false);
-        notebook[Weapon.dumbbell.ordinal()] = dumbbell;
-        
-        DetectiveNotebook poison = new DetectiveNotebook();
-        poison.setAccused(false);
-        notebook[Weapon.poison.ordinal()] = poison;
-        
-        DetectiveNotebook leadPipe = new DetectiveNotebook();
-        leadPipe.setAccused(false);
-        notebook[Weapon.leadPipe.ordinal()] = leadPipe;
-        
-        DetectiveNotebook revolver = new DetectiveNotebook();
-        revolver.setAccused(false);
-        notebook[Weapon.revolver.ordinal()] = revolver;
-        
-        DetectiveNotebook wrench = new DetectiveNotebook();
-        wrench.setAccused(false);
-        notebook[Weapon.wrench.ordinal()] = wrench;
-        
-        return null;
-    }
 
     /* public DetectiveNotebook(int rowCount, int columnCount) {
         
@@ -82,6 +41,15 @@ public class DetectiveNotebook implements Serializable {
         }
 
 } */
+
+    public String getDescription() {
+        return description;
+    }
+    
+    public void setDescription(String description) {
+    this.description = description;
+}
+
     public boolean isAccused() {
         return accused;
     }
@@ -89,14 +57,7 @@ public class DetectiveNotebook implements Serializable {
     public void setAccused(boolean accused) {
         this.accused = accused;
     }
-
-    public String getDescription() {
-    return description;
-}
-
-    public void setDescription(String description) {
-    this.description = description;
-}
+    
 
     @Override
     public String toString() {
@@ -104,10 +65,10 @@ public class DetectiveNotebook implements Serializable {
 }
 
     @Override 
-    public int hashCode() {
-    int hash = 7;
-    hash = 53 * hash + Objects.hashCode(this.description);
-       
+     public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.description);
+        hash = 53 * hash + Objects.hashCode(this.accused);
         return hash;
 }
 
@@ -123,14 +84,12 @@ public class DetectiveNotebook implements Serializable {
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
+        if (!Objects.equals(this.accused, other.accused)) {
+            return false;
+        }
         return true;
     }
-            
-
-    public void setCoordinates(int i, int i0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+           
     
 }
  
