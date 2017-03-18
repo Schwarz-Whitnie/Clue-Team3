@@ -6,6 +6,7 @@
 package byui.cit260.clueTeam3.view;
 
 import byui.cit260.clueTeam3.control.GameControl;
+import byui.cit260.clueTeam3.model.MansionMap;
 import byui.cit260.clueTeam3.model.Room;
 import byui.cit260.clueTeam3.model.Scene;
 import clueteam3.ClueTeam3;
@@ -85,13 +86,15 @@ public class GameMenuView extends View {
         int lineLength = 0;
         
         // get the map for the game
-        Room[][] rooms = GameControl.getMapLocations();
-        int noColumns = rooms[0].length; // get number columns in row
+     //   Room[][] rooms = GameControl.getMapLocations();
+        MansionMap map = ClueTeam3.getCurrentGame().getMansionMap(); //brings in the map saved before
+        Room[][] rooms = map.getRooms();
+        int noColumns = map.getColumnCount(); // get number columns in row
         
         this.printTitle(out, noColumns, "Map of the Mansion");
         this.printColumnHeaders(out, noColumns);
         
-        for (int i = 0; i < rooms.length; i++) {    
+        for (int i = 0; i < map.getRowCount(); i++) {    
             Room[] rowLocations = rooms[i];
             this.printRowDivider(out, noColumns);
             out.println(); // move down one i
@@ -183,7 +186,8 @@ public class GameMenuView extends View {
         //display detective notebook
         
         //this.viewDetectiveNotebook(ClueTeam3.getOutFile());
-        
+        DetectiveNotebook detectiveNotebook = new DetectiveNotebook();
+        detectiveNotebook.cre();
         System.out.println("*** View Detective Notebook ***");
          
     }

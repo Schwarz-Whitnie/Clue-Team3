@@ -24,7 +24,7 @@ public class MapControl {
     
     public static MansionMap createMansionMap() {
     
-        MansionMap mansionMap = new MansionMap(7,6);
+        MansionMap mansionMap = new MansionMap(6,7); //swapped these LB
         
         Scene[] scenes = createScenes();
         
@@ -203,9 +203,9 @@ public class MapControl {
         sceneLocations.put("CHARACTER", characterCoordinates);
 }
         
-// public static void moveCharactersToStartingLocation(MansionMap mansionMap) 
-//                        throws MapControlException {
-     // for every character 
+ public static void moveCharactersToStartingLocation(MansionMap mansionMap) {
+    //                    throws MapControlException {
+   //   for every character 
   //   Character[] characters = Character.values();
      
     // for (Character character : characters) {
@@ -214,7 +214,7 @@ public class MapControl {
          
     // }
      
-// }
+ }
  
  
  //public static void moveCharactersToLocation (Character character, Point coordinates) 

@@ -38,7 +38,7 @@ public class MansionMap implements Serializable {
         for (int row = 0; row < rowCount; row++) {
             for (int column = 0; column < columnCount; column++) {
                // create and initialize new Room object instance
-                Room room = new Room();
+                Room room = new Room(row, column);
                 room.setColumn(column);
                 room.setRow(row);
                 room.setVisited(false);
@@ -49,7 +49,7 @@ public class MansionMap implements Serializable {
     }
     }
 
-     public double getRowCount() {
+     public int getRowCount() {
         return rowCount;
     }
 
@@ -57,7 +57,7 @@ public class MansionMap implements Serializable {
         this.rowCount = rowCount;
     }
 
-    public double getColumnCount() {
+    public int getColumnCount() {
         return columnCount;
     }
 

@@ -14,19 +14,28 @@ import java.util.Objects;
  */
 public enum Weapon implements Serializable {
     
-    Candlestick,
-    Knife,
-    Rope,
-    Dumbbell,
-    Poison,
-    LeadPipe,
-    Revolver,
-    Wrench;
+    candlestick,
+    knife,
+    rope,
+    dumbbell,
+    poison,
+    leadPipe,
+    revolver,
+    wrench;
     
     private String description;
     private String location;
     private String weaponType;
     private Point coordinates;
+    private boolean visited;
+
+    public boolean isVisited() {
+        return visited;
+    }
+
+    public void setVisited(boolean visited) {
+        this.visited = visited;
+    }
 
     private Room[] room;
     private Clue[] clue;

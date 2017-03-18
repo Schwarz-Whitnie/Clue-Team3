@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -32,16 +32,18 @@ public class GameControl {
         
         game.setPlayer(player);
         
-        GameMenuView gameMenuView = new GameMenuView();
-        gameMenuView.display();
+        GameMenuView gameMenuView = new GameMenuView(); //
         
-        //DetectiveNotebook[] detectiveNotebook = GameControl.createDetectiveNotebook();
-        //game.setDetectiveNotebook(detectiveNotebook);
         
-        MansionMap mansionMap = MapControl.createMansionMap();
+        //DetectiveNotebook[] detectiveNotebook = GameControl.createDetectiveNotebook(); ?? will need LB 
+        //game.setDetectiveNotebook(detectiveNotebook);  // will need these at some point LB 
+        
+        MansionMap mansionMap = MapControl.createMansionMap(); // creating an storing in the game LB
         game.setMansionMap(mansionMap);
+        MapControl.moveCharactersToStartingLocation(mansionMap); // added this back  LB 
+        gameMenuView.display(); // moved this from line 36 to here LB 
         
-//        MapControl.moveCharactersToStartingLocation(mansionMap);
+
     }
 
     public static Player createPlayer(String name) {
@@ -58,62 +60,21 @@ public class GameControl {
         return player;
     }
     
-
-    private static DetectiveNotebook[] createDetectiveNotebook() {
-        // create and array(list of detective notebook items
+    public long getDetectivNotebook(long[] notebook){
         
-        DetectiveNotebook[] notebook = new DetectiveNotebook[9];
+        long accused = null;
         
-        DetectiveNotebook clueOne = new DetectiveNotebook();
-        clueOne.setDescription("Clue One description");
-        clueOne.setCoordinates(0,1);
-        notebook[Clue.clueOne.ordinal()] = clueOne;
+        for(long notebook: notebook) {
+            System.out.println(notebook);
+        }
         
-        DetectiveNotebook clueTwo = new DetectiveNotebook();
-        clueTwo.setDescription("Clue Two description");
-        clueTwo.setCoordinates(0,3);
-        notebook[Clue.clueTwo.ordinal()] = clueTwo;
-        
-        DetectiveNotebook clueThree = new DetectiveNotebook();
-        clueThree.setDescription("Clue Three description");
-        clueThree.setCoordinates(0,6);
-        notebook[Clue.clueThree.ordinal()] = clueThree;
-        
-        DetectiveNotebook clueFour = new DetectiveNotebook();
-        clueFour.setDescription("Clue Four description");
-        clueFour.setCoordinates(2,1);
-        notebook[Clue.clueFour.ordinal()] = clueFour;
-        
-        DetectiveNotebook clueFive = new DetectiveNotebook();
-        clueFive.setDescription("Clue Five description");
-        clueFive.setCoordinates(2,3);
-        notebook[Clue.clueFive.ordinal()] = clueFive;
-        
-        DetectiveNotebook clueSix = new DetectiveNotebook();
-        clueSix.setDescription("Clue Six description");
-        clueSix.setCoordinates(2,6);
-        notebook[Clue.clueSix.ordinal()] = clueSix;
-        
-        DetectiveNotebook clueSeven = new DetectiveNotebook();
-        clueSeven.setDescription("Clue Seven description");
-        clueSeven.setCoordinates(4,1);
-        notebook[Clue.clueSeven.ordinal()] = clueSeven;
-        
-        DetectiveNotebook clueEight = new DetectiveNotebook();
-        clueEight.setDescription("Clue Eight description");
-        clueEight.setCoordinates(4,3);
-        notebook[Clue.clueEight.ordinal()] = clueEight;
-        
-        DetectiveNotebook clueNine = new DetectiveNotebook();
-        clueNine.setDescription("Clue Nine description");
-        clueNine.setCoordinates(4,6);
-        notebook[Clue.clueNine.ordinal()] = clueNine;
-        return null;
+        return accused;
     }
     
+    
     public static Room[][] getMapLocations() {
-        return ClueTeam3.getCurrentGame().getMansionMap().getRooms();
-    }
+       return ClueTeam3.getCurrentGame().getMansionMap().getRooms();
+    }         // might not even need this LB 
     
 
 }    
