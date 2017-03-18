@@ -10,14 +10,15 @@ import java.util.Objects;
 public class DetectiveNotebook implements Serializable {
     
     private String description;
-    private double rowCount;
-    private double columnCount;
-    private DetectiveNotebook[][] notebook;
+    private boolean accused;
+  
+  public DetectiveNotebook() {
+      
+  }  
     
-    private Game[] game;
-
-    public DetectiveNotebook() {
-
+    public DetectiveNotebook(String discription, boolean accused) {
+        this.description = discription;
+        this.accused = accused;
 }
 
     /* public DetectiveNotebook(int rowCount, int columnCount) {
@@ -42,12 +43,21 @@ public class DetectiveNotebook implements Serializable {
 } */
 
     public String getDescription() {
-    return description;
-}
-
+        return description;
+    }
+    
     public void setDescription(String description) {
     this.description = description;
 }
+
+    public boolean isAccused() {
+        return accused;
+    }
+
+    public void setAccused(boolean accused) {
+        this.accused = accused;
+    }
+    
 
     @Override
     public String toString() {
@@ -55,10 +65,10 @@ public class DetectiveNotebook implements Serializable {
 }
 
     @Override 
-    public int hashCode() {
-    int hash = 7;
-    hash = 53 * hash + Objects.hashCode(this.description);
-       
+     public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.description);
+        hash = 53 * hash + Objects.hashCode(this.accused);
         return hash;
 }
 
@@ -74,14 +84,12 @@ public class DetectiveNotebook implements Serializable {
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
+        if (!Objects.equals(this.accused, other.accused)) {
+            return false;
+        }
         return true;
     }
-            
-
-    public void setCoordinates(int i, int i0) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+           
     
 }
  

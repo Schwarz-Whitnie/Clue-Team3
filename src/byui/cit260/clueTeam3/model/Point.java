@@ -12,6 +12,7 @@ package byui.cit260.clueTeam3.model;
 public class Point { 
     private int row;
     private int column;
+    
 
     //Point(int i, int i0) {
     //    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

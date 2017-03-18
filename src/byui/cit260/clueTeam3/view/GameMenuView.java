@@ -6,6 +6,8 @@
 package byui.cit260.clueTeam3.view;
 
 import byui.cit260.clueTeam3.control.GameControl;
+import byui.cit260.clueTeam3.model.DetectiveNotebook;
+import byui.cit260.clueTeam3.model.Game;
 import byui.cit260.clueTeam3.model.MansionMap;
 import byui.cit260.clueTeam3.model.Room;
 import byui.cit260.clueTeam3.model.Scene;
@@ -182,12 +184,36 @@ public class GameMenuView extends View {
         System.out.println("*** Move Rooms ***");
     }
 
+    //private void displayDetectiveNotebook() {
+      //  this.viewDetectiveNotebook(ClueTeam3.getOutFile());
+    //}
+    
     private void viewDetectiveNotebook() {
         //display detective notebook
+        StringBuilder line;
         
-        //this.viewDetectiveNotebook(ClueTeam3.getOutFile());
+        Game game = ClueTeam3.getCurrentGame();
+        DetectiveNotebook[] notebook = game.getNotebook();
         
-        System.out.println("*** View Detective Notebook ***");
+        System.out.println("\n  DETECTIVE NOTEBOOK");
+        line = new StringBuilder("                     ");
+        line.insert(0, "DISCRIPTION");
+        line.insert(20, "STATUS");
+        System.out.println(line.toString());
+        
+        // for each notebook item
+        for (DetectiveNotebook detectiveNotebook : notebook) {
+            line = new StringBuilder("                                                          ");
+            line.insert(0, detectiveNotebook.getDescription());
+            line.insert(23, detectiveNotebook.isAccused());
+            
+            // DISPLAY the description, the required amount and amount in stock
+            System.out.println(line.toString());
+        }
+        
+        //this.getSortedDetectiveNotebook(ClueTeam3.getOutFile());
+        
+       // System.out.println("*** View Detective Notebook ***");
          
     }
 

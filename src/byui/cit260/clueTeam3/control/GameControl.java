@@ -31,18 +31,20 @@ public class GameControl {
         ClueTeam3.setCurrentGame(game);
         
         game.setPlayer(player);
-        
+       
         GameMenuView gameMenuView = new GameMenuView(); //
         
         
-        //DetectiveNotebook[] detectiveNotebook = GameControl.createDetectiveNotebook(); ?? will need LB 
-        //game.setDetectiveNotebook(detectiveNotebook);  // will need these at some point LB 
+        //DetectiveNotebook[] notebookList = GameControl.createDetectiveNotebook();  
+        //game.setDetectiveNotebook(notebookList);  // will need these at some point LB 
         
         MansionMap mansionMap = MapControl.createMansionMap(); // creating an storing in the game LB
         game.setMansionMap(mansionMap);
         MapControl.moveCharactersToStartingLocation(mansionMap); // added this back  LB 
         gameMenuView.display(); // moved this from line 36 to here LB 
         
+        DetectiveNotebook[] notebookList = GameControl.createDetectiveNotebook();  
+        game.setDetectiveNotebook(notebookList); 
 
     }
 
@@ -64,58 +66,79 @@ public class GameControl {
     private static DetectiveNotebook[] createDetectiveNotebook() {
         // create and array(list of detective notebook items
         
-        DetectiveNotebook[] notebook = new DetectiveNotebook[9];
         
-        DetectiveNotebook clueOne = new DetectiveNotebook();
-        clueOne.setDescription("Clue One description");
-        clueOne.setCoordinates(0,1);
-        notebook[Clue.clueOne.ordinal()] = clueOne;
+        DetectiveNotebook[] notebook = new DetectiveNotebook[8];
         
-        DetectiveNotebook clueTwo = new DetectiveNotebook();
-        clueTwo.setDescription("Clue Two description");
-        clueTwo.setCoordinates(0,3);
-        notebook[Clue.clueTwo.ordinal()] = clueTwo;
+        DetectiveNotebook candlestick = new DetectiveNotebook();
+        candlestick.setDescription("Clue One description");
+        candlestick.setAccused(true);
+        notebook[Clue.clueOne.ordinal()] = candlestick;
         
-        DetectiveNotebook clueThree = new DetectiveNotebook();
-        clueThree.setDescription("Clue Three description");
-        clueThree.setCoordinates(0,6);
-        notebook[Clue.clueThree.ordinal()] = clueThree;
+        DetectiveNotebook knife = new DetectiveNotebook();
+        knife.setDescription("Clue Two description");
+        knife.setAccused(false);
+        notebook[Clue.clueTwo.ordinal()] = knife;
         
-        DetectiveNotebook clueFour = new DetectiveNotebook();
-        clueFour.setDescription("Clue Four description");
-        clueFour.setCoordinates(2,1);
-        notebook[Clue.clueFour.ordinal()] = clueFour;
+        DetectiveNotebook rope = new DetectiveNotebook();
+        rope.setDescription("Clue Three description");
+        rope.setAccused(true);
+        notebook[Clue.clueThree.ordinal()] = rope;
         
-        DetectiveNotebook clueFive = new DetectiveNotebook();
-        clueFive.setDescription("Clue Five description");
-        clueFive.setCoordinates(2,3);
-        notebook[Clue.clueFive.ordinal()] = clueFive;
+        DetectiveNotebook dumbbell = new DetectiveNotebook();
+        dumbbell.setDescription("Clue Four description");
+        dumbbell.setAccused(false);
+        notebook[Clue.clueFour.ordinal()] = dumbbell;
         
-        DetectiveNotebook clueSix = new DetectiveNotebook();
-        clueSix.setDescription("Clue Six description");
-        clueSix.setCoordinates(2,6);
-        notebook[Clue.clueSix.ordinal()] = clueSix;
+        DetectiveNotebook poison = new DetectiveNotebook();
+        poison.setDescription("Clue Five description");
+        poison.setAccused(true);
+        notebook[Clue.clueFive.ordinal()] = poison;
         
-        DetectiveNotebook clueSeven = new DetectiveNotebook();
-        clueSeven.setDescription("Clue Seven description");
-        clueSeven.setCoordinates(4,1);
-        notebook[Clue.clueSeven.ordinal()] = clueSeven;
+        DetectiveNotebook pipe = new DetectiveNotebook();
+        pipe.setDescription("Clue Six description");
+        pipe.setAccused(false);
+        notebook[Clue.clueSix.ordinal()] = pipe;
         
-        DetectiveNotebook clueEight = new DetectiveNotebook();
-        clueEight.setDescription("Clue Eight description");
-        clueEight.setCoordinates(4,3);
-        notebook[Clue.clueEight.ordinal()] = clueEight;
+        DetectiveNotebook gun = new DetectiveNotebook();
+        gun.setDescription("Clue Seven description");
+        gun.setAccused(true);
+        notebook[Clue.clueSeven.ordinal()] = gun;
         
-        DetectiveNotebook clueNine = new DetectiveNotebook();
-        clueNine.setDescription("Clue Nine description");
-        clueNine.setCoordinates(4,6);
-        notebook[Clue.clueNine.ordinal()] = clueNine;
-        return null;
+        DetectiveNotebook wrench = new DetectiveNotebook();
+        wrench.setDescription("Clue Eight description");
+        wrench.setAccused(false);
+        notebook[Clue.clueEight.ordinal()] = wrench;
+        
+        return notebook;
+        
     }
     
   //  public static Room[][] getMapLocations() {
   //      return ClueTeam3.getCurrentGame().getMansionMap().getRooms();
   //  }         // might not even need this LB 
-    
+public static DetectiveNotebook[] getSortedDetectiveNotebook() {
+        
+        // get inventory list for the current game
+        DetectiveNotebook[] originalDetectiveNotebook = 
+                ClueTeam3.getCurrentGame().getNotebook();
+        
+        // clone (make a copy) orignalList
+        DetectiveNotebook[] notebookList = originalDetectiveNotebook.clone();
+        
+       // using a BubbleSort to sort the list of inventoryList by name
+        DetectiveNotebook tempDetectiveNotebook;
+        for (int i = 0; i < notebookList.length-1; i++) {
+            for (int j = 0; j < notebookList.length-1-i; j++) {
+                if (notebookList[j].getDescription().
+                        compareToIgnoreCase(notebookList[j + 1].getDescription()) > 0) {
+                    tempDetectiveNotebook = notebookList[j];
+                    notebookList[j] = notebookList[j+1];
+                    notebookList[j+1] = tempDetectiveNotebook;
+                }
+            }
+        }
+        
+        return notebookList;
+    }    
 
 }    

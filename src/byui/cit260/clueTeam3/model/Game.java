@@ -22,16 +22,15 @@ public class Game implements Serializable {
     private Player player;
     private MansionMap mansionMap;
     private Time time;
-    private DetectiveNotebook detectiveNotebook;
-    
     private DetectiveNotebook[] notebook;
+    
 
-    public DetectiveNotebook getDetectiveNotebook() {
-        return detectiveNotebook;
+    public DetectiveNotebook[] getNotebook() {
+        return notebook;
     }
 
-    public void setDetectiveNotebook(DetectiveNotebook detectiveNotebook) {
-        this.detectiveNotebook = detectiveNotebook;
+    public void setNotebook(DetectiveNotebook[] notebook) {
+        this.notebook = notebook;
     }
 
     public Game() {

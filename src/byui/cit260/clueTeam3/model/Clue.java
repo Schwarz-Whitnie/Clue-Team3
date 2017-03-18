@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author Cameron
  */
-public enum Clue implements Serializable {
+public enum Clue {
     
     clueOne,
     clueTwo,
@@ -20,8 +20,7 @@ public enum Clue implements Serializable {
     clueFive,
     clueSix,
     clueSeven,
-    clueEight,
-    clueNine;
+    clueEight;
     
            
     private String description;
