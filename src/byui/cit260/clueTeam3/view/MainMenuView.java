@@ -6,8 +6,11 @@
 package byui.cit260.clueTeam3.view;
 
 import byui.cit260.clueTeam3.control.GameControl;
+import byui.cit260.clueTeam3.exeptions.MapControlException;
 import clueteam3.ClueTeam3;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -35,8 +38,14 @@ public class MainMenuView extends View {
         value = value.toUpperCase(); //convert choice to upper case
         
         switch (value) {
-            case "N": //create and start new game
+            case "N": {
+            try {
+                //create and start new game
                 this.startNewGame();
+            } catch (MapControlException ex) {
+                Logger.getLogger(MainMenuView.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
                 break;
             case "G": //get and start an existing game
                 this.startExistingGame();
@@ -55,7 +64,7 @@ public class MainMenuView extends View {
          return false;
     }
     
-    private void startNewGame() {
+    private void startNewGame() throws MapControlException {
         //create a new game
         GameControl.createNewGame(ClueTeam3.getPlayer());
         

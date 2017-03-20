@@ -6,7 +6,10 @@
 package byui.cit260.clueTeam3.view;
 
 import byui.cit260.clueTeam3.control.GameControl;
+import byui.cit260.clueTeam3.exeptions.GameControlException;
 import byui.cit260.clueTeam3.model.Player;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -56,7 +59,12 @@ public class StartProgramView extends View {
        }
        
        //call createPlayer() control function
-       Player player = GameControl.createPlayer(value);
+       Player player = null;
+        try {
+            player = GameControl.createPlayer(value);
+        } catch (GameControlException ex) {
+            Logger.getLogger(StartProgramView.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
        if (player == null) { //if unsuccessful
            System.out.println("\nError creating the player.");

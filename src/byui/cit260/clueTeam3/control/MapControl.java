@@ -237,7 +237,7 @@ public static int moveDetectiveToLocation (Detective detective, Point coordinate
        
  
  
- public static Room getRoom(Point coordinates) {
+ /*public static Room getRoom(Point coordinates) {
         return ClueTeam3.getCurrentGame().getMansionMap().getRooms()[coordinates.x-1][coordinates.y-1];
  }
  
