@@ -25,7 +25,7 @@ import java.util.HashMap;
 public class MapControl {
     
     
-    public static MansionMap createMansionMap() {
+    public static MansionMap createMansionMap() throws MapControlException {
     
         MansionMap mansionMap = new MansionMap(6,7); //swapped these LB
         

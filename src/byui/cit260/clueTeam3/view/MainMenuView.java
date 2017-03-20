@@ -6,6 +6,7 @@
 package byui.cit260.clueTeam3.view;
 
 import byui.cit260.clueTeam3.control.GameControl;
+import byui.cit260.clueTeam3.exeptions.MapControlException;
 import clueteam3.ClueTeam3;
 import java.util.Scanner;
 
