@@ -6,6 +6,7 @@
 package byui.cit260.clueTeam3.view;
 
 import byui.cit260.clueTeam3.control.GameControl;
+import byui.cit260.clueTeam3.exeptions.GameControlException;
 import byui.cit260.clueTeam3.model.DetectiveNotebook;
 import byui.cit260.clueTeam3.model.Game;
 import byui.cit260.clueTeam3.model.MansionMap;
@@ -190,8 +191,13 @@ public class GameMenuView extends View {
     
     private void viewDetectiveNotebook() {
         //display detective notebook
-        StringBuilder line;
+        StringBuilder line = null;
         
+        try { 
+            GameControl.getSortedDetectiveNotebook();
+        } catch (GameControlException dn) {
+            System.out.println(dn.getmessage());
+        }
         Game game = ClueTeam3.getCurrentGame();
         DetectiveNotebook[] notebook = game.getNotebook();
         

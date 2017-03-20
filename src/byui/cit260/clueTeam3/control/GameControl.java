@@ -120,7 +120,7 @@ public class GameControl {
   //  public static Room[][] getMapLocations() {
   //      return ClueTeam3.getCurrentGame().getMansionMap().getRooms();
   //  }         // might not even need this LB 
-public static DetectiveNotebook[] getSortedDetectiveNotebook() {
+public static DetectiveNotebook[] getSortedDetectiveNotebook() throws GameControlException {
         
         // get inventory list for the current game
         DetectiveNotebook[] originalDetectiveNotebook = 
@@ -138,7 +138,9 @@ public static DetectiveNotebook[] getSortedDetectiveNotebook() {
                     tempDetectiveNotebook = notebookList[j];
                     notebookList[j] = notebookList[j+1];
                     notebookList[j+1] = tempDetectiveNotebook;
-                }
+                    throw new GameControlException("Can not display notebook"
+                                                  + " because error.");
+               }
             }
         }
         
