@@ -46,7 +46,7 @@ public class GameControl {
         gameMenuView.display(); // moved this from line 36 to here LB 
         
         DetectiveNotebook[] notebookList = GameControl.createDetectiveNotebook();  
-        game.setDetectiveNotebook(notebookList); 
+        game.setNotebook(notebookList); 
 
     }
 

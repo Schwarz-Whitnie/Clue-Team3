@@ -23,6 +23,15 @@ public class Game implements Serializable {
     private MansionMap mansionMap;
     private Time time;
     private DetectiveNotebook[] notebook;
+    private Detective detective; 
+
+    public Detective getDetective() {
+        return detective;
+    }
+
+    public void setDetective(Detective detective) {
+        this.detective = detective;
+    }
     
 
     public DetectiveNotebook[] getNotebook() {
@@ -108,9 +117,8 @@ public class Game implements Serializable {
         return true;
     }
 
-    public void setDetectiveNotebook(DetectiveNotebook[] detectiveNotebook) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
+    
     
     
  

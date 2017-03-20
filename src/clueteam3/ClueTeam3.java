@@ -26,21 +26,8 @@ public class ClueTeam3 {
     private static BufferedReader inFile = null;
     private static PrintWriter logFile = null;
 
-    public static Game getCurrentGame() {
-        return currentGame;
-    }
-
-    public static void setCurrentGame(Game currentGame) {
-        ClueTeam3.currentGame = currentGame;
-    }
+   
     
-    public static Player getPlayer() {
-        return player;
-    }
-
-    public static void setPlayer(Player player) {
-        ClueTeam3.player = player;
-    }
     /**
      * @param args the command line arguments
      */
@@ -90,6 +77,22 @@ public class ClueTeam3 {
             }   
         }
        
+    }
+    
+      public static Game getCurrentGame() {
+        return currentGame;
+    }
+
+    public static void setCurrentGame(Game currentGame) {
+        ClueTeam3.currentGame = currentGame;
+    }
+    
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player player) {
+        ClueTeam3.player = player;
     }
     
      public static PrintWriter getOutFile() {

@@ -11,6 +11,7 @@ import byui.cit260.clueTeam3.model.Game;
 import byui.cit260.clueTeam3.model.MansionMap;
 import byui.cit260.clueTeam3.model.Player;
 import byui.cit260.clueTeam3.model.ResourceTypeScene;
+import static byui.cit260.clueTeam3.model.ResourceTypeScene.room;
 import byui.cit260.clueTeam3.model.Room;
 import byui.cit260.clueTeam3.model.Scene;
 import clueteam3.ClueTeam3;
@@ -220,7 +221,7 @@ public static void moveDetectiveToStartingLocation(MansionMap mansionMap)
  }
  
  
-public static int moveDetectiveToLocation (Detective detective, Point coordinates) 
+public static void moveDetectiveToLocation (Detective detective, Point coordinates) 
                  throws MapControlException {
      
        MansionMap mansionMap = ClueTeam3.getCurrentGame().getMansionMap();
@@ -234,10 +235,8 @@ public static int moveDetectiveToLocation (Detective detective, Point coordinate
                                       + " because that location is outside "
                                       + " the bounds of the map."); 
          }
-       
  
- 
- /*public static Room getRoom(Point coordinates) {
+public static Room getRoom(Point coordinates) {
         return ClueTeam3.getCurrentGame().getMansionMap().getRooms()[coordinates.x-1][coordinates.y-1];
  }
  
