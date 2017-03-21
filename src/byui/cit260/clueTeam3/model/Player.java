@@ -17,6 +17,15 @@ public class Player implements Serializable{
     // class instance variables
     private String name;
     private double bestTime;
+    private Point coordinates;
+
+    public Point getCoordinates() {
+        return coordinates;
+    }
+
+    public void setCoordinates(Point coordinates) {
+        this.coordinates = coordinates;
+    }
     
     private Game[] game;
 

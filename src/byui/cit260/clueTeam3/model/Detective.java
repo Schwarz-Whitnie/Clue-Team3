@@ -11,13 +11,13 @@ import java.io.Serializable;
  *
  * @author whitnieschwarz
  */
-public enum Detective implements Serializable {
+public class Detective implements Serializable {
     
-    Detective("Detective");
+    //Detective("Detective"); TS
     
      private final String description;
     
-    Detective(String description) {
+    public Detective(String description) {
         this.description = description;
     }
 

@@ -8,7 +8,8 @@ package byui.cit260.clueTeam3.view;
 import byui.cit260.clueTeam3.control.MapControl;
 import byui.cit260.clueTeam3.exeptions.MapControlException;
 import byui.cit260.clueTeam3.model.Detective;
-import java.awt.Point;
+import byui.cit260.clueTeam3.model.Player;
+import byui.cit260.clueTeam3.model.Point;
 
 /**
  *
@@ -26,11 +27,11 @@ public class MoveDetectiveView extends View {
 
     @Override
     public boolean doAction(String choice)  {
-        Detective detective = null;
+        Player player = null;
         
         try {
             Point coordinates = null;
-            MapControl.moveDetectiveToLocation(detective, coordinates);
+            MapControl.moveDetectiveToLocation(player, coordinates);
         } catch (MapControlException me) {
             System.out.println(me.getMessage());
         }

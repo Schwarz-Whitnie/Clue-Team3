@@ -17,20 +17,19 @@ public class Game implements Serializable {
     
     //class instance varibales
     private double totalTime;
-    private double noPeople;
 
     private Player player;
     private MansionMap mansionMap;
     private Time time;
     private DetectiveNotebook[] notebook;
-    private Detective detective; 
+    
 
-    public Detective getDetective() {
-        return detective;
+    public Player getPlayer() {
+        return player;
     }
 
-    public void setDetective(Detective detective) {
-        this.detective = detective;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
     
 
@@ -44,14 +43,6 @@ public class Game implements Serializable {
 
     public Game() {
         this.totalTime = 0;
-    }
-
-    public Player getPlayer() {
-        return player;
-    }
-
-    public void setPlayer(Player player) {
-        this.player = player;
     }
 
     public MansionMap getMansionMap() {
@@ -78,19 +69,11 @@ public class Game implements Serializable {
         this.totalTime = totalTime;
     }
 
-    public double getNoPeople() {
-        return noPeople;
-    }
-
-    public void setNoPeople(double noPeople) {
-        this.noPeople = noPeople;
-    }
 
     @Override
     public int hashCode() {
         int hash = 3;
         hash = 59 * hash + (int) (Double.doubleToLongBits(this.totalTime) ^ (Double.doubleToLongBits(this.totalTime) >>> 32));
-        hash = 59 * hash + (int) (Double.doubleToLongBits(this.noPeople) ^ (Double.doubleToLongBits(this.noPeople) >>> 32));
         return hash;
     }
     
@@ -111,9 +94,7 @@ public class Game implements Serializable {
         if (Double.doubleToLongBits(this.totalTime) != Double.doubleToLongBits(other.totalTime)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.noPeople) != Double.doubleToLongBits(other.noPeople)) {
-            return false;
-        }
+       
         return true;
     }
 

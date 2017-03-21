@@ -12,7 +12,22 @@ package byui.cit260.clueTeam3.model;
 public class Point { 
     private int row;
     private int column;
-    
+
+    public int getRow() {
+        return row;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
+
+    public int getColumn() {
+        return column;
+    }
+
+    public void setColumn(int column) {
+        this.column = column;
+    }
 
     //Point(int i, int i0) {
       //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -21,6 +36,9 @@ public class Point {
     public Point(int row,int column) {
         this.row = row;
         this.column = column;
+        
+    }
+    public Point() {
         
     }
     

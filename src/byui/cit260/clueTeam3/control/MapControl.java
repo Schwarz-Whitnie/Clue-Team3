@@ -10,12 +10,12 @@ import byui.cit260.clueTeam3.model.Detective;
 import byui.cit260.clueTeam3.model.Game;
 import byui.cit260.clueTeam3.model.MansionMap;
 import byui.cit260.clueTeam3.model.Player;
+import byui.cit260.clueTeam3.model.Point;
 import byui.cit260.clueTeam3.model.ResourceTypeScene;
 import static byui.cit260.clueTeam3.model.ResourceTypeScene.room;
 import byui.cit260.clueTeam3.model.Room;
 import byui.cit260.clueTeam3.model.Scene;
 import clueteam3.ClueTeam3;
-import java.awt.Point;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -213,31 +213,35 @@ public static void moveDetectiveToStartingLocation(MansionMap mansionMap)
    //Detective[] detective = Detective.values();
    Game game = ClueTeam3.getCurrentGame();
    
-     for (Detective detective : detectives) {
+   Player player = new Player();
+   
+   
+    // for (Detective detective : detectives) { TS
          Point coordinates = new Point(0,2);
-         MapControl.moveDetectiveToLocation(detective, coordinates);
-         
-     }
+         MapControl.moveDetectiveToLocation(player, coordinates);
+         game.setPlayer(player);
+     //}
  }
  
  
-public static void moveDetectiveToLocation (Detective detective, Point coordinates) 
+public static void moveDetectiveToLocation (Player player, Point coordinates) 
                  throws MapControlException {
      
        MansionMap mansionMap = ClueTeam3.getCurrentGame().getMansionMap();
-       int newRow = coordinates.x-1;
-       int newColumn = coordinates.y-1;
+       int newRow = coordinates.getRow();
+       int newColumn = coordinates.getColumn();
      
        if (newRow < 0 || newRow >= mansionMap.getRowCount() || 
              newColumn < 0 || newColumn >= mansionMap.getColumnCount()) {
             throw new MapControlException("Can not move actor to location " 
-                                      + coordinates.x + ", " + coordinates.y 
+                                      + newRow + ", " + newColumn 
                                       + " because that location is outside "
                                       + " the bounds of the map."); 
          }
- 
+        player.setCoordinates(coordinates);
+}
 public static Room getRoom(Point coordinates) {
-        return ClueTeam3.getCurrentGame().getMansionMap().getRooms()[coordinates.x-1][coordinates.y-1];
+        return ClueTeam3.getCurrentGame().getMansionMap().getRooms()[coordinates.getRow()][coordinates.getColumn()];
  }
  
 }

@@ -10,6 +10,7 @@ import byui.cit260.clueTeam3.exeptions.GameControlException;
 import byui.cit260.clueTeam3.model.DetectiveNotebook;
 import byui.cit260.clueTeam3.model.Game;
 import byui.cit260.clueTeam3.model.MansionMap;
+import byui.cit260.clueTeam3.model.Point;
 import byui.cit260.clueTeam3.model.Room;
 import byui.cit260.clueTeam3.model.Scene;
 import clueteam3.ClueTeam3;
@@ -97,6 +98,10 @@ public class GameMenuView extends View {
         this.printTitle(out, noColumns, "Map of the Mansion");
         this.printColumnHeaders(out, noColumns);
         
+        Point playerLocation = new Point();
+        playerLocation.setRow(ClueTeam3.getCurrentGame().getPlayer().getCoordinates().getRow());
+        playerLocation.setColumn(ClueTeam3.getCurrentGame().getPlayer().getCoordinates().getColumn());
+        
         for (int i = 0; i < map.getRowCount(); i++) {    
             Room[] rowLocations = rooms[i];
             this.printRowDivider(out, noColumns);
@@ -110,7 +115,7 @@ public class GameMenuView extends View {
             for (int column = 0; column < noColumns; column++) {
                 out.print("|"); // print column divider
                 Room room = rowLocations[column];
-                if (room != null && room.isVisited()) { // if location is visited 
+                if (room != null) { // if location is visited 
                     
                     Scene scene = room.getScene();
                     if (scene != null)
@@ -125,7 +130,7 @@ public class GameMenuView extends View {
             
             out.print("|"); // print column divider
         }
-        
+        out.print("\nYou are at location " + playerLocation.getRow() + ", " + playerLocation.getColumn());
         this.printRowDivider(out, noColumns);
     }
     
