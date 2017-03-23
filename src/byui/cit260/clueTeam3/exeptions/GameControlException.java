@@ -30,8 +30,5 @@ public class GameControlException extends Exception {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 
-    public boolean getmessage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }

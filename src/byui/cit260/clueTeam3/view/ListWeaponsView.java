@@ -18,7 +18,7 @@ public class ListWeaponsView extends View{
     
     public void ListWeaponsView(PrintWriter out) {
         
-        try {
+       /* try {
            
             out.println("/n     Weapon Report     ");
             out.printf("%n%-20s%10s", "Weapon", "Status");

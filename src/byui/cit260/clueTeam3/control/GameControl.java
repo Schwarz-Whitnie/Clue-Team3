@@ -42,16 +42,16 @@ public class GameControl {
         GameMenuView gameMenuView = new GameMenuView(); //
         
         
-        //DetectiveNotebook[] notebookList = GameControl.createDetectiveNotebook();  
-        //game.setDetectiveNotebook(notebookList);  // will need these at some point LB 
+        DetectiveNotebook[] notebookList = GameControl.createDetectiveNotebook();  
+        game.setNotebook(notebookList);  // will need these at some point LB 
         
         MansionMap mansionMap = MapControl.createMansionMap(); // creating an storing in the game LB
         game.setMansionMap(mansionMap);
         MapControl.moveDetectiveToStartingLocation(mansionMap); // added this back  LB 
         gameMenuView.display(); // moved this from line 36 to here LB 
         
-        DetectiveNotebook[] notebookList = GameControl.createDetectiveNotebook();  
-        game.setNotebook(notebookList); 
+        //DetectiveNotebook[] notebookList = GameControl.createDetectiveNotebook();  
+        //game.setNotebook(notebookList); 
 
     }
     
@@ -108,42 +108,42 @@ public class GameControl {
         DetectiveNotebook[] notebook = new DetectiveNotebook[8];
         
         DetectiveNotebook candlestick = new DetectiveNotebook();
-        candlestick.setDescription("Clue One description");
+        candlestick.setDescription("Candle Stick");
         candlestick.setAccused(true);
         notebook[Clue.clueOne.ordinal()] = candlestick;
         
         DetectiveNotebook knife = new DetectiveNotebook();
-        knife.setDescription("Clue Two description");
+        knife.setDescription("Knife");
         knife.setAccused(false);
         notebook[Clue.clueTwo.ordinal()] = knife;
         
         DetectiveNotebook rope = new DetectiveNotebook();
-        rope.setDescription("Clue Three description");
+        rope.setDescription("Rope");
         rope.setAccused(true);
         notebook[Clue.clueThree.ordinal()] = rope;
         
         DetectiveNotebook dumbbell = new DetectiveNotebook();
-        dumbbell.setDescription("Clue Four description");
+        dumbbell.setDescription("Dumbbell");
         dumbbell.setAccused(false);
         notebook[Clue.clueFour.ordinal()] = dumbbell;
         
         DetectiveNotebook poison = new DetectiveNotebook();
-        poison.setDescription("Clue Five description");
+        poison.setDescription("Poison");
         poison.setAccused(true);
         notebook[Clue.clueFive.ordinal()] = poison;
         
         DetectiveNotebook pipe = new DetectiveNotebook();
-        pipe.setDescription("Clue Six description");
+        pipe.setDescription("Pipe");
         pipe.setAccused(false);
         notebook[Clue.clueSix.ordinal()] = pipe;
         
         DetectiveNotebook gun = new DetectiveNotebook();
-        gun.setDescription("Clue Seven description");
+        gun.setDescription("Gun");
         gun.setAccused(true);
         notebook[Clue.clueSeven.ordinal()] = gun;
         
         DetectiveNotebook wrench = new DetectiveNotebook();
-        wrench.setDescription("Clue Eight description");
+        wrench.setDescription("Wrench");
         wrench.setAccused(false);
         notebook[Clue.clueEight.ordinal()] = wrench;
         
@@ -181,4 +181,7 @@ public static DetectiveNotebook[] getSortedDetectiveNotebook() throws GameContro
         return notebookList;
     }    
 
+public static DetectiveNotebook[] getNotebook() {    
+    return ClueTeam3.getCurrentGame().getNotebook();
+}    
 }    
