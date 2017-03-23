@@ -6,8 +6,10 @@
 package byui.cit260.clueTeam3.view;
 
 import byui.cit260.clueTeam3.control.GameControl;
+import byui.cit260.clueTeam3.exeptions.GameControlException;
 import byui.cit260.clueTeam3.exeptions.MapControlException;
 import clueteam3.ClueTeam3;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -78,7 +80,20 @@ public class MainMenuView extends View {
     }
     
     private void saveGame() {
-        System.out.println("*** saveGame function called ***");
+        this.console.println("/n/nEnter the file pather for file where the game is to be saved");
+        
+        String filePath = this.getInput();
+        
+        try{
+            
+            GameControl.saveGame(ClueTeam3.getCurrentGame(), filePath);
+          
+        } catch (GameControlException ex) {
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
     }
 
     private void displayHelpMenu() {

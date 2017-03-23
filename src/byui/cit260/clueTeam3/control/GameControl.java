@@ -16,6 +16,11 @@ import byui.cit260.clueTeam3.model.MansionMap;
 import byui.cit260.clueTeam3.model.Room;
 import byui.cit260.clueTeam3.model.Scene;
 import byui.cit260.clueTeam3.view.GameMenuView;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  *
@@ -49,7 +54,36 @@ public class GameControl {
         game.setNotebook(notebookList); 
 
     }
-
+    
+    public static void saveGame(Game game, String filepath) 
+        throws GameControlException {
+        
+    try( FileOutputStream fops = new FileOutputStream(filepath)) {
+        ObjectOutputStream output = new ObjectOutputStream(fops);
+        
+        output.writeObject(game);
+    }
+    catch(IOException ex) {
+        throw new GameControlException(ex.getMessage());
+    }
+    }
+    
+    public static void getSavedGame(String filepath)
+            throws GameControlException {
+        Game game = null;
+        
+        try( FileInputStream fips = new FileInputStream(filepath)) {
+        ObjectInputStream input = new ObjectInputStream(fips);
+        
+        game = (Game) input.readObject();
+        
+        } catch (Exception e) {
+            throw new GameControlException(e.getMessage());
+        }
+        
+        ClueTeam3.setCurrentGame(game);
+    }
+    
     public static Player createPlayer(String name) throws GameControlException {
          
         if (name == null) {

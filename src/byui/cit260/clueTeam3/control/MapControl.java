@@ -7,15 +7,16 @@ package byui.cit260.clueTeam3.control;
 
 import byui.cit260.clueTeam3.exeptions.MapControlException;
 import byui.cit260.clueTeam3.model.Detective;
+import byui.cit260.clueTeam3.model.Direction;
 import byui.cit260.clueTeam3.model.Game;
 import byui.cit260.clueTeam3.model.MansionMap;
 import byui.cit260.clueTeam3.model.Player;
 import byui.cit260.clueTeam3.model.Point;
 import byui.cit260.clueTeam3.model.ResourceTypeScene;
-import static byui.cit260.clueTeam3.model.ResourceTypeScene.room;
 import byui.cit260.clueTeam3.model.Room;
 import byui.cit260.clueTeam3.model.Scene;
 import clueteam3.ClueTeam3;
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -28,7 +29,7 @@ public class MapControl {
     
     public static MansionMap createMansionMap() throws MapControlException {
     
-        MansionMap mansionMap = new MansionMap(6,7); //swapped these LB
+        MansionMap mansionMap = new MansionMap(5,5); //swapped these LB
         
         Scene[] scenes = createScenes();
         
@@ -55,7 +56,7 @@ public class MapControl {
         finishScene.setTravelTime(Double.POSITIVE_INFINITY);
         scenes[ResourceTypeScene.finish.ordinal()] = finishScene;
         
-        Scene clueScene = new Scene();
+        /*Scene clueScene = new Scene();
         clueScene.setDescription("Look, it's a clue..");
         clueScene.setMapSymbol("CL");
         clueScene.setBlocked(false);
@@ -74,14 +75,14 @@ public class MapControl {
         characterScene.setMapSymbol("CT");
         characterScene.setBlocked(false);
         characterScene.setTravelTime(300);
-        scenes[ResourceTypeScene.character.ordinal()] = characterScene;
+        scenes[ResourceTypeScene.character.ordinal()] = characterScene;*/
         
         Scene roomScene = new Scene();
         roomScene.setDescription("Let's explore the room..");
         roomScene.setMapSymbol("RM");
         roomScene.setBlocked(false);
         roomScene.setTravelTime(300);
-        scenes[ResourceTypeScene.character.ordinal()] = roomScene;
+        scenes[ResourceTypeScene.room.ordinal()] = roomScene;
         
         Scene hallScene = new Scene();
         hallScene.setDescription("You are in the hall..");
@@ -99,112 +100,69 @@ public class MapControl {
         
         // starting point
         rooms[0][0].setScene(scenes[ResourceTypeScene.room.ordinal()]);
-        rooms[0][1].setScene(scenes[ResourceTypeScene.clue.ordinal()]);
+        rooms[0][1].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
         rooms[0][2].setScene(scenes[ResourceTypeScene.room.ordinal()]);
-        rooms[0][3].setScene(scenes[ResourceTypeScene.clue.ordinal()]);
-        rooms[0][4].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
-        rooms[0][5].setScene(scenes[ResourceTypeScene.room.ordinal()]);
-        rooms[0][6].setScene(scenes[ResourceTypeScene.clue.ordinal()]);
+        rooms[0][3].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
+        rooms[0][4].setScene(scenes[ResourceTypeScene.room.ordinal()]);
         
-        rooms[1][0].setScene(scenes[ResourceTypeScene.character.ordinal()]);
-        rooms[1][1].setScene(scenes[ResourceTypeScene.weapon.ordinal()]);
-        rooms[1][2].setScene(scenes[ResourceTypeScene.character.ordinal()]);
-        rooms[1][3].setScene(scenes[ResourceTypeScene.weapon.ordinal()]);
+        rooms[1][0].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
+        rooms[1][1].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
+        rooms[1][2].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
+        rooms[1][3].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
         rooms[1][4].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
-        rooms[1][5].setScene(scenes[ResourceTypeScene.character.ordinal()]);
-        rooms[1][6].setScene(scenes[ResourceTypeScene.weapon.ordinal()]);
         
         rooms[2][0].setScene(scenes[ResourceTypeScene.room.ordinal()]);
-        rooms[2][1].setScene(scenes[ResourceTypeScene.clue.ordinal()]);
+        rooms[2][1].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
         rooms[2][2].setScene(scenes[ResourceTypeScene.room.ordinal()]);
-        rooms[2][3].setScene(scenes[ResourceTypeScene.clue.ordinal()]);
-        rooms[2][4].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
-        rooms[2][5].setScene(scenes[ResourceTypeScene.room.ordinal()]);
-        rooms[2][6].setScene(scenes[ResourceTypeScene.clue.ordinal()]);
+        rooms[2][3].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
+        rooms[2][4].setScene(scenes[ResourceTypeScene.room.ordinal()]);
         
-        rooms[3][0].setScene(scenes[ResourceTypeScene.character.ordinal()]);
-        rooms[3][1].setScene(scenes[ResourceTypeScene.weapon.ordinal()]);
-        rooms[3][2].setScene(scenes[ResourceTypeScene.character.ordinal()]);
-        rooms[3][3].setScene(scenes[ResourceTypeScene.weapon.ordinal()]);
+        rooms[3][0].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
+        rooms[3][1].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
+        rooms[3][2].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
+        rooms[3][3].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
         rooms[3][4].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
-        rooms[3][5].setScene(scenes[ResourceTypeScene.character.ordinal()]);
-        rooms[3][6].setScene(scenes[ResourceTypeScene.weapon.ordinal()]);
         
         rooms[4][0].setScene(scenes[ResourceTypeScene.room.ordinal()]);
-        rooms[4][1].setScene(scenes[ResourceTypeScene.clue.ordinal()]);
+        rooms[4][1].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
         rooms[4][2].setScene(scenes[ResourceTypeScene.room.ordinal()]);
-        rooms[4][3].setScene(scenes[ResourceTypeScene.clue.ordinal()]);
-        rooms[4][4].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
-        rooms[4][5].setScene(scenes[ResourceTypeScene.room.ordinal()]);
-        rooms[4][6].setScene(scenes[ResourceTypeScene.clue.ordinal()]);
-        
-        rooms[5][0].setScene(scenes[ResourceTypeScene.character.ordinal()]);
-        rooms[5][1].setScene(scenes[ResourceTypeScene.weapon.ordinal()]);
-        rooms[5][2].setScene(scenes[ResourceTypeScene.character.ordinal()]);
-        rooms[5][3].setScene(scenes[ResourceTypeScene.weapon.ordinal()]);
-        rooms[5][4].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
-        rooms[5][5].setScene(scenes[ResourceTypeScene.character.ordinal()]);
-        rooms[5][6].setScene(scenes[ResourceTypeScene.weapon.ordinal()]);
+        rooms[4][3].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
+        rooms[4][4].setScene(scenes[ResourceTypeScene.room.ordinal()]);
         
         HashMap<String, ArrayList<Point>> sceneLocations =
                 new HashMap<String, ArrayList<Point>>();
         
-        ArrayList<Point> clueCoordinates = new ArrayList<Point>();
-        clueCoordinates.add(new Point(0,1));
-        clueCoordinates.add(new Point(0,3));
-        clueCoordinates.add(new Point(0,6));
-        clueCoordinates.add(new Point(2,1));
-        clueCoordinates.add(new Point(2,3));
-        clueCoordinates.add(new Point(2,6));
-        clueCoordinates.add(new Point(4,1));
-        clueCoordinates.add(new Point(4,3));
-        clueCoordinates.add(new Point(4,6));
-        sceneLocations.put("CLUE", clueCoordinates);
-        
-        ArrayList<Point> weaponCoordinates = new ArrayList<Point>();
-        weaponCoordinates.add(new Point(1,0));
-        weaponCoordinates.add(new Point(1,2));
-        weaponCoordinates.add(new Point(1,5));
-        weaponCoordinates.add(new Point(3,0));
-        weaponCoordinates.add(new Point(3,2));
-        weaponCoordinates.add(new Point(3,5));
-        weaponCoordinates.add(new Point(5,0));
-        weaponCoordinates.add(new Point(5,2));
-        weaponCoordinates.add(new Point(5,5));
-        sceneLocations.put("WEAPON", weaponCoordinates);
-        
-        ArrayList<Point> hallCoordinates = new ArrayList<Point>();
-        hallCoordinates.add(new Point(0,4));
-        hallCoordinates.add(new Point(1,4));
-        hallCoordinates.add(new Point(2,4));
-        hallCoordinates.add(new Point(3,4));
-        hallCoordinates.add(new Point(4,4));
-        hallCoordinates.add(new Point(5,4));
-        sceneLocations.put("HALL", hallCoordinates);
-        
-         ArrayList<Point> roomCoordinates = new ArrayList<Point>();
+        ArrayList<Point> roomCoordinates = new ArrayList<Point>();
         roomCoordinates.add(new Point(0,0));
         roomCoordinates.add(new Point(0,2));
-        roomCoordinates.add(new Point(0,5));
+        roomCoordinates.add(new Point(0,4));
         roomCoordinates.add(new Point(2,0));
         roomCoordinates.add(new Point(2,2));
-        roomCoordinates.add(new Point(2,5));
+        roomCoordinates.add(new Point(2,4));
         roomCoordinates.add(new Point(4,0));
         roomCoordinates.add(new Point(4,2));
-        roomCoordinates.add(new Point(4,5));
-        sceneLocations.put("ROOM", roomCoordinates);
+        roomCoordinates.add(new Point(4,4));
+        sceneLocations.put("Room", roomCoordinates);
         
- ArrayList<Point> characterCoordinates = new ArrayList<Point>();
-        characterCoordinates.add(new Point(1,0));
-        characterCoordinates.add(new Point(1,2));
-        characterCoordinates.add(new Point(1,6));
-        characterCoordinates.add(new Point(3,0));
-        characterCoordinates.add(new Point(3,2));
-        characterCoordinates.add(new Point(3,6));
-        characterCoordinates.add(new Point(5,0));
-        characterCoordinates.add(new Point(5,2));
-        characterCoordinates.add(new Point(5,6));
-        sceneLocations.put("CHARACTER", characterCoordinates);
+        
+        ArrayList<Point> hallCoordinates = new ArrayList<Point>();
+        hallCoordinates.add(new Point(0,1));
+        hallCoordinates.add(new Point(0,3));
+        hallCoordinates.add(new Point(1,0));
+        hallCoordinates.add(new Point(1,1));
+        hallCoordinates.add(new Point(1,2));
+        hallCoordinates.add(new Point(1,3));
+        hallCoordinates.add(new Point(1,4));
+        hallCoordinates.add(new Point(2,1));
+        hallCoordinates.add(new Point(2,3));
+        hallCoordinates.add(new Point(3,0));
+        hallCoordinates.add(new Point(3,1));
+        hallCoordinates.add(new Point(3,2));
+        hallCoordinates.add(new Point(3,3));
+        hallCoordinates.add(new Point(3,4));
+        hallCoordinates.add(new Point(4,1));
+        hallCoordinates.add(new Point(4,3));
+        sceneLocations.put("Hallway", hallCoordinates);
 }
         
 public static void moveDetectiveToStartingLocation(MansionMap mansionMap) 
@@ -224,9 +182,98 @@ public static void moveDetectiveToStartingLocation(MansionMap mansionMap)
  }
  
  
+public static Point moveDetectiveToLocation(Player player, Direction direction, int distance) 
+                            throws MapControlException {
+    
+    Point blockedLocation = null;
+        
+        if (player == null  || direction == null  || distance < 1) {
+            throw new MapControlException("actor, direction or distance is invalid");
+        }
+        
+        Game game = ClueTeam3.getCurrentGame();    
+        MansionMap mansionMap = ClueTeam3.getCurrentGame().getMansionMap();
+        Point currentPosition = player.getCoordinates();
+        Point newPosition = null;
+        
+        if (currentPosition == null) {
+            throw new MapControlException("Actor is currently is not assigned "
+                                          + "to a location");
+        }
+        
+        int currentRow = currentPosition.getRow();
+        int currentColumn = currentPosition.getColumn();
+
+        if (currentRow < 0  || currentRow >= mansionMap.getRowCount() ||
+            currentColumn < 0  || currentColumn >= mansionMap.getColumnCount()) {
+            throw new MapControlException("Actor is currently in an invalid "
+                                          + "location");
+        }
+        
+        // get new position
+        int newRow = currentPosition.getRow() + (direction.getxIncrement() * distance);
+        int newColumn = currentPosition.getColumn() + (direction.getyIncrement() * distance);
+        
+                   
+        if (newRow < 0  || newRow >= mansionMap.getRowCount() ||
+            newColumn < 0  || newColumn >= mansionMap.getColumnCount()) {
+            throw new MapControlException("Trying to move to a location "
+                                          + "outside bounds of the map");
+        }  
+        
+        
+        // Check to see if the path is blocked
+        boolean blocked = false;
+        Room[][] rooms = mansionMap.getRooms();
+        
+        int noOfRows = (newRow - currentRow) * direction.getxIncrement();
+        int row = currentRow + direction.getxIncrement();      
+        for (int i = 0; i < noOfRows; i++ ) {
+            rooms[row][currentColumn].setVisited(true);
+            
+            if (rooms[row][currentColumn].getScene().isBlocked()){   
+                blocked = true;
+                newRow = row - direction.getxIncrement();
+                blockedLocation = new Point(row+1, currentColumn+1);
+                break;
+            }
+            
+            row += direction.getxIncrement();
+        }
+        
+        
+        int noOfColumns = (newColumn - currentColumn) * direction.getyIncrement();
+        int column = currentColumn + direction.getyIncrement();       
+        for (int i = 0; i < noOfColumns; i++ ) {
+            rooms[currentRow][column].setVisited(true);
+
+            if (rooms[currentRow][column].getScene().isBlocked()){ 
+                blocked = true;
+                newColumn = column - direction.getyIncrement();
+                blockedLocation = new Point(currentRow+1, column+1);
+                break;
+            }  
+            column += direction.getyIncrement();
+        } 
+        
+        
+        if (currentRow != newRow || currentColumn != newColumn) {
+            Room currentLocation = mansionMap.getRooms()[currentRow][currentColumn];
+            currentLocation.removePlayer(player); // remove actor from old location
+
+            // set actor to new location
+            newPosition = new Point(newRow, newColumn);
+            MapControl.moveDetectiveToLocation(player, newPosition);
+        }
+
+        
+        return blockedLocation;
+}
+
+
 public static void moveDetectiveToLocation (Player player, Point coordinates) 
                  throws MapControlException {
-     
+//code 3-22-17
        MansionMap mansionMap = ClueTeam3.getCurrentGame().getMansionMap();
        int newRow = coordinates.getRow();
        int newColumn = coordinates.getColumn();

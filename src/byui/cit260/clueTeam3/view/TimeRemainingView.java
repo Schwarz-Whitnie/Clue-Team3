@@ -6,6 +6,10 @@
 package byui.cit260.clueTeam3.view;
 
 import byui.cit260.clueTeam3.control.TimeControl;
+import clueteam3.ClueTeam3;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
@@ -18,6 +22,8 @@ public class TimeRemainingView {
     private String locationPrompt;
     private String passagewayPrompt;
     private double timeRemaining;
+    protected final BufferedReader keyboard = ClueTeam3.getInFile();
+    protected final PrintWriter console = ClueTeam3.getOutFile();
     
     public TimeRemainingView() {
         this.roomPrompt = "\nPlease enter number of rooms passed through:";
@@ -52,66 +58,72 @@ public class TimeRemainingView {
     }
 private String getRoomsTraveled() {
         
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
         String value = ""; // value to be returned
         boolean valid = false; //initialize to not valid
-        
+        try {
         while (!valid) { // loop while an invalid value is enter
-            System.out.println("\n" + this.roomPrompt);
+            this.console.println("\n" + this.roomPrompt);
             
-            value = keyboard.nextLine(); // get next line typed one keyboard
+            value = this.keyboard.readLine(); // get next line typed one keyboard
             value = value.trim(); // trim off leading and trailing blanks
             
             if (value.length() < 1) { // value is blank
-                System.out.println("\nInvalid value: value can not be blank");
+                ErrorView.display(this.getClass().getName(),"\nInvalid value: value can not be blank");
                 continue;
             }
             
             break; // end the loop
+        }
+        } catch (IOException ex) {
+        ErrorView.display(this.getClass().getName(),"Error reading input: " + ex.getMessage());
         }
         return value; // return the value entered
     }
     
 private String getLocationsTraveled() {
         
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
         String value = ""; // value to be returned
         boolean valid = false; //initialize to not valid
-        
+        try {
         while (!valid) { // loop while an invalid value is enter
-            System.out.println("\n" + this.locationPrompt);
+            this.console.println("\n" + this.locationPrompt);
             
-            value = keyboard.nextLine(); // get next line typed one keyboard
+            value = this.keyboard.readLine(); // get next line typed one keyboard
             value = value.trim(); // trim off leading and trailing blanks
             
             if (value.length() < 1) { // value is blank
-                System.out.println("\nInvalid value: value can not be blank");
+                ErrorView.display(this.getClass().getName(),"\nInvalid value: value can not be blank");
                 continue;
             }
             
             break; // end the loop
+        }
+        } catch (IOException ex) {
+        ErrorView.display(this.getClass().getName(),"Error reading input: " + ex.getMessage());
         }
         return value; // return the value entered
     }
 
 private String getPassagewaysUsed() {
         
-        Scanner keyboard = new Scanner(System.in); // get infile for keyboard
         String value = ""; // value to be returned
         boolean valid = false; //initialize to not valid
-        
+        try {
         while (!valid) { // loop while an invalid value is enter
-            System.out.println("\n" + this.passagewayPrompt);
+            this.console.println("\n" + this.passagewayPrompt);
             
-            value = keyboard.nextLine(); // get next line typed one keyboard
+            value = this.keyboard.readLine(); // get next line typed one keyboard
             value = value.trim(); // trim off leading and trailing blanks
             
             if (value.length() < 1) { // value is blank
-                System.out.println("\nInvalid value: value can not be blank");
+                ErrorView.display(this.getClass().getName(),"\nInvalid value: value can not be blank");
                 continue;
             }
             
             break; // end the loop
+        }
+        } catch (IOException ex) {
+        ErrorView.display(this.getClass().getName(),"Error reading input: " + ex.getMessage());
         }
         return value; // return the value entered
     }
@@ -119,19 +131,19 @@ private String getPassagewaysUsed() {
    public boolean doAction(String roomsTraveled, String locationsTraveled, String passagewaysUsed) {
         
        if (roomsTraveled.equals("-1")) {
-           System.out.println("\nInvalid number of rooms: "
+           ErrorView.display(this.getClass().getName(),"\nInvalid number of rooms: "
                    + "The number of rooms must be greater than 0");
            return false;
        }
        
        if (locationsTraveled.equals("-1")) {
-           System.out.println("\nInvalid number of locations: "
+           ErrorView.display(this.getClass().getName(),"\nInvalid number of locations: "
                    + "The number of locations must be greater than 0");
            return false;
        }
        
        if (passagewaysUsed.equals("-1")) {
-           System.out.println("\nInvalid number of passageway used: "
+           ErrorView.display(this.getClass().getName(),"\nInvalid number of passageway used: "
                    + "The number of passageways must be between 0-3");
            return false;
        }
@@ -156,7 +168,7 @@ private String getPassagewaysUsed() {
     }
 
     private void displayNextView(TimeControl timeControl) {
-        System.out.println(
+        this.console.println(
                 "\n=============================================="
                 + "\n You have " + timeRemaining 
                 + "\n minutes remaining in the game."

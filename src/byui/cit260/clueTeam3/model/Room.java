@@ -65,7 +65,11 @@ public class Room implements Serializable {
     public void setCharacter(Character character) {
         this.character = character;
     }
-
+    public void removePlayer(Player player) {
+        if (player == null) {
+            return;
+        }
+    }
     public Weapon getWeapon() {
         return weapon;
     }

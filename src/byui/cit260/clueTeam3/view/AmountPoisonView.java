@@ -6,7 +6,13 @@
 package byui.cit260.clueTeam3.view;
 
 import byui.cit260.clueTeam3.control.WeaponControl;
+import clueteam3.ClueTeam3;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,6 +23,8 @@ public class AmountPoisonView {
     private final String weight;
     private final String poison;
     private double poisonAmount;
+    protected final BufferedReader keyboard = ClueTeam3.getInFile();
+    protected final PrintWriter console = ClueTeam3.getOutFile();
     
     
     public AmountPoisonView() {
@@ -66,57 +74,68 @@ public class AmountPoisonView {
     }
     
     private String getWeight() {
-        Scanner keyboard = new Scanner(System.in); //get infile for keyboard
         String value = ""; //value to be returned
         boolean valid = false; //initialize to not valid
-        
-        while (!valid) { //loop while an invalid value is enter
-            System.out.println("\n" + this.weight);
+        try {
             
-            value = keyboard.nextLine(); //get next line typed one keyboard
+        while (!valid) { //loop while an invalid value is enter
+            this.console.println("\n" + this.weight);
+            
+            
+                value = this.keyboard.readLine(); //get next line typed one keyboard
+            
+               // Logger.getLogger(AmountPoisonView.class.getName()).log(Level.SEVERE, null, ex);
+            
             value = value.trim(); //trim off leading and trailing blanks
             
             if (value.length() < 0) { //value is blank
-                System.out.println("\nInvalid value: You must enter a value");
+                ErrorView.display(this.getClass().getName(),"\nInvalid value: You must enter a value");
                 continue;
             }
             
             break; //end the loop
         }
+        } catch (IOException ex) {
+            ErrorView.display(this.getClass().getName(),"Error reading input: " + ex.getMessage());
+}
         return value; // return the value entered
     }
 
     private String getPoison() {
         
-        Scanner keyboard = new Scanner(System.in); //get infile for keyboard
+       
         String value = ""; //value to be returned
         boolean valid = false; //initialize to not valid
         
+        try {
         while (!valid) { //loop while an invalid value is enter
-            System.out.println("\n" + this.poison);
+            this.console.println("\n" + this.poison);
             
-            value = keyboard.nextLine(); //get next line typed one keyboard
+            value = this.keyboard.readLine(); //get next line typed one keyboard
             value = value.trim(); //trim off leading and trailing blanks
             
             if (value.length() < 0) { //value is blank
-                System.out.println("\nInvalid value: You must enter a value");
+                this.console.println("\nInvalid value: You must enter a value");
                 continue;
             }
             
             break; //end the loop
         }
+        } catch (IOException ex) {
+            this.console.println("Error reading input: " + ex.getMessage());
+}
         return value; // return the value entered
     }
     
     public boolean doAction(String poison, String weight) {
        if (weight.equals("-1")) {
-           System.out.println("\nInvalid weight: "
+           this.console.println("\nInvalid weight: "
                    + "The weight must be greater than 0");
            return false;
        }
        
        if (poison.equals("-0")) {
-           System.out.println("\nInvalid poison amount: "
+           this.console.println("\nInvalid poison amount: "
                    + "The poison amount must be greater than 0");
            return false;
        }
@@ -137,7 +156,7 @@ public class AmountPoisonView {
     
     private void displayNextView(WeaponControl weaponControl) {
         
-        System.out.println(
+        this.console.println(
                 "\n=============================================="
                 + "\n The amount of poison administered was:"
                 + "\n " + poisonAmount

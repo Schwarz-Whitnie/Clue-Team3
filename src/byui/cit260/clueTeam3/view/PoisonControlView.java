@@ -5,7 +5,10 @@
  */
 package byui.cit260.clueTeam3.view;
 import byui.cit260.clueTeam3.control.CharacterControl;
-import java.util.Scanner;
+import clueteam3.ClueTeam3;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  *
@@ -16,7 +19,8 @@ public class PoisonControlView {
       
     private String poisonPrompt;
     private String poisonControl;
-
+    protected final BufferedReader keyboard = ClueTeam3.getInFile();
+    protected final PrintWriter console = ClueTeam3.getOutFile();
     
     public PoisonControlView() {
         
@@ -40,22 +44,28 @@ public class PoisonControlView {
     }
     
     private String getAmountPoison() {
-        Scanner keyboard = new Scanner(System.in); 
         String value = ""; //value to be returned
         boolean valid = false;
-        
+        try {
         while (!valid) {
-            System.out.println("\n" + this.poisonPrompt);
+            this.console.println("\n" + this.poisonPrompt);
             
-            value = keyboard.nextLine();
+            
+                value = this.keyboard.readLine();
+            
+               // Logger.getLogger(PoisonControlView.class.getName()).log(Level.SEVERE, null, ex);
+            
             value = value.trim();
             
             if (value.length() < 0) { // value is blank
-                System.out.println("\n Value cannot be blank");
+                ErrorView.display(this.getClass().getName(),"\n Value cannot be blank");
                 continue;
             }
             
             break; //end loop
+        }
+        } catch (IOException ex) {
+        ErrorView.display(this.getClass().getName(),"Error reading input: " + ex.getMessage());
         }
         return value; //return the value entered. 
     }
@@ -63,7 +73,7 @@ public class PoisonControlView {
    public boolean doAction(String amtPoison) {
         
        if (amtPoison.equals("68")) {
-           System.out.println("\nInvalid entry. Try again");
+           ErrorView.display(this.getClass().getName(),"\nInvalid entry. Try again");
            return false;
        } 
         
@@ -79,7 +89,7 @@ public class PoisonControlView {
    private void displayNextView(CharacterControl characterControl) {
         String timePoison = null;
        
-       System.out.println("\nThe poison was administered" + characterControl 
+       this.console.println("\nThe poison was administered" + characterControl 
                + "Good work!");
             
    

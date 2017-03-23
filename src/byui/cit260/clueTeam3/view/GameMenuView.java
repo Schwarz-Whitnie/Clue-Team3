@@ -107,13 +107,13 @@ public class GameMenuView extends View {
             this.printRowDivider(out, noColumns);
             out.println(); // move down one i
             if (i < 9)
-                out.print(" " + (i+1));
+                out.print(" " + (i));
             else 
-                out.print(i+1);
+                out.print(i);
             
             // for every column in the row
             for (int column = 0; column < noColumns; column++) {
-                out.print("|"); // print column divider
+                out.print(" | "); // print column divider
                 Room room = rowLocations[column];
                 if (room != null) { // if location is visited 
                     
@@ -128,14 +128,14 @@ public class GameMenuView extends View {
                 }      
             }
             
-            out.print("|"); // print column divider
+            out.print(" | "); // print column divider
         }
-        out.print("\nYou are at location " + playerLocation.getRow() + ", " + playerLocation.getColumn());
         this.printRowDivider(out, noColumns);
+        out.print("\nYou are at location " + playerLocation.getRow() + ", " + playerLocation.getColumn());
     }
     
     private void printColumnHeaders(PrintWriter out, int columnCount) {
-        for (int i = 1; i < columnCount+1; i++) {
+        for (int i = 0; i < columnCount; i++) {
             if (i < 10) {
                 out.print("   " + i + " ");
             }
@@ -187,7 +187,10 @@ public class GameMenuView extends View {
     }
 
     private void moveRooms() {
-        System.out.println("*** Move Rooms ***");
+        this.viewMansionMap(ClueTeam3.getOutFile());
+        MoveDetectiveView moveDetectiveView = new MoveDetectiveView();     
+        moveDetectiveView.display(); 
+        
     }
 
     //private void displayDetectiveNotebook() {
