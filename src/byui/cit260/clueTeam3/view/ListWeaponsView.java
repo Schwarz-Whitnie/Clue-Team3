@@ -5,6 +5,8 @@
  */
 package byui.cit260.clueTeam3.view;
 
+import byui.cit260.clueTeam3.model.Weapon;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /**
@@ -14,11 +16,24 @@ import java.util.Scanner;
 public class ListWeaponsView extends View{
     
     
-    public ListWeaponsView() {
+    public void ListWeaponsView(PrintWriter out) {
         
+        try {
+           
+            out.println("/n     Weapon Report     ");
+            out.printf("%n%-20s%10s", "Weapon", "Status");
+            out.printf("%n%-20s%10s", "------", "------");
+            
+            for (Weapon weapon : status) {
+                out.printf("%n%-20s%7d", weapon.getDescription(),
+                                         status.getStatus());
+            }
+            ) catch (IOException ex) {
+                    this.console.println("I/O Error: " + ex.getMessage());
+                    }
+        }
         
-        
-        super ("----------------------------------------"
+        /*super ("----------------------------------------"
             + "\n|   Weapons                        |"
             + "\n----------------------------------------"
             + "\nC - Candlestick"
@@ -31,7 +46,7 @@ public class ListWeaponsView extends View{
             + "\nW - Wrench"
             + "\nQ - Quit"
             + "\n----------------------------------------"
-            + "\nPlease choose a weapon: ");
+            + "\nPlease choose a weapon: ");*/
             
     }
     
@@ -39,7 +54,7 @@ public class ListWeaponsView extends View{
     @Override
     public boolean doAction(String value) {
         
-        value = value.toUpperCase(); //convert choice to upper case
+        /*value = value.toUpperCase(); //convert choice to upper case
         
         switch (value) {
             case "C": //candlestick
@@ -69,7 +84,7 @@ public class ListWeaponsView extends View{
             default:
                 System.out.println("\n*** Invalid selection *** Try again");
                 break;    
-        }
+        }*/
         
          return false;
     }
