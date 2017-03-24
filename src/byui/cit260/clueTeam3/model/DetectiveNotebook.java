@@ -9,8 +9,8 @@ import java.io.Serializable;
 import java.util.Objects;
 public class DetectiveNotebook implements Serializable {
     
-    private String description;
-    private boolean accused;
+    public String description;
+    public boolean accused;
   
   public DetectiveNotebook() {
       
