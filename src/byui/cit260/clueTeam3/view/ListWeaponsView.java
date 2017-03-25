@@ -16,6 +16,24 @@ import java.util.Scanner;
 public class ListWeaponsView extends View{
     
     
+    public void ListWeaponsView(PrintWriter out) {
+        
+       /* try {
+           
+            out.println("/n     Weapon Report     ");
+            out.printf("%n%-20s%10s", "Weapon", "Status");
+            out.printf("%n%-20s%10s", "------", "------");
+            
+            for (Weapon weapon : status) {
+                out.printf("%n%-20s%7d", weapon.getDescription(),
+                                         status.getStatus());
+            }
+            ) catch (IOException ex) {
+                    this.console.println("I/O Error: " + ex.getMessage());
+                    }
+        }
+        
+        /*super ("----------------------------------------"
     public ListWeaponsView() {
         super ("----------------------------------------"
             + "\n|   Weapons                        |"
