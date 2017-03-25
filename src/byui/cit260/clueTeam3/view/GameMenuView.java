@@ -38,6 +38,7 @@ public class GameMenuView extends View {
             + "\nS - List of Suspects"
             + "\nW - List of Weapons"
             + "\nR - List of Rooms"
+            + "\nP - Print Detective Notebook"    
             + "\nQ - Quit"
             + "\n----------------------------------------"
             + "\nPlease enter a command: ");
@@ -66,14 +67,18 @@ public class GameMenuView extends View {
                 this.moveRooms();
                 break;
             case "N": //view detective notebook
-                this.viewDetectiveNotebook();
+                this.displayDetectiveNotebook();
                 break;
             case "A": //make an accusation
                 this.makeAccusation();
                 break;
+            case "P": // print detective notebook report
+                this.printDetectiveNotebook();
+                break;
+            case "Q":
+                return true;
             default:
-                System.out.println("\n*** Invalid selection *** Try again");
-                break;    
+                ErrorView.display("GameMenuView", "*** Invalid selection *** Try again");   
         }
         
          return false;
@@ -193,27 +198,27 @@ public class GameMenuView extends View {
         
     }
 
-    //private void displayDetectiveNotebook() {
-      //  this.viewDetectiveNotebook(ClueTeam3.getOutFile());
-    //}
+    private void displayDetectiveNotebook() {
+       this.viewDetectiveNotebook(ClueTeam3.getOutFile());
+    }
     
-    private void viewDetectiveNotebook() {
+    private void viewDetectiveNotebook(PrintWriter out) {
         //display detective notebook
         StringBuilder line = null;
         
         try { 
             GameControl.getSortedDetectiveNotebook();
-        } catch (GameControlException dn) {
-            System.out.println(dn.getmessage());
+        } catch (GameControlException e) {
+            this.console.println("Errot reading input: " + e.getMessage());
         }
         Game game = ClueTeam3.getCurrentGame();
         DetectiveNotebook[] notebook = game.getNotebook();
         
-        System.out.println("\n  DETECTIVE NOTEBOOK");
+        out.println("\n  DETECTIVE NOTEBOOK");
         line = new StringBuilder("                     ");
-        line.insert(0, "DISCRIPTION");
+        line.insert(0, "WEAPON");
         line.insert(20, "STATUS");
-        System.out.println(line.toString());
+        out.println(line.toString());
         
         // for each notebook item
         for (DetectiveNotebook detectiveNotebook : notebook) {
@@ -222,7 +227,7 @@ public class GameMenuView extends View {
             line.insert(23, detectiveNotebook.isAccused());
             
             // DISPLAY the description, the required amount and amount in stock
-            System.out.println(line.toString());
+            out.println(line.toString());
         }
         
         //this.getSortedDetectiveNotebook(ClueTeam3.getOutFile());
@@ -235,8 +240,9 @@ public class GameMenuView extends View {
         System.out.println("*** Make an Accusation ***");
     }
     
-    public void printReport() throws FileNotFoundException {
-        // get the filepath and name of the 
+    public void printDetectiveNotebook() {
+        // get the filepath and name of the file
+        this.console.println("\nEnter the file path where the report is to be saved.");
         
         String filePath = this.getInput();
         if (filePath == null) {
@@ -253,15 +259,16 @@ public class GameMenuView extends View {
             
             reportFile.println("Report printed: " + dateTime);
             
-            this.viewMansionMap(reportFile);
+            this.viewDetectiveNotebook(reportFile);
             
             
             ClueTeam3.getOutFile().println(
                     "\n*** Report printed to file: " + filePath + " ***");
             
+        } catch (Exception ex) {
+            ErrorView.display("GameMenuView", "Error writing to game report file. "
+                    + "\n\t" + ex.getMessage());
         }
-
     }
-
     
 }
