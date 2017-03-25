@@ -175,9 +175,34 @@ public class GameMenuView extends View {
     
     private void suspectList() {
         //display the list of suspects
-        ListSuspectsView listSuspects = new ListSuspectsView();
-        listSuspects.display();        
-    }
+       ListSuspectsView listSuspects = new ListSuspectsView();
+        listSuspects.display();      
+     
+       /* StringBuilder line = null;
+        
+        try { 
+            GameControl.getSortedDetectiveNotebook();
+        } catch (GameControlException e) {
+            this.console.println("Error reading input: " + e.getMessage());
+        }
+        Game game = ClueTeam3.getCurrentGame();
+        ListSuspectsView[] suspect = Suspects.getSuspects();
+        
+        out.println("\n  List of Suspects");
+        line = new StringBuilder("                     ");
+        line.insert(0, "SUSPECT");
+        line.insert(20, "STATUS");
+        out.println(line.toString());
+        
+        // for each notebook item
+        for (ListSuspectView listSuspectView : suspects) {
+            line = new StringBuilder("                                                          ");
+            line.insert(0, listSuspectView.getDescription());
+            line.insert(23, listSuspectView.isAccused());
+            
+            // DISPLAY the description, the required amount and amount in stock
+            out.println(line.toString()); */
+        } 
 
     private void weaponList() {
         //display the list of weapons
@@ -204,11 +229,13 @@ public class GameMenuView extends View {
     
     private void viewDetectiveNotebook(PrintWriter out) {
         //display detective notebook
+ 
         StringBuilder line = null;
         
         try { 
             GameControl.getSortedDetectiveNotebook();
         } catch (GameControlException e) {
+            this.console.println("Error reading input: " + e.getMessage());
             this.console.println("Errot reading input: " + e.getMessage());
         }
         Game game = ClueTeam3.getCurrentGame();
