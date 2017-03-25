@@ -236,7 +236,6 @@ public class GameMenuView extends View {
             GameControl.getSortedDetectiveNotebook();
         } catch (GameControlException e) {
             this.console.println("Error reading input: " + e.getMessage());
-            this.console.println("Errot reading input: " + e.getMessage());
         }
         Game game = ClueTeam3.getCurrentGame();
         DetectiveNotebook[] notebook = game.getNotebook();
