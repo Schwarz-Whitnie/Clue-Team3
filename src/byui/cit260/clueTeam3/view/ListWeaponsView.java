@@ -6,6 +6,7 @@
 package byui.cit260.clueTeam3.view;
 
 import byui.cit260.clueTeam3.model.Weapon;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
@@ -18,23 +19,31 @@ public class ListWeaponsView extends View{
     
     public void ListWeaponsView(PrintWriter out) {
         
-       /* try {
-           
-            out.println("/n     Weapon Report     ");
-            out.printf("%n%-20s%10s", "Weapon", "Status");
-            out.printf("%n%-20s%10s", "------", "------");
-            
-            for (Weapon weapon : status) {
-                out.printf("%n%-20s%7d", weapon.getDescription(),
-                                         status.getStatus());
-            }
-            ) catch (IOException ex) {
-                    this.console.println("I/O Error: " + ex.getMessage());
-                    }
+       /*StringBuilder line = null;
+        
+        try { 
+            getSortedDetectiveNotebook();
+        } catch (IOException ex) {
+            this.console.println("Error reading input: " + ex.getMessage());
         }
         
-        /*super ("----------------------------------------"
-    public ListWeaponsView() {
+        out.println("\n  Weapon Report");
+        line = new StringBuilder("                     ");
+        line.insert(0, "WEAPON");
+        line.insert(20, "STATUS");
+        out.println(line.toString());
+        
+        // for each notebook item
+        for (Weapon weapon : weapon) {
+            line = new StringBuilder("                                                          ");
+            line.insert(0, detectiveNotebook.getDescription());
+            line.insert(23, detectiveNotebook.isAccused());
+            
+            // DISPLAY the description, the required amount and amount in stock
+            out.println(line.toString());
+        }
+       
+    /*public ListWeaponsView() {
         super ("----------------------------------------"
             + "\n|   Weapons                        |"
             + "\n----------------------------------------"
@@ -49,15 +58,15 @@ public class ListWeaponsView extends View{
             + "\nQ - Quit"
             + "\n----------------------------------------"
             + "\nPlease choose a weapon: ");
-        /*try {
+        try {
            
             out.println("/n     Weapon Report     ");
             out.printf("%n%-20s%10s", "Weapon", "Status");
             out.printf("%n%-20s%10s", "------", "------");
             
-            for (Weapon weapon : status) {
+            for (Weapon weapon : Weapon) {
                 out.printf("%n%-20s%7d", weapon.getDescription(),
-                                         status.getStatus());
+                                         weapon.getStatus());
             }
             ) catch (IOException ex) {
                     this.console.println("I/O Error: " + ex.getMessage());

@@ -24,6 +24,7 @@ public enum Weapon implements Serializable {
     
     private String description;
     private String status;
+    public boolean accused;
 
     public String getStatus() {
         return status;

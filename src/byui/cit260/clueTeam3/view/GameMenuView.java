@@ -211,10 +211,39 @@ public class GameMenuView extends View {
     }
 
     private void roomList() {
-        //display the list of rooms
-        ListRoomsView listRooms = new ListRoomsView();
-        listRooms.display();
+       this.viewRoomList(ClueTeam3.getOutFile());
     }
+    
+    private void viewRoomList(PrintWriter out) {
+        StringBuilder line = null;
+        
+        try { 
+            GameControl.getSortedRoomNotebook();
+        } catch (GameControlException e) {
+            this.console.println("Error reading input: " + e.getMessage());
+        }
+        Game game = ClueTeam3.getCurrentGame();
+        DetectiveNotebook[] roomNotebook = game.getRoomNotebook();
+        
+        out.println("\n  DETECTIVE NOTEBOOK");
+        line = new StringBuilder("                     ");
+        line.insert(0, "ROOM");
+        line.insert(20, "STATUS");
+        out.println(line.toString());
+        
+        // for each notebook item
+        for (DetectiveNotebook detectiveRoomNotebook : roomNotebook) {
+            line = new StringBuilder("                                                          ");
+            line.insert(0, detectiveRoomNotebook.getDescription());
+            line.insert(23, detectiveRoomNotebook.isAccused());
+            
+            // DISPLAY the description, the required amount and amount in stock
+            out.println(line.toString());
+        }
+        //display the list of rooms
+        //ListRoomsView listRooms = new ListRoomsView();
+        //listRooms.display();
+   }
 
     private void moveRooms() {
         this.viewMansionMap(ClueTeam3.getOutFile());

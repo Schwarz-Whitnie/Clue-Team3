@@ -7,14 +7,14 @@ package byui.cit260.clueTeam3.control;
 
 import byui.cit260.clueTeam3.exeptions.GameControlException;
 import byui.cit260.clueTeam3.exeptions.MapControlException;
-import byui.cit260.clueTeam3.model.Clue;
 import byui.cit260.clueTeam3.model.DetectiveNotebook;
 import byui.cit260.clueTeam3.model.Game;
 import byui.cit260.clueTeam3.model.Player;
 import clueteam3.ClueTeam3;
 import byui.cit260.clueTeam3.model.MansionMap;
 import byui.cit260.clueTeam3.model.Room;
-import byui.cit260.clueTeam3.model.Scene;
+import byui.cit260.clueTeam3.model.RoomEnum;
+import byui.cit260.clueTeam3.model.Weapon;
 import byui.cit260.clueTeam3.view.GameMenuView;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -110,44 +110,101 @@ public class GameControl {
         DetectiveNotebook candlestick = new DetectiveNotebook();
         candlestick.setDescription("Candle Stick");
         candlestick.setAccused(true);
-        notebook[Clue.clueOne.ordinal()] = candlestick;
+        notebook[Weapon.Candlestick.ordinal()] = candlestick;
         
         DetectiveNotebook knife = new DetectiveNotebook();
         knife.setDescription("Knife");
         knife.setAccused(false);
-        notebook[Clue.clueTwo.ordinal()] = knife;
+        notebook[Weapon.Knife.ordinal()] = knife;
         
         DetectiveNotebook rope = new DetectiveNotebook();
         rope.setDescription("Rope");
         rope.setAccused(true);
-        notebook[Clue.clueThree.ordinal()] = rope;
+        notebook[Weapon.Rope.ordinal()] = rope;
         
         DetectiveNotebook dumbbell = new DetectiveNotebook();
         dumbbell.setDescription("Dumbbell");
         dumbbell.setAccused(false);
-        notebook[Clue.clueFour.ordinal()] = dumbbell;
+        notebook[Weapon.Dumbbell.ordinal()] = dumbbell;
         
         DetectiveNotebook poison = new DetectiveNotebook();
         poison.setDescription("Poison");
         poison.setAccused(true);
-        notebook[Clue.clueFive.ordinal()] = poison;
+        notebook[Weapon.Poison.ordinal()] = poison;
         
         DetectiveNotebook pipe = new DetectiveNotebook();
         pipe.setDescription("Pipe");
         pipe.setAccused(false);
-        notebook[Clue.clueSix.ordinal()] = pipe;
+        notebook[Weapon.LeadPipe.ordinal()] = pipe;
         
         DetectiveNotebook gun = new DetectiveNotebook();
         gun.setDescription("Gun");
         gun.setAccused(true);
-        notebook[Clue.clueSeven.ordinal()] = gun;
+        notebook[Weapon.Revolver.ordinal()] = gun;
         
         DetectiveNotebook wrench = new DetectiveNotebook();
         wrench.setDescription("Wrench");
         wrench.setAccused(false);
-        notebook[Clue.clueEight.ordinal()] = wrench;
+        notebook[Weapon.Wrench.ordinal()] = wrench;
+        
         
         return notebook;
+        
+    }
+    
+        private static DetectiveNotebook[] createRoomNotebook() {
+        // create and array(list of detective notebook items
+        
+        DetectiveNotebook[] roomNotebook = new DetectiveNotebook[9];
+        
+        //roomlist
+        DetectiveNotebook billardRoom = new DetectiveNotebook();
+        billardRoom.setDescription("Billard Room");
+        billardRoom.setAccused(false);
+        roomNotebook[RoomEnum.BillardRoom.ordinal()] = billardRoom;
+        
+        DetectiveNotebook ballroom = new DetectiveNotebook();
+        ballroom.setDescription("Ballroom");
+        ballroom.setAccused(false);
+        roomNotebook[RoomEnum.Ballroom.ordinal()] = ballroom;
+        
+        DetectiveNotebook library = new DetectiveNotebook();
+        library.setDescription("Library");
+        library.setAccused(false);
+        roomNotebook[RoomEnum.Library.ordinal()] = library;
+        
+        DetectiveNotebook study = new DetectiveNotebook();
+        study.setDescription("Study");
+        study.setAccused(false);
+        roomNotebook[RoomEnum.Study.ordinal()] = study;
+        
+        DetectiveNotebook hall = new DetectiveNotebook();
+        hall.setDescription("Hall");
+        hall.setAccused(false);
+        roomNotebook[RoomEnum.Hall.ordinal()] = hall;
+        
+        DetectiveNotebook lounge = new DetectiveNotebook();
+        lounge.setDescription("Lounge");
+        lounge.setAccused(false);
+        roomNotebook[RoomEnum.Lounge.ordinal()] = lounge;
+        
+        DetectiveNotebook diningRoom = new DetectiveNotebook();
+        diningRoom.setDescription("Dining Room");
+        diningRoom.setAccused(false);
+        roomNotebook[RoomEnum.DiningRoom.ordinal()] = diningRoom;
+        
+        DetectiveNotebook kitchen = new DetectiveNotebook();
+        kitchen.setDescription("Kitchen");
+        kitchen.setAccused(false);
+        roomNotebook[RoomEnum.Kitchen.ordinal()] = kitchen;
+        
+        DetectiveNotebook conservatory = new DetectiveNotebook();
+        conservatory.setDescription("Conservatory");
+        conservatory.setAccused(false);
+        roomNotebook[RoomEnum.Conservatory.ordinal()] = conservatory;
+        
+        return roomNotebook;
+        
         
     }
     
@@ -184,4 +241,35 @@ public static DetectiveNotebook[] getSortedDetectiveNotebook() throws GameContro
 public static DetectiveNotebook[] getNotebook() {    
     return ClueTeam3.getCurrentGame().getNotebook();
 }    
+
+public static DetectiveNotebook[] getRoomNotebook() {    
+    return ClueTeam3.getCurrentGame().getRoomNotebook();
+}
+public static DetectiveNotebook[] getSortedRoomNotebook() throws GameControlException {
+        
+        // get inventory list for the current game
+        DetectiveNotebook[] originalRoomNotebook = 
+                ClueTeam3.getCurrentGame().getRoomNotebook();
+        
+        // clone (make a copy) orignalList
+        DetectiveNotebook[] roomNotebookList = originalRoomNotebook.clone();
+        
+       // using a BubbleSort to sort the list of inventoryList by name
+        DetectiveNotebook tempRoomNotebook;
+        for (int i = 0; i < roomNotebookList.length-1; i++) {
+            for (int j = 0; j < roomNotebookList.length-1-i; j++) {
+                if (roomNotebookList[j].getDescription().
+                        compareToIgnoreCase(roomNotebookList[j + 1].getDescription()) > 0) {
+                    tempRoomNotebook = roomNotebookList[j];
+                    roomNotebookList[j] = roomNotebookList[j+1];
+                    roomNotebookList[j+1] = tempRoomNotebook;
+                    throw new GameControlException("Can not display notebook"
+                                                  + " because error.");
+               }
+            }
+        }
+        
+        return roomNotebookList;
+    }    
+
 }    
