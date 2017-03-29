@@ -86,7 +86,7 @@ public class MapControl {
         
         Scene hallScene = new Scene();
         hallScene.setDescription("You are in the hall..");
-        hallScene.setMapSymbol("HL");
+        hallScene.setMapSymbol("HW");
         hallScene.setBlocked(false);
         hallScene.setTravelTime(300);
         scenes[ResourceTypeScene.hall.ordinal()] = hallScene;
