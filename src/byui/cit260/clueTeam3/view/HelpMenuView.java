@@ -26,7 +26,8 @@ public class HelpMenuView extends View {
             + "\nT - How to interview a suspect"
             + "\nR - List of rooms"
             + "\nN - View the detective notebook"  
-            + "\nS - List of Suspects"    
+            + "\nS - List of Suspects" 
+            + "\nK - Time Remaining"
             + "\nQ - Quit"
             + "\n----------------------------------------"
             + "\nPlease enter a command: ");

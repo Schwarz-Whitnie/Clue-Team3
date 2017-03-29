@@ -292,7 +292,8 @@ public class GameMenuView extends View {
     }
 
     private void makeAccusation() {
-        System.out.println("*** Make an Accusation ***");
+        AccusationView accusationPrompt = new AccusationView();
+        accusationPrompt.displayPrompt();
     }
     
     public void printDetectiveNotebook() {
