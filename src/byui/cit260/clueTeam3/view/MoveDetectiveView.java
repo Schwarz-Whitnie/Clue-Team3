@@ -51,8 +51,9 @@ public class MoveDetectiveView extends View {
         
     }
         public boolean moveDetective() throws MapControlException {
-        Player player = null; 
         Game game = ClueTeam3.getCurrentGame();
+        
+        Player player = game.getPlayer(); 
         
         boolean done = false;
         do {
