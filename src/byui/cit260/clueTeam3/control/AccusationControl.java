@@ -18,14 +18,33 @@ public class AccusationControl {
         String answerSuspect = "Colonel Mustard";
         
         if (guessRoom.equals(answerRoom) && guessWeapon.equals(answerWeapon) && guessSuspect.equals(answerSuspect)) {
-            System.out.println("Correct! You solved the mystery.");
+            System.out.println("****Correct! You solved the mystery.****");
         }
-        else if (guessRoom.equals(answerRoom) || guessWeapon.equals(answerWeapon) || guessSuspect.equals(answerSuspect)) {
+        if (guessRoom.equals(answerRoom)){
+            System.out.println("\n****" + guessRoom + " is guilty!****");
+        }
+        if (!guessRoom.equals(answerRoom)){
+            System.out.println("\n" + guessRoom + " is not guilty.");
+        }
+        if (guessWeapon.equals(answerWeapon)){
+            System.out.println("\n****" + guessWeapon + " is guilty!****");
+        }
+        if (!guessWeapon.equals(answerWeapon)){
+            System.out.println("\n" + guessWeapon + " is not guilty.");
+        }
+        if (guessSuspect.equals(answerSuspect)){
+            System.out.println("\n****" + guessSuspect + " is guilty!****");
+        }
+        if (!guessSuspect.equals(answerSuspect)){
+            System.out.println("\n" + guessSuspect + " is not guilty.");
+        }
+        /*else if (guessRoom.equals(answerRoom) || guessWeapon.equals(answerWeapon) || guessSuspect.equals(answerSuspect)) {
             System.out.println("At least one of your accusations is correct!");
-        }
+        }*/
         else /*(!guessRoom.equals(answerRoom) || !guessWeapon.equals(answerWeapon) || !guessSuspect.equals(answerSuspect))*/{
             System.out.println("Sorry, none of your accusations are correct.");
-        }
+        }       
+        
         return null;
 }
 }

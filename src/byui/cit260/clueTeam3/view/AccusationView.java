@@ -27,9 +27,25 @@ public class AccusationView {
     
     
     public AccusationView() {
-        this.accusationPrompt = "\nMake an accusation. Please enter a room:";
-        this.weaponPrompt = "\nPlease enter a weapon:";
-        this.suspectPrompt = "\nPlease enter a suspect:";
+        this.accusationPrompt = 
+                  "\nMake an accusation. "
+              + "\n\nBillard Room       Ballroom"
+                + "\nLibrary            Study"
+                + "\nHall               Lounge"
+                + "\nDining Room        Kitchen"
+                + "\nConservatory"
+                + "\n\nPlease enter a room:";
+        this.weaponPrompt = 
+                  "\nCandlestick        Knife"
+                + "\nRope               Dumbbell"
+                + "\nPoison             Pipe"
+                + "\nRevolver           Wrench"
+                + "\n\nPlease enter a weapon:";
+        this.suspectPrompt = 
+                  "\nColonel Mustard    Mrs. White"
+                + "\nProfessor Plum     Mrs. Peacock"
+                + "\nMiss Scarlet       Mr. Green"
+                + "\n\nPlease enter a suspect:";
         
     }
     
