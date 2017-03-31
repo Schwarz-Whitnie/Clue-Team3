@@ -19,6 +19,15 @@ public enum ResourceTypeScene implements Serializable{
     character,
     room,
     hall,
+    conservatory,
+    billiard,
+    library,
+    lounge,
+    dining,
+    kitchen,
+    ballroom,
+    study,
+    passageway,
     finish;
     
     // class instance variables

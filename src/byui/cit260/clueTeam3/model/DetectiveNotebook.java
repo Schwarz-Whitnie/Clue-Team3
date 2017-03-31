@@ -16,8 +16,8 @@ public class DetectiveNotebook implements Serializable {
       
   }  
     
-    public DetectiveNotebook(String discription, boolean accused) {
-        this.description = discription;
+    public DetectiveNotebook(String description, boolean accused) {
+        this.description = description;
         this.accused = accused;
 }
 

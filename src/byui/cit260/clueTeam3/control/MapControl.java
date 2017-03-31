@@ -6,7 +6,6 @@
 package byui.cit260.clueTeam3.control;
 
 import byui.cit260.clueTeam3.exeptions.MapControlException;
-import byui.cit260.clueTeam3.model.Detective;
 import byui.cit260.clueTeam3.model.Direction;
 import byui.cit260.clueTeam3.model.Game;
 import byui.cit260.clueTeam3.model.MansionMap;
@@ -15,6 +14,7 @@ import byui.cit260.clueTeam3.model.Point;
 import byui.cit260.clueTeam3.model.ResourceTypeScene;
 import byui.cit260.clueTeam3.model.Room;
 import byui.cit260.clueTeam3.model.Scene;
+import byui.cit260.clueTeam3.view.MapCodeView;
 import clueteam3.ClueTeam3;
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
@@ -84,6 +84,69 @@ public class MapControl {
         roomScene.setTravelTime(300);
         scenes[ResourceTypeScene.room.ordinal()] = roomScene;
         
+        Scene passagewayScene = new Scene();
+        passagewayScene.setDescription("You are in the passageway..");
+        passagewayScene.setMapSymbol("PW");
+        passagewayScene.setBlocked(false);
+        passagewayScene.setTravelTime(300);
+        scenes[ResourceTypeScene.passageway.ordinal()] = passagewayScene;
+        
+        Scene conservatoryScene = new Scene();
+        conservatoryScene.setDescription("You are in the conservatory..");
+        conservatoryScene.setMapSymbol("CO");
+        conservatoryScene.setBlocked(false);
+        conservatoryScene.setTravelTime(300);
+        scenes[ResourceTypeScene.conservatory.ordinal()] = conservatoryScene;
+        
+        Scene billiardScene = new Scene();
+        billiardScene.setDescription("You are in the billiard room..");
+        billiardScene.setMapSymbol("BR");
+        billiardScene.setBlocked(false);
+        billiardScene.setTravelTime(300);
+        scenes[ResourceTypeScene.billiard.ordinal()] = billiardScene;
+        
+        Scene libraryScene = new Scene();
+        libraryScene.setDescription("You are in the library..");
+        libraryScene.setMapSymbol("LI");
+        libraryScene.setBlocked(false);
+        libraryScene.setTravelTime(300);
+        scenes[ResourceTypeScene.library.ordinal()] = libraryScene;
+        
+        Scene loungeScene = new Scene();
+        loungeScene.setDescription("You are in the lounge..");
+        loungeScene.setMapSymbol("BI");
+        loungeScene.setBlocked(false);
+        loungeScene.setTravelTime(300);
+        scenes[ResourceTypeScene.lounge.ordinal()] = loungeScene;
+        
+        Scene diningScene = new Scene();
+        diningScene.setDescription("You are in the dining room..");
+        diningScene.setMapSymbol("DR");
+        diningScene.setBlocked(false);
+        diningScene.setTravelTime(300);
+        scenes[ResourceTypeScene.dining.ordinal()] = diningScene;
+        
+        Scene kitchenScene = new Scene();
+        kitchenScene.setDescription("You are in the kitchen..");
+        kitchenScene.setMapSymbol("KI");
+        kitchenScene.setBlocked(false);
+        kitchenScene.setTravelTime(300);
+        scenes[ResourceTypeScene.kitchen.ordinal()] = kitchenScene;
+        
+        Scene ballroomScene = new Scene();
+        ballroomScene.setDescription("You are in the ballroom..");
+        ballroomScene.setMapSymbol("BR");
+        ballroomScene.setBlocked(false);
+        ballroomScene.setTravelTime(300);
+        scenes[ResourceTypeScene.ballroom.ordinal()] = ballroomScene;
+        
+        Scene studyScene = new Scene();
+        studyScene.setDescription("You are in the study..");
+        studyScene.setMapSymbol("SY");
+        studyScene.setBlocked(false);
+        studyScene.setTravelTime(300);
+        scenes[ResourceTypeScene.study.ordinal()] = studyScene;
+        
         Scene hallScene = new Scene();
         hallScene.setDescription("You are in the hall..");
         hallScene.setMapSymbol("HW");
@@ -99,35 +162,35 @@ public class MapControl {
         Room[][] rooms = mansionMap.getRooms();
         
         // starting point
-        rooms[0][0].setScene(scenes[ResourceTypeScene.room.ordinal()]);
-        rooms[0][1].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
-        rooms[0][2].setScene(scenes[ResourceTypeScene.room.ordinal()]);
-        rooms[0][3].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
-        rooms[0][4].setScene(scenes[ResourceTypeScene.room.ordinal()]);
+        rooms[0][0].setScene(scenes[ResourceTypeScene.conservatory.ordinal()]);
+        rooms[0][1].setScene(scenes[ResourceTypeScene.passageway.ordinal()]);
+        rooms[0][2].setScene(scenes[ResourceTypeScene.billiard.ordinal()]);
+        rooms[0][3].setScene(scenes[ResourceTypeScene.passageway.ordinal()]);
+        rooms[0][4].setScene(scenes[ResourceTypeScene.library.ordinal()]);
         
-        rooms[1][0].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
-        rooms[1][1].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
-        rooms[1][2].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
-        rooms[1][3].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
-        rooms[1][4].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
+        rooms[1][0].setScene(scenes[ResourceTypeScene.passageway.ordinal()]);
+        rooms[1][1].setScene(scenes[ResourceTypeScene.passageway.ordinal()]);
+        rooms[1][2].setScene(scenes[ResourceTypeScene.passageway.ordinal()]);
+        rooms[1][3].setScene(scenes[ResourceTypeScene.passageway.ordinal()]);
+        rooms[1][4].setScene(scenes[ResourceTypeScene.passageway.ordinal()]);
         
-        rooms[2][0].setScene(scenes[ResourceTypeScene.room.ordinal()]);
-        rooms[2][1].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
-        rooms[2][2].setScene(scenes[ResourceTypeScene.room.ordinal()]);
-        rooms[2][3].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
-        rooms[2][4].setScene(scenes[ResourceTypeScene.room.ordinal()]);
+        rooms[2][0].setScene(scenes[ResourceTypeScene.lounge.ordinal()]);
+        rooms[2][1].setScene(scenes[ResourceTypeScene.passageway.ordinal()]);
+        rooms[2][2].setScene(scenes[ResourceTypeScene.dining.ordinal()]);
+        rooms[2][3].setScene(scenes[ResourceTypeScene.passageway.ordinal()]);
+        rooms[2][4].setScene(scenes[ResourceTypeScene.kitchen.ordinal()]);
         
-        rooms[3][0].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
-        rooms[3][1].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
-        rooms[3][2].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
-        rooms[3][3].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
-        rooms[3][4].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
+        rooms[3][0].setScene(scenes[ResourceTypeScene.passageway.ordinal()]);
+        rooms[3][1].setScene(scenes[ResourceTypeScene.passageway.ordinal()]);
+        rooms[3][2].setScene(scenes[ResourceTypeScene.passageway.ordinal()]);
+        rooms[3][3].setScene(scenes[ResourceTypeScene.passageway.ordinal()]);
+        rooms[3][4].setScene(scenes[ResourceTypeScene.passageway.ordinal()]);
         
-        rooms[4][0].setScene(scenes[ResourceTypeScene.room.ordinal()]);
-        rooms[4][1].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
-        rooms[4][2].setScene(scenes[ResourceTypeScene.room.ordinal()]);
-        rooms[4][3].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
-        rooms[4][4].setScene(scenes[ResourceTypeScene.room.ordinal()]);
+        rooms[4][0].setScene(scenes[ResourceTypeScene.ballroom.ordinal()]);
+        rooms[4][1].setScene(scenes[ResourceTypeScene.passageway.ordinal()]);
+        rooms[4][2].setScene(scenes[ResourceTypeScene.study.ordinal()]);
+        rooms[4][3].setScene(scenes[ResourceTypeScene.passageway.ordinal()]);
+        rooms[4][4].setScene(scenes[ResourceTypeScene.hall.ordinal()]);
         
         HashMap<String, ArrayList<Point>> sceneLocations =
                 new HashMap<String, ArrayList<Point>>();
@@ -164,6 +227,13 @@ public class MapControl {
         hallCoordinates.add(new Point(4,3));
         sceneLocations.put("Hallway", hallCoordinates);
 }
+        
+/*private void mapCode() {
+   
+        //display the map Code
+       MapCodeView mapCode = new MapCodeView();
+       MapCode.display();
+} */
         
 public static void moveDetectiveToStartingLocation(MansionMap mansionMap) 
                    throws MapControlException {     

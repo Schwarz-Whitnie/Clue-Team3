@@ -39,7 +39,7 @@ public class ListSuspectsView extends View {
     private static PrintWriter outfile = null;
     private static BufferedReader infile = null;
     
-    private static PrintWriter logFile = null;
+    static PrintWriter logFile = null;
 
     public static PrintWriter getLogFile() {
         return logFile;

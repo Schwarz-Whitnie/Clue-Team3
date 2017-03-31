@@ -263,7 +263,7 @@ public class GameMenuView extends View {
    }
 
     private void moveRooms() {
-        this.viewMansionMap(ClueTeam3.getOutFile());
+        //this.viewMansionMap(ClueTeam3.getOutFile());
         MoveDetectiveView moveDetectiveView = new MoveDetectiveView();     
         moveDetectiveView.display(); 
         
