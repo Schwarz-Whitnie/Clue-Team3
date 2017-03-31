@@ -135,6 +135,23 @@ public class GameMenuView extends View {
             
             out.print(" | "); // print column divider
         }
+        
+        out.print(  
+              "\n----------------------------------------"
+            + "\n| Map Code                              |"
+            + "\n----------------------------------------"
+            + "\nCO  - Conservatory"
+            + "\nBR  - Billiard Room"
+            + "\nLI  - Library"
+            + "\nLO  - Lounge"
+            + "\nDR  - Dining Room"
+            + "\nKI  - Kitchen" 
+            + "\nBR  - Ballroom" 
+            + "\nSY  - Study" 
+            + "\nHW  - Hall" 
+            + "\nPW  - Passageway"                 
+            + "\n----------------------------------------");
+        
         this.printRowDivider(out, noColumns);
         out.print("\nYou are at location " + playerLocation.getRow() + ", " + playerLocation.getColumn());
     }
