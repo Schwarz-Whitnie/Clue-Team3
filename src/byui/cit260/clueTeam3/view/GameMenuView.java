@@ -140,16 +140,11 @@ public class GameMenuView extends View {
               "\n----------------------------------------"
             + "\n| Map Code                              |"
             + "\n----------------------------------------"
-            + "\nCO  - Conservatory"
-            + "\nBR  - Billiard Room"
-            + "\nLI  - Library"
-            + "\nLO  - Lounge"
-            + "\nDR  - Dining Room"
-            + "\nKI  - Kitchen" 
-            + "\nBR  - Ballroom" 
-            + "\nSY  - Study" 
-            + "\nHW  - Hall" 
-            + "\nPW  - Passageway"                 
+            + "\nCO  - Conservatory      KI-Kitchen"      
+            + "\nBR  - Billiard Room     BR-Ballroom"    
+            + "\nLI  - Library           SY-Study"        
+            + "\nLO  - Lounge            HW-Hall"
+            + "\nDR  - Dining Room       PW-Passageway"              
             + "\n----------------------------------------");
         
         this.printRowDivider(out, noColumns);

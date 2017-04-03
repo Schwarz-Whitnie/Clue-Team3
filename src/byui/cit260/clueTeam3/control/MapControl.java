@@ -100,7 +100,7 @@ public class MapControl {
         
         Scene billiardScene = new Scene();
         billiardScene.setDescription("You are in the billiard room..");
-        billiardScene.setMapSymbol("BR");
+        billiardScene.setMapSymbol("BI");
         billiardScene.setBlocked(false);
         billiardScene.setTravelTime(300);
         scenes[ResourceTypeScene.billiard.ordinal()] = billiardScene;
