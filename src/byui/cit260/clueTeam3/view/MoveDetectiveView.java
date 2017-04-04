@@ -70,10 +70,10 @@ public class MoveDetectiveView extends View {
                                                        movement.direction, 
                                                        movement.distance);
                 
-                Point coordinates = game.getPlayersLocation();
-                Point newPosition = new Point(coordinates.getRow(), coordinates.getColumn());
+//                Point coordinates = game.getPlayersLocation();
+//                Point newPosition = new Point(coordinates.getRow(), coordinates.getColumn());
       
-                String locationDescription;
+/*                String locationDescription;
                 String message = "";
                 if (blockedLocation != null) {
                     locationDescription = MapControl.getRoom(blockedLocation).getScene().getDescription();
@@ -92,7 +92,7 @@ public class MoveDetectiveView extends View {
                             + this.getBlockedMessage(locationDescription);
                     this.console.println(message);                
                 }
-                
+                */
                 done = true;
             } catch (MapControlException ex) {
                     ErrorView.display("MoveActorView", ex.getMessage());
@@ -179,10 +179,119 @@ public class MoveDetectiveView extends View {
         ErrorView.display("MoveDetectiveView", "Invalid Selection");
         return false;
     
-    }*/
+    }
 
 
    
+    
+    
+    
+
+
+//Switch Statement Backup
+
+  /*  public MoveDetectiveView() {
+        super(""
+            + "\nCO - Conservatory"
+            + "\nBR - Billiard Room"
+            + "\nLI - Library"
+            + "\nLO - Lounge"   
+            + "\nDR - Dining Room"
+            + "\nKI - Kitchen"
+            + "\nBR - Ballroom"
+            + "\nST - Study"  
+            + "\nHW - Hall"
+            + "\nPW - Passageway"
+            + "\nPlease enter a room");
+    }
+    
+    @Override
+    public boolean doAction (String value) {
+        value = value.toUpperCase(); //convert choice to upper case
+        
+        switch (value) {
+            case "CO":
+                this.conservatory();
+                break;
+                case "BI": 
+                this.billiardRoom();
+                break;
+            case "LI": 
+                this.library();
+                break;
+            case "LO": 
+                this.lounge();
+                break;
+            case "DR": 
+                this.diningRoom();
+                break;
+            case "KI": 
+                this.kitchen();
+                break;
+            case "BR": 
+                this.ballroom();
+                break;
+            case "SY": 
+                this.study();
+                break;
+            case "HW": 
+                this.hallway();
+                break;
+            case "PW": 
+                this.passageway();
+                break;
+            case "Q":
+                return true;
+            default:
+                ErrorView.display("MoveDetectiveView", "*** Invalid selection *** Try again");   
+        }
+        
+         return false;
+    }
+    
+    private void conservatory() {
+        System.out.println("You are in the conservatory");
+        }
+    
+    private void billiardRoom(){
+       System.out.println("You are in the billiard Room"); 
+    }
+    
+    private void library() {
+        System.out.println("You are in the library");
+        }
+    
+    private void lounge(){
+       System.out.println("You are in the lounge"); 
+    }
+    
+    private void diningRoom() {
+        System.out.println("You are in the dining Room");
+        }
+    
+    private void kitchen(){
+       System.out.println("You are in the kitchen"); 
+    }
+    
+    private void ballroom() {
+        System.out.println("You are in the ballroom");
+        }
+    
+    private void study(){
+       System.out.println("You are in the study"); 
+    }
+    
+    private void hallway() {
+        System.out.println("You are in the hallway");
+        }
+    
+    private void passageway(){
+       System.out.println("You are in the passageway"); 
+    } 
+    
+   
+    
+    */
     
 }
 
