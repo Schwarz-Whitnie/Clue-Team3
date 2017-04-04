@@ -176,10 +176,32 @@ private String getSuspect() {
        accusation = AccusationControl.makeAnAccusation(room, weapon, suspect);
        
        //display next view
-       //this.displayNextView(accusationControl);
+       this.updateDetectiveNotebook(room, weapon, suspect);
        
        return true; //success
     }
+   
+   public String updateDetectiveNotebook(String roomStatus, String weaponStatus, String suspectStatus) {
+       
+       String accusedGuilty = "Accused - Guilty";
+       String accusedNotGuilty = "Accused - Not Guilty";
+       String notAccused = "Not Accused - Unknown";
+       
+       if (roomStatus.equals("Candlestick") && roomStatus.equals("Knife") 
+               && roomStatus.equals("Dumbbell") && roomStatus.equals("Revolver") && roomStatus.equals("Wrench") 
+               && roomStatus.equals("Rope") && roomStatus.equals("Pipe")) {
+           return accusedNotGuilty;
+       }
+               
+       if (roomStatus.equals("Poison")) {
+          return accusedGuilty; 
+       }   
+       
+       return notAccused;
+    
+   }
+   
+   
 
     /*private void displayNextView(AccusationControl accusationControl) {
         this.console.println(

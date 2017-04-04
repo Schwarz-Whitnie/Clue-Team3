@@ -5,13 +5,13 @@
  */
 package byui.cit260.clueTeam3.model;
 
-import java.io.Serializable;
+
 
 /**
  *
  * @author camer
  */
-public enum RoomEnum implements Serializable {
+public enum RoomEnum {
     
     BillardRoom,
     Ballroom,
@@ -22,5 +22,6 @@ public enum RoomEnum implements Serializable {
     DiningRoom,
     Kitchen,
     Conservatory;
+    
     
 }

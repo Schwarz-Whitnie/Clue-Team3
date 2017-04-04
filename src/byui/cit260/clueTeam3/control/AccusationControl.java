@@ -41,9 +41,9 @@ public class AccusationControl {
         /*else if (guessRoom.equals(answerRoom) || guessWeapon.equals(answerWeapon) || guessSuspect.equals(answerSuspect)) {
             System.out.println("At least one of your accusations is correct!");
         }*/
-        else /*(!guessRoom.equals(answerRoom) || !guessWeapon.equals(answerWeapon) || !guessSuspect.equals(answerSuspect))*/{
-            System.out.println("Sorry, none of your accusations are correct.");
-        }       
+        //else /*(!guessRoom.equals(answerRoom) || !guessWeapon.equals(answerWeapon) || !guessSuspect.equals(answerSuspect))*/{
+          //  System.out.println("Sorry, none of your accusations are correct.");
+        //}       
         
         return null;
 }
