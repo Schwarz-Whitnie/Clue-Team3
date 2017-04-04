@@ -7,6 +7,7 @@ package byui.cit260.clueTeam3.view;
 
 import byui.cit260.clueTeam3.control.GameControl;
 import byui.cit260.clueTeam3.exeptions.GameControlException;
+import byui.cit260.clueTeam3.exeptions.MapControlException;
 import byui.cit260.clueTeam3.model.DetectiveNotebook;
 import byui.cit260.clueTeam3.model.Game;
 import byui.cit260.clueTeam3.model.MansionMap;
@@ -19,6 +20,8 @@ import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -260,7 +263,11 @@ public class GameMenuView extends View {
     private void moveRooms() {
         //this.viewMansionMap(ClueTeam3.getOutFile());
         MoveDetectiveView moveDetectiveView = new MoveDetectiveView();     
-        moveDetectiveView.display(); 
+        try { 
+            moveDetectiveView.moveDetective();
+        } catch (MapControlException ex) {
+            Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 
