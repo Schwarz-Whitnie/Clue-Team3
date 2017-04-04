@@ -19,7 +19,6 @@ import java.util.Scanner;
 public class TimeRemainingView {
     
     private String roomPrompt;
-    private String locationPrompt;
     private String passagewayPrompt;
     private double timeRemaining;
     protected final BufferedReader keyboard = ClueTeam3.getInFile();
@@ -28,8 +27,7 @@ public class TimeRemainingView {
     public TimeRemainingView() {
         this.roomPrompt = "\nPlease enter number of rooms passed through:";
         //display the locations prompt
-        this.locationPrompt = "\nPlease enter number of locations passed through:";
-        this.passagewayPrompt = "\nPlease enter number of passageways used:";
+        this.passagewayPrompt = "\nPlease enter number of passageways passed through:";
         
     }
     
@@ -41,9 +39,9 @@ public class TimeRemainingView {
             if (roomsTraveled.toUpperCase().equals("Q")) // user wants to quit
                 return; // exit the game 
             
-            String locationsTraveled = this.getLocationsTraveled();
+            /*String locationsTraveled = this.getLocationsTraveled();
             if (locationsTraveled.toUpperCase().equals("Q")) // user wants to quit
-                return; // exit the game 
+                return; // exit the game */
             
             String passagewaysUsed = this.getPassagewaysUsed();
             if (passagewaysUsed.toUpperCase().equals("Q")) // user wants to quit
@@ -51,7 +49,7 @@ public class TimeRemainingView {
             
             
             // do the request action and display the next view 
-            done = this.doAction(roomsTraveled, locationsTraveled, passagewaysUsed); 
+            done = this.doAction(roomsTraveled, passagewaysUsed); 
            
         }while (!done);
         
@@ -80,7 +78,7 @@ private String getRoomsTraveled() {
         return value; // return the value entered
     }
     
-private String getLocationsTraveled() {
+/*private String getLocationsTraveled() {
         
         String value = ""; // value to be returned
         boolean valid = false; //initialize to not valid
@@ -102,7 +100,7 @@ private String getLocationsTraveled() {
         ErrorView.display(this.getClass().getName(),"Error reading input: " + ex.getMessage());
         }
         return value; // return the value entered
-    }
+    }*/
 
 private String getPassagewaysUsed() {
         
@@ -128,7 +126,7 @@ private String getPassagewaysUsed() {
         return value; // return the value entered
     }
 
-   public boolean doAction(String roomsTraveled, String locationsTraveled, String passagewaysUsed) {
+   public boolean doAction(String roomsTraveled, String passagewaysUsed) {
         
        if (roomsTraveled.equals("-1")) {
            ErrorView.display(this.getClass().getName(),"\nInvalid number of rooms: "
@@ -136,11 +134,11 @@ private String getPassagewaysUsed() {
            return false;
        }
        
-       if (locationsTraveled.equals("-1")) {
+       /*if (locationsTraveled.equals("-1")) {
            ErrorView.display(this.getClass().getName(),"\nInvalid number of locations: "
                    + "The number of locations must be greater than 0");
            return false;
-       }
+       }*/
        
        if (passagewaysUsed.equals("-1")) {
            ErrorView.display(this.getClass().getName(),"\nInvalid number of passageway used: "
@@ -155,11 +153,11 @@ private String getPassagewaysUsed() {
        double r = Double.parseDouble(roomsTraveled);
        
 //       locationsTraveled = " ";
-       double l = Double.parseDouble(locationsTraveled);
+       //double l = Double.parseDouble(locationsTraveled);
        
        //call calcTotalTime() control function
        TimeControl timeControl = new TimeControl();
-       timeRemaining = TimeControl.calcTotalTime(r, l, d);
+       timeRemaining = TimeControl.calcTotalTime(r, d);
        
        //display next view
        this.displayNextView(timeControl);

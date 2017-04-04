@@ -7,6 +7,7 @@ package byui.cit260.clueTeam3.view;
 
 import byui.cit260.clueTeam3.control.GameControl;
 import byui.cit260.clueTeam3.exeptions.GameControlException;
+import byui.cit260.clueTeam3.exeptions.MapControlException;
 import byui.cit260.clueTeam3.model.DetectiveNotebook;
 import byui.cit260.clueTeam3.model.Game;
 import byui.cit260.clueTeam3.model.MansionMap;
@@ -19,6 +20,8 @@ import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -38,6 +41,7 @@ public class GameMenuView extends View {
             + "\nS - List of Suspects"
             + "\nW - List of Weapons"
             + "\nR - List of Rooms"
+            + "\nT - Check Time"
             + "\nP - Print Detective Notebook"    
             + "\nQ - Quit"
             + "\n----------------------------------------"
@@ -74,6 +78,9 @@ public class GameMenuView extends View {
                 break;
             case "P": // print detective notebook report
                 this.printDetectiveNotebook();
+                break;
+            case "T": // print detective notebook report
+                this.checkTime();
                 break;
             case "Q":
                 return true;
@@ -140,12 +147,11 @@ public class GameMenuView extends View {
               "\n----------------------------------------"
             + "\n| Map Code                              |"
             + "\n----------------------------------------"
-            + "\nCO  - Conservatory      KI-Kitchen"      
-            + "\nBR  - Billiard Room     BR-Ballroom"    
-            + "\nLI  - Library           SY-Study"        
-            + "\nLO  - Lounge            HW-Hall"
-            + "\nDR  - Dining Room       PW-Passageway"              
-            + "\n----------------------------------------");
+            + "\nCO  - Conservatory      KI - Kitchen"      
+            + "\nBR  - Billiard Room     BR - Ballroom"    
+            + "\nLI  - Library           SY - Study"        
+            + "\nLO  - Lounge            HW - Hall"
+            + "\nDR  - Dining Room       PW - Passageway");
         
         this.printRowDivider(out, noColumns);
         out.print("\nYou are at location " + playerLocation.getRow() + ", " + playerLocation.getColumn());
@@ -260,7 +266,11 @@ public class GameMenuView extends View {
     private void moveRooms() {
         //this.viewMansionMap(ClueTeam3.getOutFile());
         MoveDetectiveView moveDetectiveView = new MoveDetectiveView();     
-        moveDetectiveView.display(); 
+        try { 
+            moveDetectiveView.moveDetective();
+        } catch (MapControlException ex) {
+            Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 
@@ -337,6 +347,11 @@ public class GameMenuView extends View {
             ErrorView.display("GameMenuView", "Error writing to game report file. "
                     + "\n\t" + ex.getMessage());
         }
+    }
+
+    private void checkTime() {
+        TimeRemainingView timeRemainingView = new TimeRemainingView();
+        timeRemainingView.displayPrompt();
     }
     
 }

@@ -12,44 +12,25 @@ import byui.cit260.clueTeam3.model.Player;
 import byui.cit260.clueTeam3.model.Point;
 import byui.cit260.clueTeam3.model.Direction;
 import clueteam3.ClueTeam3;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author whitnieschwarz
  */
-public class MoveDetectiveView extends View {
+public class MoveDetectiveView  {
    
-    public MoveDetectiveView() {
-        super("\n---------------------------------------------"
-            + "\n| Select Detective to move                       |"
-            + "\n---------------------------------------------"
-            + "\nD - Detective");
-        }
     
-@Override
-    public boolean doAction(String obj) {
-
-        String choice = (String) obj;
-        choice = choice.trim().toUpperCase(); // trim blanks and uppercase
-         
-        // check for valid actor
-        switch (choice) {
-            case "D":
-        {
-            try {
-                this.moveDetective();
-            } catch (MapControlException ex) {
-                ErrorView.display(this.getClass().getName(),"Error reading input: " + ex.getMessage());
-        }
-        }
-                break;
-            case "Q":
-                return true;
-            default:
-                ErrorView.display("MoveDetectiveView", "Invalid selection");
-        }       return false;
+ protected final BufferedReader keyboard = ClueTeam3.getInFile();
         
-    }
+        
+        
+
+        
+    
         public boolean moveDetective() throws MapControlException {
         Game game = ClueTeam3.getCurrentGame();
         
@@ -57,18 +38,25 @@ public class MoveDetectiveView extends View {
         
         boolean done = false;
         do {
-            this.console.println("\nYou can move up (U), down(D), left(L) or right (R)");
+            System.out.println("\nYou can move up (U), down(D), left(L) or right (R)");
             try {
                  //prompt for and get the row and column numbers
-                this.console.println("\nEnter the direction and distance to move (e.g. U 2) ");
+                System.out.println("\nEnter the direction and distance to move (e.g. U 2) ");
                 Movement movement = this.getCoordinates(); // get the row and column
                 if (movement == null) // entered "Q" to quit
                     break;
+                
                 
                 // move actor to specified location
                 Point blockedLocation = MapControl.moveDetectiveToLocation(player, 
                                                        movement.direction, 
                                                        movement.distance);
+                
+                        Point playerLocation = new Point();
+        playerLocation.setRow(ClueTeam3.getCurrentGame().getPlayer().getCoordinates().getRow());
+        playerLocation.setColumn(ClueTeam3.getCurrentGame().getPlayer().getCoordinates().getColumn());
+        
+        System.out.println("\nYou are at location " + playerLocation.getRow() + ", " + playerLocation.getColumn());
                 
 //                Point coordinates = game.getPlayersLocation();
 //                Point newPosition = new Point(coordinates.getRow(), coordinates.getColumn());
@@ -107,7 +95,12 @@ public class MoveDetectiveView extends View {
     public Movement getCoordinates() throws MapControlException {
         Movement movement = null;
         
-        String value = this.getInput();
+        String value = null;
+     try {
+         value = this.keyboard.readLine();
+     } catch (IOException ex) {
+         Logger.getLogger(MoveDetectiveView.class.getName()).log(Level.SEVERE, null, ex);
+     }
         value = value.trim().toUpperCase();
         if (value.equals("Q"))
             return null;

@@ -19,17 +19,28 @@ public class PoisonControlView {
       
     private String poisonPrompt;
     private String poisonControl;
+    private double timePoison;
     protected final BufferedReader keyboard = ClueTeam3.getInFile();
     protected final PrintWriter console = ClueTeam3.getOutFile();
     
     public PoisonControlView() {
         
         //displays the posion prompt
-        this.poisonPrompt = "\nPlease enter the amount of Poison missing from "
-                + "the vile.";
-        
+        this.poisonPrompt = "\nPlease enter the amount of Poison administered to Mr. Boddy:";
+        this.displayBanner();
     }
-   
+   public void displayBanner() {
+        
+        System.out.println(
+              "\n************************************************************************"
+            + "\n*                                                                      *"        
+            + "\n* Good job, you helped us figure out how much poison was given to Mr.  *"
+            + "\n* Boddy. Using the information gained above, help us determine when    *"
+            + "\n  the poison was administered to Mr. Boddy.                            *"
+            + "\n                                                                       *"  
+            + "\n************************************************************************"  
+             );
+    }
     
     void displayPoisonPrompt() {
         boolean done = false;
@@ -80,17 +91,21 @@ public class PoisonControlView {
        double p = Double.parseDouble(amtPoison);
        
        CharacterControl characterControl = new CharacterControl();
-
+       timePoison = CharacterControl.calcTimePoison(p);
        
        this.displayNextView(characterControl);
        return true;
    }
    
    private void displayNextView(CharacterControl characterControl) {
-        String timePoison = null;
+        
        
-       this.console.println("\nThe poison was administered" + characterControl 
-               + "Good work!");
+       this.console.println(
+                 "\n=============================================="
+               + "\nThe poison was administered " + timePoison +
+                 "hours ago. "
+               + "\nGood work!"
+               + "\n==============================================");
             
    
     }

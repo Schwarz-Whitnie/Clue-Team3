@@ -159,11 +159,12 @@ public class AmountPoisonView {
         this.console.println(
                 "\n=============================================="
                 + "\n The amount of poison administered was:"
-                + "\n " + poisonAmount
+                + "\n " + poisonAmount + "lbs"
                 + "\n Good work!"
                 + "\n============================================"
                 );
-        
+        PoisonControlView poisonControlView = new PoisonControlView();
+        poisonControlView.displayPoisonPrompt();
     }
 
 }
