@@ -11,12 +11,8 @@ package byui.cit260.clueTeam3.control;
  */
 public class CharacterControl {
     
-        /**
-     * @param amtPoison
-     */
     
-    
-    public double calcTimePoison(double amtPoison) {
+    public static double calcTimePoison(double amtPoison) {
         
         if (amtPoison != 69) {
             return -1;

@@ -41,6 +41,7 @@ public class GameMenuView extends View {
             + "\nS - List of Suspects"
             + "\nW - List of Weapons"
             + "\nR - List of Rooms"
+            + "\nT - Check Time"
             + "\nP - Print Detective Notebook"    
             + "\nQ - Quit"
             + "\n----------------------------------------"
@@ -77,6 +78,9 @@ public class GameMenuView extends View {
                 break;
             case "P": // print detective notebook report
                 this.printDetectiveNotebook();
+                break;
+            case "T": // print detective notebook report
+                this.checkTime();
                 break;
             case "Q":
                 return true;
@@ -143,12 +147,11 @@ public class GameMenuView extends View {
               "\n----------------------------------------"
             + "\n| Map Code                              |"
             + "\n----------------------------------------"
-            + "\nCO  - Conservatory      KI-Kitchen"      
-            + "\nBR  - Billiard Room     BR-Ballroom"    
-            + "\nLI  - Library           SY-Study"        
-            + "\nLO  - Lounge            HW-Hall"
-            + "\nDR  - Dining Room       PW-Passageway"              
-            + "\n----------------------------------------");
+            + "\nCO  - Conservatory      KI - Kitchen"      
+            + "\nBR  - Billiard Room     BR - Ballroom"    
+            + "\nLI  - Library           SY - Study"        
+            + "\nLO  - Lounge            HW - Hall"
+            + "\nDR  - Dining Room       PW - Passageway");
         
         this.printRowDivider(out, noColumns);
         out.print("\nYou are at location " + playerLocation.getRow() + ", " + playerLocation.getColumn());
@@ -344,6 +347,11 @@ public class GameMenuView extends View {
             ErrorView.display("GameMenuView", "Error writing to game report file. "
                     + "\n\t" + ex.getMessage());
         }
+    }
+
+    private void checkTime() {
+        TimeRemainingView timeRemainingView = new TimeRemainingView();
+        timeRemainingView.displayPrompt();
     }
     
 }

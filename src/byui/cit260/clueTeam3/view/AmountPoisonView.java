@@ -163,7 +163,8 @@ public class AmountPoisonView {
                 + "\n Good work!"
                 + "\n============================================"
                 );
-        
+        PoisonControlView poisonControlView = new PoisonControlView();
+        poisonControlView.displayPoisonPrompt();
     }
 
 }

@@ -20,13 +20,13 @@ public class TimeControl {
      * @param passageway
      * @return
      */
-    public static double calcTotalTime(double noOfRooms, double noOfLocations, double passageway) {
+    public static double calcTotalTime(double noOfRooms, double passageway) {
         
         if (noOfRooms < 1) {
             return -1;  
         }
         
-        if (noOfLocations < 1) {
+        if (passageway < 1) {
             return -1;
         }
         
@@ -34,8 +34,8 @@ public class TimeControl {
             return -1;
         }
         
-        double travelTime = 60 - ((noOfRooms * 3) + (noOfLocations * 2));
-        double totalTime = travelTime + (travelTime * (passageway * .25)); 
+        double travelTime = 60 - ((noOfRooms * 3) + (passageway * 2));
+        double totalTime = travelTime; 
         
         return totalTime;
     }

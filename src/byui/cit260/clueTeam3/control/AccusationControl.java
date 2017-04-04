@@ -5,6 +5,8 @@
  */
 package byui.cit260.clueTeam3.control;
 
+import byui.cit260.clueTeam3.view.AmountPoisonView;
+
 /**
  *
  * @author whitnieschwarz
@@ -37,6 +39,10 @@ public class AccusationControl {
         }
         if (!guessSuspect.equals(answerSuspect)){
             System.out.println("\n" + guessSuspect + " is not guilty.");
+        }
+        if (guessWeapon.equals(answerWeapon)){
+            AmountPoisonView amountPoisonView = new AmountPoisonView();
+            amountPoisonView.display();
         }
         /*else if (guessRoom.equals(answerRoom) || guessWeapon.equals(answerWeapon) || guessSuspect.equals(answerSuspect)) {
             System.out.println("At least one of your accusations is correct!");

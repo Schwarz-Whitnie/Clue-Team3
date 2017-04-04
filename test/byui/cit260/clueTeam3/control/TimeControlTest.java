@@ -37,7 +37,7 @@ public class TimeControlTest {
         
         TimeControl instance = new TimeControl();
         
-        double result = instance.calcTotalTime(noOfRooms, noOfLocations, passageway);
+        double result = instance.calcTotalTime(noOfRooms, passageway);
        
         assertEquals(expResult, result, 0.0001);
      
@@ -53,7 +53,7 @@ public class TimeControlTest {
         
         expResult = -1;
         
-        result = instance.calcTotalTime(noOfRooms, noOfLocations, passageway);
+        result = instance.calcTotalTime(noOfRooms, passageway);
        
         assertEquals(expResult, result, 0.0001);
        
@@ -68,7 +68,7 @@ public class TimeControlTest {
         
         expResult = -1;
         
-        result = instance.calcTotalTime(noOfRooms, noOfLocations, passageway);
+        result = instance.calcTotalTime(noOfRooms, passageway);
        
         assertEquals(expResult, result, 0.0001);
         
@@ -83,7 +83,7 @@ public class TimeControlTest {
         
         expResult = -1;
         
-        result = instance.calcTotalTime(noOfRooms, noOfLocations, passageway);
+        result = instance.calcTotalTime(noOfRooms, passageway);
        
         assertEquals(expResult, result, 0.0001);
         
@@ -98,7 +98,7 @@ public class TimeControlTest {
         
         expResult = -1;
         
-        result = instance.calcTotalTime(noOfRooms, noOfLocations, passageway);
+        result = instance.calcTotalTime(noOfRooms, passageway);
        
         assertEquals(expResult, result, 0.0001);
         
@@ -113,7 +113,7 @@ public class TimeControlTest {
         
         expResult = 55;
         
-        result = instance.calcTotalTime(noOfRooms, noOfLocations, passageway);
+        result = instance.calcTotalTime(noOfRooms, passageway);
        
         assertEquals(expResult, result, 0.0001);
         
@@ -128,7 +128,7 @@ public class TimeControlTest {
         
         expResult = 96.25;
         
-        result = instance.calcTotalTime(noOfRooms, noOfLocations, passageway);
+        result = instance.calcTotalTime(noOfRooms, passageway);
        
         assertEquals(expResult, result, 0.0001);
     
