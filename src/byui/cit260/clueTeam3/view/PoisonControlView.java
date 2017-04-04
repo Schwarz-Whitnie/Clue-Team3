@@ -34,9 +34,9 @@ public class PoisonControlView {
         System.out.println(
               "\n************************************************************************"
             + "\n*                                                                      *"        
-            + "\n* Good job, you helped up find out how much poison was administered to *"
-            + "\n* Mr. Boddy. Now help us find out the time of death. How long until   *"
-            + "\n* the poison took effect?                                              *"
+            + "\n* Good job, you helped us figure out how much poison was given to Mr.  *"
+            + "\n* Boddy. Using the information gained above, help us determine when    *"
+            + "\n  the poison was administered to Mr. Boddy.                            *"
             + "\n                                                                       *"  
             + "\n************************************************************************"  
              );
@@ -102,7 +102,8 @@ public class PoisonControlView {
        
        this.console.println(
                  "\n=============================================="
-               + "\nThe poison was administered" + characterControl 
+               + "\nThe poison was administered " + timePoison +
+                 "hours ago. "
                + "\nGood work!"
                + "\n==============================================");
             

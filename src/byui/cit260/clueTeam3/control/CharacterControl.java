@@ -19,8 +19,8 @@ public class CharacterControl {
         }
         
         double poisonPerMinute = 0.05;
-        double timePoison = amtPoison / (poisonPerMinute*60);
-        timePoison = Math.round (timePoison *10) / 10;
+        double timePoison = amtPoison / (poisonPerMinute * 60);
+        timePoison = Math.round (timePoison * 10) / 10;
         
         return timePoison;
         
