@@ -184,7 +184,7 @@ private String getSuspect() {
        return true; //success
     }
    
-   public void resetWeaponStatus(String accusedWeapon) {
+   /*public void resetWeaponStatus(String accusedWeapon) {
        
        for (Weapon weapon : Weapon.values()) {
            if (accusedWeapon.equals(Weapon.values().toString())) {
@@ -193,7 +193,7 @@ private String getSuspect() {
               // DetectiveNotebook.setWeaponStatus(accusation.accusedWeapon, status.guilty);    
            }
        }
-   }
+   }*/
 
     /*private void displayNextView(AccusationControl accusationControl) {
         this.console.println(
