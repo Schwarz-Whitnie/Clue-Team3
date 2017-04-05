@@ -192,9 +192,9 @@ public class ListSuspectsView extends View {
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
-        if (!Objects.equals(this.accused, other.accused)) {
-            return false;
-        }
+        //if (!Objects.equals(this.weaponStatus, other.accused)) {
+           // return false;
+        //}
         return true;
     }
     
@@ -246,32 +246,32 @@ public class ListSuspectsView extends View {
         ListSuspectsView mustard = new ListSuspectsView();
         mustard.setDescription("Col. Mustard");
         mustard.setAccused(true);
-        suspect[Suspects.suspectOne.ordinal()] = mustard;
+        suspect[Suspects.ColonelMustard.ordinal()] = mustard;
         
         ListSuspectsView white = new ListSuspectsView();
         white.setDescription("Mrs. White");
         white.setAccused(false);
-        suspect[Suspects.suspectTwo.ordinal()] = white;
+        suspect[Suspects.MrsWhite.ordinal()] = white;
         
         ListSuspectsView plum = new ListSuspectsView();
         plum.setDescription("Professor Plum");
         plum.setAccused(true);
-        suspect[Suspects.suspectThree.ordinal()] = plum;
+        suspect[Suspects.ProfessorPlum.ordinal()] = plum;
         
         ListSuspectsView peacock = new ListSuspectsView();
         peacock.setDescription("Mrs. Peacock");
         peacock.setAccused(false);
-        suspect[Suspects.suspectFour.ordinal()] = peacock;
+        suspect[Suspects.MrsPeacock.ordinal()] = peacock;
         
         ListSuspectsView scarlet = new ListSuspectsView();
-        scarlet.setDescription("Mrs. Scarlet");
+        scarlet.setDescription("Miss Scarlet");
         scarlet.setAccused(true);
-        suspect[Suspects.suspectFive.ordinal()] = scarlet;
+        suspect[Suspects.MissScarlet.ordinal()] = scarlet;
         
         ListSuspectsView green = new ListSuspectsView();
         green.setDescription("Mr. Green");
         green.setAccused(false);
-        suspect[Suspects.suspectSix.ordinal()] = green;
+        suspect[Suspects.MrGreen.ordinal()] = green;
         
         return null;
         

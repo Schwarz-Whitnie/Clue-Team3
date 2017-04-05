@@ -13,17 +13,17 @@ import java.io.Serializable;
  */
 public enum Status implements Serializable {
     
-    quilty("*"),
+    guilty("*"),
     not_guilty("x"),
-    not_accused(" ");
+    not_accused("-");
     
-    private final String status;
+    public final String status;
     
     Status(String status) {
         this.status = status;
     }
     public String getStatus() {
-        return status;
-    }
+        return this.status;
+    } 
     
 }

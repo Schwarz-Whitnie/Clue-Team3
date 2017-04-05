@@ -21,8 +21,7 @@ public class Game implements Serializable {
     private Player player;
     private MansionMap mansionMap;
     private Time time;
-    private DetectiveNotebook[] notebook;
-    private DetectiveNotebook[] roomNotebook;;
+    private DetectiveNotebook detectiveNotebook;
     private Point playersLocation;
     
     
@@ -43,19 +42,14 @@ public class Game implements Serializable {
     public void setPlayersLocation(Point playersLocation) {
         this.playersLocation = playersLocation;
     }
-    public DetectiveNotebook[] getNotebook() {
-        return notebook;
+    public DetectiveNotebook getNotebook() {
+        return detectiveNotebook;
     }
 
-    public void setNotebook(DetectiveNotebook[] notebook) {
-        this.notebook = notebook;
+    public void setNotebook(DetectiveNotebook notebook) {
+        this.detectiveNotebook = notebook;
     }
-    public DetectiveNotebook[] getRoomNotebook() {
-        return roomNotebook;
-    }
-    public void setRoomNotebook(DetectiveNotebook[] roomNotebook) {
-        this.roomNotebook = roomNotebook;
-    }
+  
     public Game() {
         this.totalTime = 0;
     }

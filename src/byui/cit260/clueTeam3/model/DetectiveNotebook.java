@@ -5,21 +5,59 @@
  */
 package byui.cit260.clueTeam3.model;
 
+import byui.cit260.clueTeam3.exeptions.GameControlException;
 import java.io.Serializable;
 import java.util.Objects;
 public class DetectiveNotebook implements Serializable {
     
     public String description;
-    public boolean accused;
-  
+    private Status[] weaponStatus = new Status [8];
+    private Status[] roomStatus = new Status [9];
+    private Status[] suspectsStatus = new Status [6];
+    
   public DetectiveNotebook() {
       
+      
+      for (int i = 0; i < roomStatus.length; i++) {
+        roomStatus[i] = Status.not_accused;
+        }
+      for (int i = 0; i < weaponStatus.length; i++) {
+        weaponStatus[i] = Status.not_accused;
+        }
+      for (int i = 0; i < suspectsStatus.length; i++) {
+        suspectsStatus[i] = Status.not_accused;
+        }
   }  
-    
-    public DetectiveNotebook(String description, boolean accused) {
+
+     public DetectiveNotebook(String description, boolean accused) {
         this.description = description;
-        this.accused = accused;
-}
+    }
+
+    public Status getRoomStatus(RoomEnum roomEnum) {
+        return roomStatus[roomEnum.ordinal()];
+    }
+
+    public void setRoomStatus(RoomEnum roomEnum, Status status) {
+        roomStatus[roomEnum.ordinal()] = status;
+    }
+
+    public Status getWeaponStatus(Weapon weapon) {
+        return weaponStatus[weapon.ordinal()];
+    }
+
+    public void setWeaponStatus(Weapon weapon, Status status) {
+        weaponStatus[weapon.ordinal()] = status;
+    }
+    
+    public Status getSuspectsStatus(Suspects suspects) {
+        return suspectsStatus[suspects.ordinal()];
+    }
+
+    public void setSuspectsStatus(Suspects suspects, Status status) {
+        suspectsStatus[suspects.ordinal()] = status;
+    }
+    
+    
 
     /* public DetectiveNotebook(int rowCount, int columnCount) {
         
@@ -50,13 +88,13 @@ public class DetectiveNotebook implements Serializable {
     this.description = description;
 }
 
-    public boolean isAccused() {
+    /*public boolean isAccused() {
         return accused;
     }
 
     public void setAccused(boolean accused) {
         this.accused = accused;
-    }
+    }*/
     
 
     @Override
@@ -68,7 +106,7 @@ public class DetectiveNotebook implements Serializable {
      public int hashCode() {
         int hash = 7;
         hash = 53 * hash + Objects.hashCode(this.description);
-        hash = 53 * hash + Objects.hashCode(this.accused);
+        hash = 53 * hash + Objects.hashCode(this.weaponStatus);
         return hash;
 }
 
@@ -84,7 +122,7 @@ public class DetectiveNotebook implements Serializable {
         if (!Objects.equals(this.description, other.description)) {
             return false;
         }
-        if (!Objects.equals(this.accused, other.accused)) {
+        if (!Objects.equals(this.weaponStatus, other.weaponStatus)) {
             return false;
         }
         return true;

@@ -5,28 +5,42 @@
  */
 package byui.cit260.clueTeam3.model;
 
+import java.io.Serializable;
+
 /**
  *
  * @author catrinalonghurst1
  */
 
-public enum Suspects {
-    suspectOne,
-    suspectTwo,
-    suspectThree,
-    suspectFour,
-    suspectFive,
-    suspectSix;
+public enum Suspects implements Serializable{
+    
+    ColonelMustard(),
+    ProfessorPlum(),
+    MissScarlet(),
+    MrsWhite(),
+    MrsPeacock(),
+    MrGreen();
     
     private String description;
+    private String status;
     private double clueType;
     private final Point coordinates;
-    private Suspects suspect;
+    private Suspects suspects;
     private Room[] room;
     private String accused;
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    
     Suspects() {
         coordinates = new Point(1,1);
+        this.description = description;
     }
     
     public Room[] getRoom() {
@@ -63,11 +77,16 @@ public enum Suspects {
 
 
     public Suspects getSuspect() {
-        return suspect;
+        return suspects;
     }
 
-    public void setSuspect(Suspects suspect) {
-        this.suspect = suspect;
+    public void setSuspect(Suspects suspects) {
+        this.suspects = suspects;
     }
 
+    @Override
+    public String toString() {
+        return "Suspect{" + "description=" + description + "}";
+    }
 }
+

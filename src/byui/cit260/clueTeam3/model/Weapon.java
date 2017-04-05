@@ -18,13 +18,21 @@ public enum Weapon implements Serializable {
     Rope("Rope"),
     Dumbbell("Dumbbell"),
     Poison("Poison"),
-    LeadPipe("LeadPipe"),
+    LeadPipe("Lead Pipe"),
     Revolver("Revolver"),
     Wrench("Wrench");
     
     private String description;
     private String status;
-    public boolean accused;
+    public String accused;
+
+    public String getAccused() {
+        return accused;
+    }
+
+    public void setAccused(String accused) {
+        this.accused = accused;
+    }
 
     public String getStatus() {
         return status;

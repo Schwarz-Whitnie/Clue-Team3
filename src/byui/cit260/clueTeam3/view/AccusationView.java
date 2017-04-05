@@ -6,6 +6,8 @@
 package byui.cit260.clueTeam3.view;
 
 import byui.cit260.clueTeam3.control.AccusationControl;
+import byui.cit260.clueTeam3.model.DetectiveNotebook;
+import byui.cit260.clueTeam3.model.Weapon;
 import clueteam3.ClueTeam3;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -53,21 +55,21 @@ public class AccusationView {
         boolean done = false; // user flag to not done
         do { 
             // prompt for and get number of rooms 
-            String room = this.getRoom();
-            if (room.toUpperCase().equals("Q")) // user wants to quit
+            String accusedRoom = this.getRoom();
+            if (accusedRoom.toUpperCase().equals("Q")) // user wants to quit
                 return; // exit the game 
             
-            String weapon = this.getWeapon();
-            if (weapon.toUpperCase().equals("Q")) // user wants to quit
+            String accusedWeapon = this.getWeapon();
+            if (accusedWeapon.toUpperCase().equals("Q")) // user wants to quit
                 return; // exit the game 
             
-            String suspect = this.getSuspect();
-            if (suspect.toUpperCase().equals("Q")) // user wants to quit
+            String accusedSuspect = this.getSuspect();
+            if (accusedSuspect.toUpperCase().equals("Q")) // user wants to quit
                 return; // exit the game 
             
             
             // do the request action and display the next view 
-            done = this.doAction(room, weapon, suspect); 
+            done = this.doAction(accusedRoom, accusedWeapon, accusedSuspect); 
            
         }while (!done);
         
@@ -144,27 +146,27 @@ private String getSuspect() {
         return value; // return the value entered
     }
 
-   public boolean doAction(String room, String weapon, String suspect) {
+   public boolean doAction(String accusedRoom, String accusedWeapon, String accusedSuspect) {
         
-       if (!room.equals("Billard Room") && !room.equals("Ballroom") && !room.equals("Library") 
-               && !room.equals("Study") && !room.equals("Hall") && !room.equals("Lounge") 
-               && !room.equals("Dining Room") && !room.equals("Kitchen") && !room.equals("Conservatory")) {
+       if (!accusedRoom.equals("BillardRoom") && !accusedRoom.equals("Ballroom") && !accusedRoom.equals("Library") 
+               && !accusedRoom.equals("Study") && !accusedRoom.equals("Hall") && !accusedRoom.equals("Lounge") 
+               && !accusedRoom.equals("DiningRoom") && !accusedRoom.equals("Kitchen") && !accusedRoom.equals("Conservatory")) {
            ErrorView.display(this.getClass().getName(),"\nInvaild room: "
                    + "Please enter a room in the manison.");
            return false;
        }
        
-       if (!weapon.equals("Poison") && !weapon.equals("Candlestick") && !weapon.equals("Knife") 
-               && !weapon.equals("Dumbbell") && !weapon.equals("Revolver") && !weapon.equals("Wrench") 
-               && !weapon.equals("Rope") && !weapon.equals("Pipe")) {
+       if (!accusedWeapon.equals("Poison") && !accusedWeapon.equals("Candlestick") && !accusedWeapon.equals("Knife") 
+               && !accusedWeapon.equals("Dumbbell") && !accusedWeapon.equals("Revolver") && !accusedWeapon.equals("Wrench") 
+               && !accusedWeapon.equals("Rope") && !accusedWeapon.equals("LeadPipe")) {
            ErrorView.display(this.getClass().getName(),"\nInvaild weapon: "
                    + "Please enter a weapon found in the manison.");
            return false;
        }
        
-       if (!suspect.equals("Mrs. Peacock") && !suspect.equals("Miss Scarlet") && !suspect.equals("Mrs. White") 
-               && !suspect.equals("Professor Plum") && !suspect.equals("Colonel Mustard") && 
-               !suspect.equals("Mr. Green")) {
+       if (!accusedSuspect.equals("MrsPeacock") && !accusedSuspect.equals("MissScarlet") && !accusedSuspect.equals("Mrs. White") 
+               && !accusedSuspect.equals("ProfessorPlum") && !accusedSuspect.equals("ColonelMustard") && 
+               !accusedSuspect.equals("MrGreen")) {
            ErrorView.display(this.getClass().getName(),"\nInvaild suspect: "
                    + "Please enter a suspect found in the manison.");
            return false;
@@ -173,35 +175,25 @@ private String getSuspect() {
        
        //call calcTotalTime() control function
        AccusationControl accusationControl = new AccusationControl();
-       accusation = AccusationControl.makeAnAccusation(room, weapon, suspect);
+       accusation = AccusationControl.makeAnAccusation(accusedRoom, accusedWeapon, accusedSuspect);
+       
        
        //display next view
-       this.updateDetectiveNotebook(room, weapon, suspect);
+       //this.displayNextView(accusationControl);
        
        return true; //success
     }
    
-   public String updateDetectiveNotebook(String roomStatus, String weaponStatus, String suspectStatus) {
+   public void resetWeaponStatus(String accusedWeapon) {
        
-       String accusedGuilty = "Accused - Guilty";
-       String accusedNotGuilty = "Accused - Not Guilty";
-       String notAccused = "Not Accused - Unknown";
-       
-       if (roomStatus.equals("Candlestick") && roomStatus.equals("Knife") 
-               && roomStatus.equals("Dumbbell") && roomStatus.equals("Revolver") && roomStatus.equals("Wrench") 
-               && roomStatus.equals("Rope") && roomStatus.equals("Pipe")) {
-           return accusedNotGuilty;
-       }
+       for (Weapon weapon : Weapon.values()) {
+           if (accusedWeapon.equals(Weapon.values().toString())) {
+               accusedWeapon.equals(Weapon.valueOf(accusation));
                
-       if (roomStatus.equals("Poison")) {
-          return accusedGuilty; 
-       }   
-       
-       return notAccused;
-    
+              // DetectiveNotebook.setWeaponStatus(accusation.accusedWeapon, status.guilty);    
+           }
+       }
    }
-   
-   
 
     /*private void displayNextView(AccusationControl accusationControl) {
         this.console.println(
@@ -210,7 +202,6 @@ private String getSuspect() {
                 + "\n minutes remaining in the game."
                 + "\n============================================"
                 );
-
     }*/
 
 }

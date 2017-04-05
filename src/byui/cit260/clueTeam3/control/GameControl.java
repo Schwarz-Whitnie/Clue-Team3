@@ -12,6 +12,8 @@ import byui.cit260.clueTeam3.model.Game;
 import byui.cit260.clueTeam3.model.Player;
 import clueteam3.ClueTeam3;
 import byui.cit260.clueTeam3.model.MansionMap;
+import byui.cit260.clueTeam3.model.ResourceTypeScene;
+import static byui.cit260.clueTeam3.model.ResourceTypeScene.weapon;
 import byui.cit260.clueTeam3.model.Room;
 import byui.cit260.clueTeam3.model.RoomEnum;
 import byui.cit260.clueTeam3.model.Weapon;
@@ -39,11 +41,11 @@ public class GameControl {
         
         game.setPlayer(player);
        
+        DetectiveNotebook notebook = new DetectiveNotebook();
+        
+        game.setNotebook(notebook);
+        
         GameMenuView gameMenuView = new GameMenuView(); //
-        
-        
-        DetectiveNotebook[] notebookList = GameControl.createDetectiveNotebook();  
-        game.setNotebook(notebookList);  // will need these at some point LB 
         
         MansionMap mansionMap = MapControl.createMansionMap(); // creating an storing in the game LB
         game.setMansionMap(mansionMap);
@@ -100,59 +102,8 @@ public class GameControl {
         return player;
     }
     
-
-    private static DetectiveNotebook[] createDetectiveNotebook() {
-        // create and array(list of detective notebook items
-        
-        
-        DetectiveNotebook[] notebook = new DetectiveNotebook[8];
-        
-        DetectiveNotebook candlestick = new DetectiveNotebook();
-        candlestick.setDescription("Candle Stick");
-        candlestick.setAccused(true);
-        notebook[Weapon.Candlestick.ordinal()] = candlestick;
-        
-        DetectiveNotebook knife = new DetectiveNotebook();
-        knife.setDescription("Knife");
-        knife.setAccused(false);
-        notebook[Weapon.Knife.ordinal()] = knife;
-        
-        DetectiveNotebook rope = new DetectiveNotebook();
-        rope.setDescription("Rope");
-        rope.setAccused(true);
-        notebook[Weapon.Rope.ordinal()] = rope;
-        
-        DetectiveNotebook dumbbell = new DetectiveNotebook();
-        dumbbell.setDescription("Dumbbell");
-        dumbbell.setAccused(false);
-        notebook[Weapon.Dumbbell.ordinal()] = dumbbell;
-        
-        DetectiveNotebook poison = new DetectiveNotebook();
-        poison.setDescription("Poison");
-        poison.setAccused(true);
-        notebook[Weapon.Poison.ordinal()] = poison;
-        
-        DetectiveNotebook pipe = new DetectiveNotebook();
-        pipe.setDescription("Pipe");
-        pipe.setAccused(false);
-        notebook[Weapon.LeadPipe.ordinal()] = pipe;
-        
-        DetectiveNotebook gun = new DetectiveNotebook();
-        gun.setDescription("Gun");
-        gun.setAccused(true);
-        notebook[Weapon.Revolver.ordinal()] = gun;
-        
-        DetectiveNotebook wrench = new DetectiveNotebook();
-        wrench.setDescription("Wrench");
-        wrench.setAccused(false);
-        notebook[Weapon.Wrench.ordinal()] = wrench;
-        
-        
-        return notebook;
-        
-    }
     
-        private static DetectiveNotebook[] createRoomNotebook() {
+       /* private static DetectiveNotebook[] createRoomNotebook() {
         // create and array(list of detective notebook items
         
         DetectiveNotebook[] roomNotebook = new DetectiveNotebook[9];
@@ -206,70 +157,9 @@ public class GameControl {
         return roomNotebook;
         
         
-    }
+    }*/
     
   //  public static Room[][] getMapLocations() {
   //      return ClueTeam3.getCurrentGame().getMansionMap().getRooms();
   //  }         // might not even need this LB 
-public static DetectiveNotebook[] getSortedDetectiveNotebook() throws GameControlException {
-        
-        // get inventory list for the current game
-        DetectiveNotebook[] originalDetectiveNotebook = 
-                ClueTeam3.getCurrentGame().getNotebook();
-        
-        // clone (make a copy) orignalList
-        DetectiveNotebook[] notebookList = originalDetectiveNotebook.clone();
-        
-       // using a BubbleSort to sort the list of inventoryList by name
-        DetectiveNotebook tempDetectiveNotebook;
-        for (int i = 0; i < notebookList.length-1; i++) {
-            for (int j = 0; j < notebookList.length-1-i; j++) {
-                if (notebookList[j].getDescription().
-                        compareToIgnoreCase(notebookList[j + 1].getDescription()) > 0) {
-                    tempDetectiveNotebook = notebookList[j];
-                    notebookList[j] = notebookList[j+1];
-                    notebookList[j+1] = tempDetectiveNotebook;
-                    throw new GameControlException("Can not display notebook"
-                                                  + " because error.");
-               }
-            }
-        }
-        
-        return notebookList;
-    }    
-
-public static DetectiveNotebook[] getNotebook() {    
-    return ClueTeam3.getCurrentGame().getNotebook();
-}    
-
-public static DetectiveNotebook[] getRoomNotebook() {    
-    return ClueTeam3.getCurrentGame().getRoomNotebook();
 }
-public static DetectiveNotebook[] getSortedRoomNotebook() throws GameControlException {
-        
-        // get inventory list for the current game
-        DetectiveNotebook[] originalRoomNotebook = 
-                ClueTeam3.getCurrentGame().getRoomNotebook();
-        
-        // clone (make a copy) orignalList
-        DetectiveNotebook[] roomNotebookList = originalRoomNotebook.clone();
-        
-       // using a BubbleSort to sort the list of inventoryList by name
-        DetectiveNotebook tempRoomNotebook;
-        for (int i = 0; i < roomNotebookList.length-1; i++) {
-            for (int j = 0; j < roomNotebookList.length-1-i; j++) {
-                if (roomNotebookList[j].getDescription().
-                        compareToIgnoreCase(roomNotebookList[j + 1].getDescription()) > 0) {
-                    tempRoomNotebook = roomNotebookList[j];
-                    roomNotebookList[j] = roomNotebookList[j+1];
-                    roomNotebookList[j+1] = tempRoomNotebook;
-                    throw new GameControlException("Can not display notebook"
-                                                  + " because error.");
-               }
-            }
-        }
-        
-        return roomNotebookList;
-    }    
-
-}    

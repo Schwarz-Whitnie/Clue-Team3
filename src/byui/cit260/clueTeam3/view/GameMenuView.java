@@ -13,7 +13,11 @@ import byui.cit260.clueTeam3.model.Game;
 import byui.cit260.clueTeam3.model.MansionMap;
 import byui.cit260.clueTeam3.model.Point;
 import byui.cit260.clueTeam3.model.Room;
+import byui.cit260.clueTeam3.model.RoomEnum;
 import byui.cit260.clueTeam3.model.Scene;
+import byui.cit260.clueTeam3.model.Status;
+import byui.cit260.clueTeam3.model.Suspects;
+import byui.cit260.clueTeam3.model.Weapon;
 import clueteam3.ClueTeam3;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -63,9 +67,6 @@ public class GameMenuView extends View {
                 break;
             case "W": //view list
                 this.weaponList();
-                break;
-            case "R": //view list
-                this.roomList();
                 break;
             case "L": //move to new room
                 this.moveRooms();
@@ -228,40 +229,7 @@ public class GameMenuView extends View {
         listWeapons.display();
     }
 
-    private void roomList() {
-       this.viewRoomList(ClueTeam3.getOutFile());
-    }
-    
-    private void viewRoomList(PrintWriter out) {
-        StringBuilder line = null;
-        
-        try { 
-            GameControl.getSortedRoomNotebook();
-        } catch (GameControlException e) {
-            this.console.println("Error reading input: " + e.getMessage());
-        }
-        Game game = ClueTeam3.getCurrentGame();
-        DetectiveNotebook[] roomNotebook = game.getRoomNotebook();
-        
-        out.println("\n  DETECTIVE NOTEBOOK");
-        line = new StringBuilder("                     ");
-        line.insert(0, "ROOM");
-        line.insert(20, "STATUS");
-        out.println(line.toString());
-        
-        // for each notebook item
-        for (DetectiveNotebook detectiveRoomNotebook : roomNotebook) {
-            line = new StringBuilder("                                                          ");
-            line.insert(0, detectiveRoomNotebook.getDescription());
-            line.insert(23, detectiveRoomNotebook.isAccused());
-            
-            // DISPLAY the description, the required amount and amount in stock
-            out.println(line.toString());
-        }
-        //display the list of rooms
-        //ListRoomsView listRooms = new ListRoomsView();
-        //listRooms.display();
-   }
+
 
     private void moveRooms() {
         //this.viewMansionMap(ClueTeam3.getOutFile());
@@ -273,50 +241,55 @@ public class GameMenuView extends View {
         }
         
     }
-
+    
     private void displayDetectiveNotebook() {
-       this.viewDetectiveNotebook(ClueTeam3.getOutFile());
+        this.viewNotebook(ClueTeam3.getOutFile());
     }
     
-    private void viewDetectiveNotebook(PrintWriter out) {
+    private void viewNotebook(PrintWriter out) {
         //display detective notebook
- 
-        StringBuilder line = null;
+        RoomEnum[] roomStatus = RoomEnum.values();
+        Weapon[] weaponStatus = Weapon.values();
+        Suspects[] suspectsStatus = Suspects.values();
         
-        try { 
-            GameControl.getSortedDetectiveNotebook();
-        } catch (GameControlException e) {
-            this.console.println("Error reading input: " + e.getMessage());
-        }
-        Game game = ClueTeam3.getCurrentGame();
-        DetectiveNotebook[] notebook = game.getNotebook();
+        DetectiveNotebook detectiveNotebook = ClueTeam3.getCurrentGame().getNotebook();
         
-        out.println("\n  DETECTIVE NOTEBOOK");
-        line = new StringBuilder("                     ");
-        line.insert(0, "WEAPON");
+        out.println("\n          Detective Notebook");
+        StringBuilder line = new StringBuilder("                            ");
+        line.insert(0, "DISCRIPTION");
         line.insert(20, "STATUS");
         out.println(line.toString());
         
-        // for each notebook item
-        for (DetectiveNotebook detectiveNotebook : notebook) {
-            line = new StringBuilder("                                                          ");
-            line.insert(0, detectiveNotebook.getDescription());
-            line.insert(23, detectiveNotebook.isAccused());
+        for (RoomEnum roomEnum: roomStatus) {
+            line = new StringBuilder("                                    ");
+            line.insert(0, roomEnum.name());
+            line.insert(23, detectiveNotebook.getRoomStatus(roomEnum));
             
-            // DISPLAY the description, the required amount and amount in stock
             out.println(line.toString());
         }
         
-        //this.getSortedDetectiveNotebook(ClueTeam3.getOutFile());
+        for (Weapon weapon: weaponStatus) {
+            line = new StringBuilder("                                    ");
+            line.insert(0, weapon.name());
+            line.insert(23, detectiveNotebook.getWeaponStatus(weapon));
+            
+            out.println(line.toString());
+        }
+           
+        for (Suspects suspects: suspectsStatus) {
+                line = new StringBuilder("                                    ");
+            line.insert(0, suspects.name());
+            line.insert(23, detectiveNotebook.getSuspectsStatus(suspects));
+            
+            out.println(line.toString());
+        }
         
-       // System.out.println("*** View Detective Notebook ***");
-         
     }
-
+    
     private void makeAccusation() {
         AccusationView accusationPrompt = new AccusationView();
         accusationPrompt.displayPrompt();
-    }
+         }
     
     public void printDetectiveNotebook() {
         // get the filepath and name of the file
@@ -337,7 +310,7 @@ public class GameMenuView extends View {
             
             reportFile.println("Report printed: " + dateTime);
             
-            this.viewDetectiveNotebook(reportFile);
+            //this.viewDetectiveNotebook(reportFile);
             
             
             ClueTeam3.getOutFile().println(
@@ -347,7 +320,7 @@ public class GameMenuView extends View {
             ErrorView.display("GameMenuView", "Error writing to game report file. "
                     + "\n\t" + ex.getMessage());
         }
-    }
+    } 
 
     private void checkTime() {
         TimeRemainingView timeRemainingView = new TimeRemainingView();
