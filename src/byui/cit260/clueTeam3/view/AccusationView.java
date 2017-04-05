@@ -31,22 +31,22 @@ public class AccusationView {
     public AccusationView() {
         this.accusationPrompt = 
                   "\nMake an accusation. "
-              + "\n\nBillard Room       Ballroom"
+              + "\n\nBillardRoom       Ballroom"
                 + "\nLibrary            Study"
                 + "\nHall               Lounge"
-                + "\nDining Room        Kitchen"
+                + "\nDiningRoom        Kitchen"
                 + "\nConservatory"
                 + "\n\nPlease enter a room:";
         this.weaponPrompt = 
                   "\nCandlestick        Knife"
                 + "\nRope               Dumbbell"
-                + "\nPoison             Pipe"
+                + "\nPoison             LeadPipe"
                 + "\nRevolver           Wrench"
                 + "\n\nPlease enter a weapon:";
         this.suspectPrompt = 
-                  "\nColonel Mustard    Mrs. White"
-                + "\nProfessor Plum     Mrs. Peacock"
-                + "\nMiss Scarlet       Mr. Green"
+                  "\nColonelMustard    MrsWhite"
+                + "\nProfessorPlum     MrsPeacock"
+                + "\nMissScarlet       MrGreen"
                 + "\n\nPlease enter a suspect:";
         
     }
